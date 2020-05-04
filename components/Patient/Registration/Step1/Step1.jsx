@@ -1,8 +1,10 @@
 import React, { useReducer } from 'react';
 import Confirmation from './components/Confirmation/Confirmation';
 import Header from '../Header/Header';
-import Input from '../../Forms/Input';
-import NumberCod from '../../Forms/NumberCod';
+import Input from '../../Forms/Input/Input';
+import Button from '../../Forms/Button';
+import Checkbox from '../../Forms/Checkbox/Checkbox';
+import NumberCod from '../../Forms/numberCod';
 import styles from './step1.module.scss';
 
 const initialState = { login: true };
@@ -12,11 +14,11 @@ function reducer(state, action) {
     case 'REGISTRATION_CONTINUE':
       return { login: false };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-const Registration = () => {
+const Step1 = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -32,54 +34,59 @@ const Registration = () => {
             </p>
             <div className={styles['validation-number']}>
               <div className={styles['validation-number__first']}>
-                <p
+                <label
                   className={`
                   ${styles.number__align} 
                   ${styles.helper}
                `}
                 >
                   area code
-                </p>
-                <NumberCod
-                  id="numberCod"
-                  className={styles['validation-number__cod']}
-                />
+                  <NumberCod
+                    id="numberCod"
+                    className={styles['validation-number__cod']}
+                  />
+                </label>
               </div>
               <div className={styles['validation-number__second']}>
-                <p
+                <label
                   className={`
                   ${styles.number__align} 
                   ${styles.helper}
                `}
                 >
                   local number
-                </p>
-                <Input
-                  type="number"
-                  placeholder="123456789"
-                  id="numberValue"
-                  className={styles['validation-number__value']}
-                />
+                  <Input
+                    type="number"
+                    placeholder="123456789"
+                    id="numberValue"
+                  />
+                </label>
               </div>
             </div>
             <p className={styles['validation-password__helper']}>
               Password has to have at least 8 characters, letters, numbers, and
               special characters
             </p>
-            <p className={styles.helper}>password</p>
-            <Input
-              type="password"
-              placeholder="***************"
-              id="password"
-              className={styles.password}
-            />
-            <p className={styles.helper}>repeat password</p>
-            <Input
-              type="password"
-              placeholder="***************"
-              id="dublicatePassword"
-              className={styles.password}
-            />
+            <div className={styles['validation-password']}>
+              <label className={styles.helper}>
+                password
+                <Input
+                  type="password"
+                  placeholder="***************"
+                  id="password"
+                />
+              </label>
+            </div>
+            <div className={styles['validation-password']}>
+              <label className={styles.helper}>
+                repeat password
+                <Input
+                  type="password"
+                  placeholder="***************"
+                  id="dublicatePassword"
+                />
+              </label>
+            </div>
             <div className={styles['validation-changelist']}>
               <div
                 className={`
@@ -87,11 +94,7 @@ const Registration = () => {
                 ${styles.checkbox__align}
               `}
               >
-                <Input
-                  type="checkbox"
-                  id="license"
-                  className={styles.checkbox}
-                />
+                <Checkbox id="license" />
                 <label htmlFor="license" className={styles.label} />
                 <p className={styles.checkbox__title}>
                   I have read and accept DocWho{' '}
@@ -127,11 +130,7 @@ const Registration = () => {
                 ${styles.checkbox__align}
               `}
               >
-                <Input
-                  type="checkbox"
-                  id="saveUser"
-                  className={styles.checkbox}
-                />
+                <Checkbox id="saveUser" />
                 <label
                   htmlFor="saveUser"
                   className={`
@@ -143,21 +142,17 @@ const Registration = () => {
                 </label>
               </div>
             </div>
-            <button
-              className={styles['validation-button__save']}
+            <Button
+              handleClick={() => dispatch({ type: 'REGISTRATION_CONTINUE' })}
               id="continueLogIn"
-              type="button"
-              onClick={() => dispatch({ type: 'REGISTRATION_CONTINUE' })}
-            >
-              save and continue
-            </button>
-            <button
-              className={styles['validation-button__login']}
+              className={styles['validation-button__save']}
+              text="save and continue"
+            />
+            <Button
               id="logIn"
-              type="button"
-            >
-              Log in
-            </button>
+              className={styles['validation-button__login']}
+              text="Log in"
+            />
           </form>
         </div>
       ) : (
@@ -167,4 +162,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Step1;

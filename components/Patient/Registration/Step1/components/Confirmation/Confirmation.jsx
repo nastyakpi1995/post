@@ -1,5 +1,6 @@
 import React from 'react';
-import Input from '../../../../Forms/Input';
+import Input from '../../../../Forms/Input/Input';
+import Button from '../../../../Forms/Button';
 import styles from './confirmation.module.scss';
 
 const Confirmation = () => {
@@ -14,34 +15,25 @@ const Confirmation = () => {
           <span className={styles.telephone}>+32345789524</span>. Please fill
           the field and you&apos;ll be loged in.
         </p>
-        <p className={styles.helper}>confirmation code</p>
-        <Input
-          type="text"
-          placeholder="12-34-56"
-          id="confirmCode"
-          className={styles.password}
-        />
-        <button
-          className={styles['validation-button__submitCode']}
+        <label className={styles.helper}>
+          confirmation code
+          <Input type="text" placeholder="12-34-56" id="confirmCode" />
+        </label>
+        <Button
           id="submitCode"
-          type="button"
-        >
-          submit confirmation code
-        </button>
-        <button
-          className={styles['validation-button__requestCode']}
+          className={styles['validation-button__submitCode']}
+          text="submit confirmation code"
+        />
+        <Button
           id="requestCode"
-          type="button"
-        >
-          request code again
-        </button>
-        <button
-          className={styles['validation-button__login']}
+          className={styles['validation-button__requestCode']}
+          text="request code again"
+        />
+        <Button
           id="logInCode"
-          type="button"
-        >
-          Log in
-        </button>
+          className={styles['validation-button__login']}
+          text="Log in"
+        />
       </form>
     </div>
   );

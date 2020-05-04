@@ -11,7 +11,7 @@
 
     .validation {
       display: block;
-      width: 33%;
+      width: 39%;
       padding-top: 5%;
       margin: 0 auto;
       height: 95%;
@@ -115,21 +115,10 @@
             text-transform: uppercase;
             color: #bbbecd;
           }
-          .validation-number__value {
-            width: 100%;
-            border: 1px solid #ebf1f6;
-            height: 44px;
-            box-sizing: border-box;
-            border-radius: 8px;
-            background: #fff;
-            padding: 0 14px;
-            font-family: Avenir Next;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            color: #252f4d;
-          }
         }
+      }
+      .validation-password {
+        margin-top: 20px;
       }
       .validation-password__helper {
         font-family: Avenir Next;
@@ -146,20 +135,6 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         color: #bbbecd;
-      }
-      .password {
-        width: 100%;
-        border: 1px solid #ebf1f6;
-        height: 44px;
-        box-sizing: border-box;
-        border-radius: 8px;
-        background: #fff;
-        padding: 0 14px;
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        color: #252f4d;
       }
       .validation-changelist {
         display: block;
@@ -186,12 +161,9 @@
             background: #fff;
             vertical-align: middle;
           }
-          .checkbox:checked + .label:before {
+          .label:before {
             content: '✓';
             color: #0fc7c7;
-          }
-          .checkbox {
-            display: none;
           }
           .checkbox__title {
             font-family: Avenir Next;
@@ -230,12 +202,9 @@
             background: #fff;
             vertical-align: middle;
           }
-          .checkbox:checked + .label:before {
+          .label:before {
             content: '✓';
             color: #0fc7c7;
-          }
-          .checkbox {
-            display: none;
           }
           .checkbox__title {
             font-family: Avenir Next;

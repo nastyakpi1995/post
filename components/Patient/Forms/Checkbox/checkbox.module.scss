@@ -1,0 +1,7 @@
+.checkbox {
+  display: none;
+}
+.checkbox:checked {
+  content: '✓';
+  color: #0fc7c7;
+}

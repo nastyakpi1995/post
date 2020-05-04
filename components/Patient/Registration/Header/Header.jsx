@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../Forms/Button';
 import styles from './header.module.scss';
 
 const Header = () => {
@@ -18,13 +19,11 @@ const Header = () => {
         </a>
       </div>
       <div className={styles['header-buttons']}>
-        <button
-          className={styles['header-button__login']}
+        <Button
           id="doctorLogin"
-          type="button"
-        >
-          login as doctor
-        </button>
+          className={styles['header-button__login']}
+          text="login as doctor"
+        />
         <select className={styles['header-button__language']} id="language">
           <option>en</option>
           <option>ua</option>

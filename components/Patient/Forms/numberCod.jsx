@@ -7,7 +7,6 @@ const NumberCod = ({ id, className }) => {
   const handleInput = (event) => {
     const { value } = event.target;
     setCount(value);
-    return value;
   };
 
   return (

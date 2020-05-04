@@ -1,0 +1,158 @@
+.validation-contact {
+  padding-top: 40px;
+
+  .validation-description {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #252f4d;
+    margin: 0;
+  }
+  .contact-wrapper {
+    display: flex;
+    margin-top: 20px;
+
+    .contact-country {
+      width: 48%;
+      margin-right: 4%;
+
+      .helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #bbbecd;
+      }
+      .select {
+        width: 100%;
+        border: 1px solid #ebf1f6;
+        height: 44px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background: #fff;
+        padding: 0 14px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+    }
+    .contact-city {
+      width: 48%;
+
+      .helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #bbbecd;
+      }
+      .select {
+        width: 100%;
+        border: 1px solid #ebf1f6;
+        height: 44px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background: #fff;
+        padding: 0 14px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+    }
+  }
+  .contact-direction {
+    margin-top: 20px;
+
+    .helper {
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #bbbecd;
+    }
+  }
+  .contact-optional {
+    display: flex;
+    margin-top: 20px;
+
+    .contact-house {
+      width: 31%;
+      margin-right: 3.5%;
+
+      .helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #bbbecd;
+      }
+    }
+    .contact-apartment {
+      width: 31%;
+      margin-right: 3.5%;
+
+      .helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #bbbecd;
+      }
+    }
+    .contact-floor {
+      width: 31%;
+
+      .helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #bbbecd;
+      }
+    }
+  }
+  .contact-zip {
+    margin-top: 20px;
+
+    .helper {
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #bbbecd;
+    }
+  }
+  .contact-email {
+    margin-top: 20px;
+
+    .helper {
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #bbbecd;
+    }
+  }
+}
