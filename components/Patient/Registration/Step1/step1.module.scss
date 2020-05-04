@@ -32,10 +32,6 @@
 .checkbox {
   display: none;
 }
-.logo__value {
-  cursor: pointer;
-  outline: none;
-}
 .checkbox__title {
   font-family: Avenir Next;
   font-style: normal;
@@ -226,55 +222,7 @@
   margin: 0 auto;
   height: 95%;
 }
-.doc {
-  color: #f5fafe;
-}
-.woo {
-  color: #0fc7c7;
-}
-.header-buttons {
-  display: flex;
-}
-.header-button__language {
-  color: #f5fafe;
-  background: #252f4d;
-  border: 1px solid #252f4d;
-  outline: none;
-  cursor: pointer;
-  width: 45px;
-  margin-left: 15px;
-  font-family: Avenir Next;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.9px;
-}
-.header-button__login {
-  color: #0fc7c7;
-  background: #252f4d;
-  border: 1px solid #0fc7c7;
-  border-radius: 20px;
-  outline: none;
-  margin: auto;
-  cursor: pointer;
-  width: 170px;
-  height: 30px;
-  font-family: Avenir Next;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.9px;
-}
-.header-logo {
-  font-family: Avenir Next;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-}
+
 .wrapper {
   display: block;
   background: #252f4d;
@@ -283,11 +231,4 @@
   height: 30%;
   margin-bottom: auto;
 }
-.block-header {
-  height: 10vh;
-  line-height: 10vh;
-  width: 63vw;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
+

@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './registration.module.scss';
-import Input from '../Forms/input';
+import Input from '../../Forms/Input';
+import styles from './step1.module.scss';
 
 const ConfirmationCode = () => {
   return (

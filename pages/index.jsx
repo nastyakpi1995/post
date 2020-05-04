@@ -1,16 +1,21 @@
 import Head from 'next/head';
-import Registration from '../components/Patient/PatientRegistration/registration';
+import { Provider } from 'react-redux';
+import store from '../redux';
+import Registration from '../components/Patient/Registration/Step1/Step1';
+// import '../styles/reset.scss';
 
 export default function Home() {
   return (
-    <div className="container">
-      <Head>
-        <title>WooDoc</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="mainContainer">
-        <Registration />
+    <Provider store={store}>
+      <div className="container">
+        <Head>
+          <title>WooDoc</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <div className="mainContainer">
+          <Registration />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
