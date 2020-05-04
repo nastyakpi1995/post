@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import ConfirmationCode from './ConfirmationCode';
+import Confirmation from './components/Confirmation/Confirmation';
 import Header from '../Header/Header';
 import Input from '../../Forms/Input';
 import NumberCod from '../../Forms/NumberCod';
@@ -23,7 +23,7 @@ const Registration = () => {
     <div className={styles.wrapper}>
       <Header />
       {state.login ? (
-        <div className={styles['block-body']}>
+        <div className={styles.container}>
           <form className={styles.validation}>
             <h1 className={styles['validation-title']}>Create an account</h1>
             <p className={styles['validation-number__helper']}>
@@ -99,7 +99,7 @@ const Registration = () => {
                     <a
                       href="#"
                       className={`
-                      ${styles.href} 
+                      ${styles.link} 
                       ${styles.terms}
                     `}
                     >
@@ -111,7 +111,7 @@ const Registration = () => {
                     <a
                       href="#"
                       className={`
-                      ${styles.href} 
+                      ${styles.link} 
                       ${styles.policy}
                     `}
                     >
@@ -161,7 +161,7 @@ const Registration = () => {
           </form>
         </div>
       ) : (
-        <ConfirmationCode />
+        <Confirmation />
       )}
     </div>
   );

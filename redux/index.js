@@ -4,6 +4,7 @@ import rootReducers from './reducers';
 const middlewares = [];
 
 const enhancers = [];
+/* 
 if (process.browser) {
   const composed =
     window &&
@@ -13,7 +14,8 @@ if (process.browser) {
       traceLimit: 25,
     });
   enhancers.push(composed);
-}
+} 
+*/
 
 export default createStore(
   rootReducers,

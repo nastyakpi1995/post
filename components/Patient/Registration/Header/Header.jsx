@@ -3,21 +3,19 @@ import styles from './header.module.scss';
 
 const Header = () => {
   return (
-    <div className={styles['block-header']}>
+    <div className={styles.header}>
       <div className={styles['header-logo']}>
-        <div className={styles.logo}>
-          <a
-            className={`
-                ${styles.href} 
+        <a
+          className={`
+                ${styles.link} 
                 ${styles.logo__value}
              `}
-            id="mainPage"
-            href="#"
-          >
-            <span className={styles.doc}>Doc</span>
-            <span className={styles.woo}>Woo</span>
-          </a>
-        </div>
+          id="mainPage"
+          href="#"
+        >
+          <span className={styles.doc}>Doc</span>
+          <span className={styles.woo}>Woo</span>
+        </a>
       </div>
       <div className={styles['header-buttons']}>
         <button

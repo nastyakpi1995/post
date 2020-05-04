@@ -33,7 +33,7 @@ module.exports = {
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
     'jsx-a11y/label-has-associated-control': 0,
-    // eslint-disable-next-line
     'jsx-a11y/anchor-is-valid': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };

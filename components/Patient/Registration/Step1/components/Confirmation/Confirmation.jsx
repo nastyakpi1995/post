@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from '../../Forms/Input';
-import styles from './step1.module.scss';
+import Input from '../../../../Forms/Input';
+import styles from './confirmation.module.scss';
 
-const ConfirmationCode = () => {
+const Confirmation = () => {
   return (
-    <div className={styles['block-body']}>
+    <div className={styles.container}>
       <form className={styles.validation}>
         <h1 className={styles['validation-title']}>
           What is your confirmation code?
@@ -47,4 +47,4 @@ const ConfirmationCode = () => {
   );
 };
 
-export default ConfirmationCode;
+export default Confirmation;
