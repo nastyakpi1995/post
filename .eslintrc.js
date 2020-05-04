@@ -4,7 +4,13 @@ module.exports = {
     es6: true,
   },
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:react/recommended', "plugin:prettier/recommended"],
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -23,7 +29,8 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/forbid-prop-types': [0, { forbid: ['any'] }],
     'react/prop-types': 0,
-    'react/react-in-jsx-scope':0
+    'react/react-in-jsx-scope': 0,
+    'react/jsx-props-no-spreading': 'off',
   },
   env: {
     jest: true,
