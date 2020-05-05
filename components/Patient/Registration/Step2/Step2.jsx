@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../Header';
 import Button from '../../Forms/Button';
-import General from './components/General';
-import Personal from './components/Personal';
-import Contact from './components/Contact';
-import styles from './style.module.scss';
+import Header from '../Header/Header';
+import General from './components/General/General';
+import Personal from './components/Personal/Personal';
+import Contact from './components/Contact/Contact';
+import styles from './step2.module.scss';
 
-export default function Step2() {
+const Step2 = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -27,4 +27,6 @@ export default function Step2() {
       </div>
     </div>
   );
-}
+};
+
+export default Step2;

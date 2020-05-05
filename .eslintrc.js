@@ -38,7 +38,6 @@ module.exports = {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 'off',
-    'react/jsx-no-bind': 0,
   },
   env: {
     jest: true,

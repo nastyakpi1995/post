@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../../../../../view/ui/Input';
-import styles from './style.module.scss';
+import Input from '../../../../Forms/Input/Input';
+import styles from './personal.module.scss';
 
-export default function Personal() {
+const Personal = () => {
   return (
     <div className={styles['validation-personal']}>
       <p className={styles['validation-description']}>Personal information</p>
@@ -25,4 +25,6 @@ export default function Personal() {
       </div>
     </div>
   );
-}
+};
+
+export default Personal;

@@ -84,6 +84,20 @@
             text-transform: uppercase;
             color: #bbbecd;
           }
+          .validation-number__cod {
+            border: 1px solid #ebf1f6;
+            height: 44px;
+            box-sizing: border-box;
+            padding: 0 14px;
+            border-radius: 8px;
+            background: #fff;
+            font-family: Avenir Next;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #252f4d;
+            width: 100%;
+          }
         }
         .validation-number__second {
           width: 72%;

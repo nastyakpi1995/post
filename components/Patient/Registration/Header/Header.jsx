@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../../Forms/Button';
-import styles from './style.module.scss';
+import styles from './header.module.scss';
 
-export default function Header() {
+const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles['header-logo']}>
@@ -31,4 +31,6 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};
+
+export default Header;
