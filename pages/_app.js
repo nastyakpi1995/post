@@ -1,13 +1,16 @@
 import React from 'react';
-
-// Styles
-
-import '../styles/index.scss';
+import { Provider } from 'react-redux';
 
 // Components
 
 import Head from 'next/head';
 import App from 'next/app';
+
+import store from '../redux';
+
+// Styles
+
+import '../styles/index.scss';
 
 export default class Root extends App {
   render() {
@@ -22,7 +25,9 @@ export default class Root extends App {
           />
           <title>Title</title>
         </Head>
-        <Component {...this.props} />
+        <Provider store={store}>
+          <Component {...this.props} />
+        </Provider>
       </>
     );
   }
