@@ -4,7 +4,7 @@ import React from 'react';
 
 // Style
 
-import style from './style.scss';
+import style from './style.module.scss';
 
 // ----------------
 
@@ -32,10 +32,10 @@ export default function Input(props) {
   // Render
 
   return (
-    <div className={style.input}>
+    <div className={inputFieldClass}>
       <input
         placeholder={placeholder}
-        className={inputFieldClass}
+        className={style.input}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
