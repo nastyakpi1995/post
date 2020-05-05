@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../../../../Forms/Input/Input';
-import styles from './general.module.scss';
+import Input from '../../../../../view/ui/Input';
+import styles from './style.module.scss';
 
-const General = () => {
+export default function General() {
   return (
     <div className={styles['validation-general']}>
       <p className={styles['validation-description']}>General information</p>
@@ -26,6 +26,4 @@ const General = () => {
       </div>
     </div>
   );
-};
-
-export default General;
+}

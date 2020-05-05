@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../../../../Forms/Input/Input';
-import styles from './contact.module.scss';
+import Input from '../../../../../view/ui/Input';
+import styles from './style.module.scss';
 
-const Contact = () => {
+export default function Contact() {
   return (
     <div className={styles['validation-contact']}>
       <p className={styles['validation-description']}>Contact information</p>
@@ -70,6 +70,4 @@ const Contact = () => {
       </div>
     </div>
   );
-};
-
-export default Contact;
+}
