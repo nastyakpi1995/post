@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <p>
+    Contact information
+  </p>
+  <div>
+    <div>
+      <label>
+        country
+        <select
+          id="country"
+        >
+          <option>
+            Belgium
+          </option>
+          <option>
+            Ukraine
+          </option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>
+        city
+        <select
+          id="city"
+        >
+          <option>
+            Brussels
+          </option>
+          <option>
+            Kyiv
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div>
+    <label>
+      direction
+      <div
+        className="undefined"
+      >
+        <input
+          id="direction"
+          name="direction"
+          placeholder="Rue Montagne aux Herbes Potagères"
+          type="text"
+        />
+      </div>
+    </label>
+  </div>
+  <div>
+    <div>
+      <label>
+        house number
+        <div
+          className="undefined"
+        >
+          <input
+            id="house"
+            name="house"
+            placeholder="26"
+            type="number"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label>
+        apartment number
+        <div
+          className="undefined"
+        >
+          <input
+            id="apartment"
+            name="apartment"
+            placeholder="3"
+            type="number"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label>
+        floor (optional)
+        <div
+          className="undefined"
+        >
+          <input
+            id="floor"
+            name="floor"
+            placeholder="2"
+            type="number"
+          />
+        </div>
+      </label>
+    </div>
+  </div>
+  <div>
+    <label>
+      zip code
+      <div
+        className="undefined"
+      >
+        <input
+          id="zipCode"
+          name="zipCode"
+          placeholder="1000"
+          type="number"
+        />
+      </div>
+    </label>
+  </div>
+  <div>
+    <label>
+      email
+      <div
+        className="undefined"
+      >
+        <input
+          id="email"
+          name="email"
+          placeholder="rowe.shana@mina.biz"
+          type="text"
+        />
+      </div>
+    </label>
+  </div>
+</div>
+`;

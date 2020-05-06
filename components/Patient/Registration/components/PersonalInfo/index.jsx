@@ -4,7 +4,7 @@ import { Button } from '../../../common';
 import { General, Contact, Personal } from './components';
 import styles from './style.module.scss';
 
-export default function PersonalInfo() {
+const PersonalInfo = ({ onHandleChangePage }) => {
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -16,6 +16,7 @@ export default function PersonalInfo() {
           <Contact />
           <div className={styles['validation-button']}>
             <Button
+              onHandleClick={onHandleChangePage}
               id="date"
               className={styles['validation-button__saveProfile']}
               text="save profile data"
@@ -25,4 +26,6 @@ export default function PersonalInfo() {
       </div>
     </div>
   );
-}
+};
+
+export default PersonalInfo;

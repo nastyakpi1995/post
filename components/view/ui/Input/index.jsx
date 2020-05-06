@@ -53,11 +53,11 @@ export default function Input(props) {
 Input.propTypes = {
   placeholder: types.string,
   className: types.string,
-  onChange: types.func.isRequired,
+  onChange: types.func,
   onFocus: types.func,
   onBlur: types.func,
-  value: types.oneOfType([types.string, types.number]).isRequired,
-  name: types.string.isRequired,
+  value: types.oneOfType([types.string, types.number]),
+  name: types.string,
 };
 
 // Default value for props
