@@ -1,11 +1,12 @@
-import Registration from '../components/Patient/Registration/Step1/Step1';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <div className="container">
-      <div className="mainContainer">
-        <Registration />
-      </div>
+      <Head>
+        <title>WooDoc</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     </div>
   );
 }
