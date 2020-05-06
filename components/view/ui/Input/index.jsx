@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import types from 'prop-types';
 import React from 'react';
 
@@ -23,7 +23,7 @@ export default function Input(props) {
 
   // Modifiers
 
-  const inputFieldClass = classNames({
+  const inputFieldClass = cn({
     [style.input__field]: true,
     'input__field--error': false,
     [className]: className,

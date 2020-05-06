@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import types from 'prop-types';
 import React from 'react';
 
@@ -21,7 +21,7 @@ export default function Text({
 }) {
   return (
     <span
-      className={classNames(
+      className={cn(
         {
           [style.text]: true,
           [style[`text--color-${color}`]]: color,

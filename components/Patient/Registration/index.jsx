@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Confirmation from './Confirmation';
+import { Confirmation, GeneralInfo, PersonalInfo } from './components';
+import { STEPS_MAP } from './constants';
 
 export default function Registration() {
-  const [page, setPage] = useState('Step1');
+  const [page, setPage] = useState(STEPS_MAP.GENERAL_INFO);
 
   switch (page) {
-    case 'Step1':
-      return <Step1 onHandleChangePage={setPage} />;
-    case 'Step2':
-      return <Step2 onHandleChangePage={setPage} />;
-    case 'Confirmation':
-      return <Confirmation onHandleChangePage={setPage} />;
+    case STEPS_MAP.GENERAL_INFO:
+      return (
+        <GeneralInfo
+          onHandleChangePage={() => setPage(STEPS_MAP.CONFIRMATION)}
+        />
+      );
+    case STEPS_MAP.CONFIRMATION:
+      return (
+        <Confirmation
+          onHandleChangePage={() => setPage(STEPS_MAP.PERSONAL_INFO)}
+        />
+      );
+    case STEPS_MAP.PERSONAL_INFO:
+      return (
+        <PersonalInfo
+          onHandleChangePage={() => {
+            // TODO: save data here
+          }}
+        />
+      );
     default:
       return null;
   }

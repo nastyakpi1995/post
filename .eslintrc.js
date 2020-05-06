@@ -36,13 +36,8 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0,
-    'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-bind': 0,
-  },
-  env: {
-    jest: true,
-    browser: true,
-    node: true,
+    'react/button-has-type': 0
   },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../../../../view/ui/Input';
+import Input from '../../../../../../view/ui/Input';
 import styles from './style.module.scss';
 
 export default function General() {
@@ -9,19 +9,34 @@ export default function General() {
       <div className={styles['general-name']}>
         <label className={styles.helper}>
           first name
-          <Input type="text" placeholder="Frederick" id="firstName" />
+          <Input
+            type="text"
+            placeholder="Frederick"
+            name="firstName"
+            id="firstName"
+          />
         </label>
       </div>
       <div className={styles['general-surname']}>
         <label className={styles.helper}>
           last name
-          <Input type="text" placeholder="Valdez" id="lastName" />
+          <Input
+            type="text"
+            placeholder="Valdez"
+            name="lastName"
+            id="lastName"
+          />
         </label>
       </div>
       <div className={styles['general-id']}>
         <label className={styles.helper}>
           national id
-          <Input type="number" placeholder="0123456789" id="nationalId" />
+          <Input
+            type="number"
+            placeholder="0123456789"
+            name="nationalId"
+            id="nationalId"
+          />
         </label>
       </div>
     </div>

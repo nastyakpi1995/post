@@ -88,6 +88,16 @@
         .validation-number__second {
           width: 72%;
 
+          & input::-webkit-outer-spin-button,
+          & input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          & input[type=number] {
+            -moz-appearance: textfield;
+          }
+
           .number__align {
             height: 30%;
             margin-bottom: auto;
@@ -127,6 +137,7 @@
         margin-top: 35px;
 
         .checkbox__align {
+          position: relative;
           display: flex;
           align-items: baseline;
         }
@@ -158,13 +169,6 @@
             font-size: 14px;
             color: #252f4d;
 
-            .policy {
-              color: #0fc7c7;
-              cursor: pointer;
-            }
-            .link {
-              text-decoration: none;
-            }
             .terms {
               color: #0fc7c7;
               cursor: pointer;
@@ -172,6 +176,14 @@
           }
         }
         .validation-changelist__saveUser {
+
+          &__not_active {
+            .label:before {
+              content: '' !important;
+              color: transparent !important;
+            }
+          }
+
           .label {
             cursor: pointer;
           }

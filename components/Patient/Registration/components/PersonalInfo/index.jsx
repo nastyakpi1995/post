@@ -1,12 +1,10 @@
 import React from 'react';
-import Header from '../Header';
-import Button from '../../Forms/Button';
-import General from './components/General';
-import Personal from './components/Personal';
-import Contact from './components/Contact';
+import { Header } from '../../common';
+import { Button } from '../../../common';
+import { General, Contact, Personal } from './components';
 import styles from './style.module.scss';
 
-export default function Step2() {
+export default function PersonalInfo() {
   return (
     <div className={styles.wrapper}>
       <Header />

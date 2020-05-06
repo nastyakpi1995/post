@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-    "lint": "eslint ."
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -22,7 +22,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.5",
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.4",
+    "yup": "^0.28.5"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

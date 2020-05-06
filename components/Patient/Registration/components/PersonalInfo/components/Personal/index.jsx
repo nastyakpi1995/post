@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../../../../view/ui/Input';
+import Input from '../../../../../../view/ui/Input';
 import styles from './style.module.scss';
 
 export default function Personal() {
@@ -10,7 +10,7 @@ export default function Personal() {
         <div className={styles['personal-date']}>
           <label className={styles.helper}>
             date of birth
-            <Input type="date" placeholder="2017-06-01" id="date" />
+            <Input type="date" placeholder="2017-06-01" name="date" id="date" />
           </label>
         </div>
         <div className={styles['personal-gender']}>
