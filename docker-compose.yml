@@ -10,5 +10,3 @@ services:
       - /home/node/app
       - /home/node/app/node_modules
       - /home/node/app/.next
-    env_file:
-      - .env
