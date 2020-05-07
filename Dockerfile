@@ -6,7 +6,7 @@ WORKDIR /home/node/app
 # Installing dependencies
 COPY ["package.json", "yarn.lock", "./"]
 
-RUN yarn install --frozen-lockfile
+RUN yarn install
 # Copying source files
 COPY . ./
 # Building app
