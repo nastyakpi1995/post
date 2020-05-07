@@ -21,7 +21,6 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.26.5",
-    "yarn": "^1.22.4",
     "yup": "^0.28.5"
   },
   "devDependencies": {
