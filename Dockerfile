@@ -1,18 +1,18 @@
-FROM node:lts-alpine
+FROM node:12
 
 ENV PORT 3000
+
 # Create app directory
 WORKDIR /home/node/app
 # Installing dependencies
-COPY ["package.json", "yarn.lock", "./"]
+COPY ["package.json", "package-lock.json", "./"]
 
-RUN yarn install
+RUN npm  install
 # Copying source files
 COPY . ./
 # Building app
-RUN yarn build
+RUN npm run build
 
 EXPOSE 3000
 # Running the app
-
-CMD yarn start
+CMD npm run start
