@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <a
+        className="
+          function link() { [native code] }
+          undefined
+        "
+        href="#"
+        id="mainPage"
+      >
+        <span>
+          Doc
+        </span>
+        <span>
+          Woo
+        </span>
+      </a>
+    </div>
+    <div>
+      <button
+        id="doctorLogin"
+        type="button"
+      >
+        login as doctor
+      </button>
+      <select
+        id="language"
+      >
+        <option>
+          en
+        </option>
+        <option>
+          ua
+        </option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <form
+      onSubmit={[Function]}
+    >
+      <h1>
+        What is your confirmation code?
+      </h1>
+      <p>
+        We've sent the confirmation code to the number
+         
+        <span>
+          +32345789524
+        </span>
+        . Please fill the field and you'll be loged in.
+      </p>
+      <label>
+        confirmation code
+        <div
+          className="undefined"
+        >
+          <input
+            name="confirmCode"
+            onChange={[Function]}
+            placeholder="12-34-56"
+            type="text"
+            value=""
+          />
+        </div>
+      </label>
+      <button
+        id="submitCode"
+        type="submit"
+      >
+        submit confirmation code
+      </button>
+      <button
+        id="requestCode"
+        type="button"
+      >
+        request code again
+      </button>
+      <button
+        id="logInCode"
+        type="button"
+      >
+        Log in
+      </button>
+    </form>
+  </div>
+</div>
+`;

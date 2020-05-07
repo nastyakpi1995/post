@@ -1,0 +1,181 @@
+.wrapper {
+  display: block;
+  background: #252f4d;
+
+  .container {
+    background: #f5fafe;
+    width: 70%;
+    height: 100vh;
+    border-radius: 25px 25px 0 0;
+    margin: 0 auto;
+
+    .validation {
+      display: block;
+      width: 39%;
+      padding-top: 5%;
+      margin: 0 auto;
+      height: 95%;
+
+      .validation-button__login {
+        border: 1px solid #f5fafe;
+        background: #f5fafe;
+        display: block;
+        outline: none;
+        cursor: pointer;
+        margin: 20px auto;
+        height: 19px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #0fc7c7;
+      }
+      .validation-button__save {
+        width: 100%;
+        text-transform: uppercase;
+        display: block;
+        color: #fff;
+        border: 1px solid #0fc7c7;
+        outline: none;
+        cursor: pointer;
+        height: 48px;
+        background: #0fc7c7;
+        border-radius: 24px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 1px;
+        margin-top: 60px;
+      }
+      .validation-title {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 600;
+        color: #252f4d;
+        font-size: 24px;
+      }
+      .validation-number__helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+      .validation-number {
+        display: flex;
+        width: 100%;
+
+        .validation-number__first {
+          width: 25%;
+          margin-right: 3%;
+        }
+        .validation-number__second {
+          width: 72%;
+
+          & input::-webkit-outer-spin-button,
+          & input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          & input[type=number] {
+            -moz-appearance: textfield;
+          }
+        }
+      }
+      .validation-password {
+        margin-top: 20px;
+      }
+      .validation-password__helper {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+      .validation-changelist {
+        display: block;
+        margin-top: 35px;
+
+        .checkbox__align {
+          position: relative;
+          display: flex;
+          align-items: baseline;
+        }
+        .validation-changelist__license {
+          .label {
+            cursor: pointer;
+          }
+          .label:before {
+            content: ' ';
+            border: 1px solid #ebf1f6;
+            border-radius: 4px;
+            display: inline-block;
+            font: 20px/30px FontAwesome;
+            margin-right: 8px;
+            text-align: center;
+            width: 26px;
+            height: 26px;
+            background: #fff;
+            vertical-align: middle;
+          }
+          .label:before {
+            content: '✓';
+            color: #0fc7c7;
+          }
+          .checkbox__title {
+            font-family: Avenir Next;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: #252f4d;
+
+            .terms {
+              color: #0fc7c7;
+              cursor: pointer;
+            }
+          }
+        }
+        .validation-changelist__saveUser {
+
+          &__not_active {
+            .label:before {
+              content: '' !important;
+              color: transparent !important;
+            }
+          }
+
+          .label {
+            cursor: pointer;
+          }
+          .label:before {
+            content: ' ';
+            border: 1px solid #ebf1f6;
+            border-radius: 4px;
+            display: inline-block;
+            font: 20px/30px FontAwesome;
+            margin-right: 8px;
+            text-align: center;
+            width: 26px;
+            height: 26px;
+            background: #fff;
+            vertical-align: middle;
+          }
+          .label:before {
+            content: '✓';
+            color: #0fc7c7;
+          }
+          .checkbox__title {
+            font-family: Avenir Next;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            color: #252f4d;
+          }
+        }
+      }
+    }
+  }
+}

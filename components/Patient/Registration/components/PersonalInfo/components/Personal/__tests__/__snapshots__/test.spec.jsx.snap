@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <p>
+    Personal information
+  </p>
+  <div>
+    <div>
+      <label>
+        date of birth
+        <div
+          className="undefined"
+        >
+          <input
+            id="date"
+            name="date"
+            placeholder="2017-06-01"
+            type="date"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label>
+        gender
+        <select
+          id="gender"
+        >
+          <option>
+            Male
+          </option>
+          <option>
+            Female
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+</div>
+`;

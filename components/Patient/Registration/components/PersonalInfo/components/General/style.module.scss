@@ -1,0 +1,32 @@
+.validation-general {
+  padding-top: 40px;
+
+  .validation-description {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #252f4d;
+    margin: 0;
+  }
+  .general-name {
+    margin-top: 20px;
+  }
+  .general-surname {
+    margin-top: 20px;
+  }
+  .general-id {
+    margin-top: 30px;
+
+    & input::-webkit-outer-spin-button,
+    & input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    & input[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+}
