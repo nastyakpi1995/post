@@ -7,11 +7,11 @@ import Input from '../../../../view/ui/Input';
 import { Button } from '../../../common';
 import styles from './style.module.scss';
 
-export default function Confirmation({
+const Confirmation = ({
   onHandleChangePage = () => {},
   handleRequestCode = () => {},
   handleLogIn = () => {},
-}) {
+}) => {
   const formik = useFormik({
     initialValues: {
       confirmCode: '',
@@ -25,8 +25,7 @@ export default function Confirmation({
         )
         .required(),
     }),
-    // eslint-disable-next-line no-unused-vars
-    onSubmit: (values) => {
+    onSubmit: () => {
       onHandleChangePage();
     },
   });
@@ -81,10 +80,12 @@ export default function Confirmation({
       </div>
     </div>
   );
-}
+};
 
 Confirmation.propTypes = {
   onHandleChangePage: PropTypes.func,
   handleRequestCode: PropTypes.func,
   handleLogIn: PropTypes.func,
 };
+
+export default Confirmation;

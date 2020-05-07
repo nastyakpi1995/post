@@ -7,9 +7,9 @@ const Header = () => (
     <div className={styles['header-logo']}>
       <a
         className={`
-              ${styles.link} 
-              ${styles.logo__value}
-           `}
+          ${styles.link}
+          ${styles.logo__value}
+        `}
         id="mainPage"
         href="#"
       >
