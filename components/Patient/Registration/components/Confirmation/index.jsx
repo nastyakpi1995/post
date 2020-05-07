@@ -42,7 +42,7 @@ export default function Confirmation({
             handleBlur,
             handleSubmit,
           }) => (
-            <from className={styles.validation} onSubmit={handleSubmit}>
+            <form className={styles.validation} onSubmit={handleSubmit}>
               <h1 className={styles['validation-title']}>
                 What is your confirmation code?
               </h1>
@@ -83,7 +83,7 @@ export default function Confirmation({
                 text="Log in"
                 handleClick={handleLogIn}
               />
-            </from>
+            </form>
           )}
         </Formik>
       </div>
