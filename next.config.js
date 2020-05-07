@@ -1,10 +1,5 @@
-const withSass = require('@zeit/next-sass');
-
+/* eslint-disable no-param-reassign */
 module.exports = {
-  cssModules: true,
-  cssLoaderOptions: {
-    localIdentName: '[local]__[hash:base64:5]',
-  },
   webpackDevMiddleware: (config) => {
     config.watchOptions = {
       poll: 1000,
