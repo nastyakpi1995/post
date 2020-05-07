@@ -1,9 +1,10 @@
-/* eslint-disable import/no-unresolved */
-const withSass = require('@zeit/next-sass');
-
-module.exports = withSass({
-  cssModules: true,
-  cssLoaderOptions: {
-    localIdentName: '[local]__[hash:base64:5]',
+/* eslint-disable no-param-reassign */
+module.exports = {
+  webpackDevMiddleware: (config) => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    };
+    return config;
   },
-});
+};
