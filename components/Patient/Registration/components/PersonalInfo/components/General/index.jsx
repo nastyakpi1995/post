@@ -1,44 +1,84 @@
 import React from 'react';
+import types from 'prop-types';
 import Input from '../../../../../../view/ui/Input';
+import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import styles from './style.module.scss';
 
-export default function General() {
+export default function General({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+}) {
   return (
     <div className={styles['validation-general']}>
       <p className={styles['validation-description']}>General information</p>
       <div className={styles['general-name']}>
-        <label className={styles.helper}>
-          first name
+        <FieldLabel text="first name">
           <Input
             type="text"
             placeholder="Frederick"
             name="firstName"
-            id="firstName"
+            value={values.firstName}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
-        </label>
+          {errors.firstName && touched.firstName ? (
+            <div>{errors.firstName}</div>
+          ) : null}
+        </FieldLabel>
       </div>
       <div className={styles['general-surname']}>
-        <label className={styles.helper}>
-          last name
+        <FieldLabel text="last name">
           <Input
             type="text"
             placeholder="Valdez"
             name="lastName"
-            id="lastName"
+            value={values.lastName}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
-        </label>
+          {errors.lastName && touched.lastName ? (
+            <div>{errors.lastName}</div>
+          ) : null}
+        </FieldLabel>
       </div>
       <div className={styles['general-id']}>
-        <label className={styles.helper}>
-          national id
+        <FieldLabel text="national id">
           <Input
             type="number"
             placeholder="0123456789"
             name="nationalId"
-            id="nationalId"
+            value={values.nationalId}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
-        </label>
+          {errors.nationalId && touched.nationalId ? (
+            <div>{errors.nationalId}</div>
+          ) : null}
+        </FieldLabel>
       </div>
     </div>
   );
 }
+
+General.propTypes = {
+  values: types.shape({
+    firstName: types.string,
+    lastName: types.string,
+    nationalId: types.oneOfType(types.number, types.string),
+  }),
+  errors: types.shape({
+    firstName: types.string,
+    lastName: types.string,
+    nationalId: types.string,
+  }),
+  touched: types.shape({
+    firstName: types.string,
+    lastName: types.string,
+    nationalId: types.string,
+  }),
+  handleChange: types.func,
+  handleBlur: types.func,
+};

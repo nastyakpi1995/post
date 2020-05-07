@@ -1,84 +1,165 @@
 import React from 'react';
+import types from 'prop-types';
 import Input from '../../../../../../view/ui/Input';
+import FieldLabel from '../../../../../../view/ui/FieldLabel';
+import { CITIES, COUNTRIES } from '../../../../constants';
 import styles from './style.module.scss';
+import { Select } from '../../../../../common';
 
-export default function Contact() {
+export default function Contact({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+}) {
   return (
     <div className={styles['validation-contact']}>
       <p className={styles['validation-description']}>Contact information</p>
       <div className={styles['contact-wrapper']}>
         <div className={styles['contact-country']}>
-          <label className={styles.helper}>
-            country
-            <select className={styles.select} id="country">
-              <option>Belgium</option>
-              <option>Ukraine</option>
-            </select>
-          </label>
+          <FieldLabel text="country">
+            <Select
+              options={COUNTRIES}
+              name="country"
+              value={values.country}
+              onHandleBlur={handleBlur}
+              onHandleChange={handleChange}
+            />
+          </FieldLabel>
         </div>
         <div className={styles['contact-city']}>
-          <label className={styles.helper}>
-            city
-            <select className={styles.select} id="city">
-              <option>Brussels</option>
-              <option>Kyiv</option>
-            </select>
-          </label>
+          <FieldLabel text="city">
+            <Select
+              options={CITIES}
+              name="city"
+              value={values.city}
+              onHandleBlur={handleBlur}
+              onHandleChange={handleChange}
+            />
+          </FieldLabel>
         </div>
       </div>
       <div className={styles['contact-direction']}>
-        <label className={styles.helper}>
-          direction
+        <FieldLabel text="direction">
           <Input
             type="text"
-            placeholder="Rue Montagne aux Herbes Potagères"
             name="direction"
-            id="direction"
+            value={values.direction}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
-        </label>
+          {errors.direction && touched.direction ? (
+            <div>{errors.direction}</div>
+          ) : null}
+        </FieldLabel>
       </div>
       <div className={styles['contact-optional']}>
         <div className={styles['contact-house']}>
-          <label className={styles.helper}>
-            house number
-            <Input type="number" placeholder="26" name="house" id="house" />
-          </label>
+          <FieldLabel text="house number">
+            <Input
+              type="number"
+              placeholder="26"
+              name="houseNumber"
+              value={values.houseNumber}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errors.houseNumber && touched.houseNumber ? (
+              <div>{errors.houseNumber}</div>
+            ) : null}
+          </FieldLabel>
         </div>
         <div className={styles['contact-apartment']}>
-          <label className={styles.helper}>
-            apartment number
+          <FieldLabel text="apartment number">
             <Input
               type="number"
               placeholder="3"
-              name="apartment"
-              id="apartment"
+              name="apartmentNumber"
+              value={values.apartmentNumber}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-          </label>
+            {errors.apartmentNumber && touched.apartmentNumber ? (
+              <div>{errors.apartmentNumber}</div>
+            ) : null}
+          </FieldLabel>
         </div>
         <div className={styles['contact-floor']}>
-          <label className={styles.helper}>
-            floor (optional)
-            <Input type="number" placeholder="2" name="floor" id="floor" />
-          </label>
+          <FieldLabel text="floor (optional)">
+            <Input
+              type="number"
+              placeholder="2"
+              name="floorNumber"
+              value={values.floorNumber}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </FieldLabel>
         </div>
       </div>
       <div className={styles['contact-zip']}>
-        <label className={styles.helper}>
-          zip code
-          <Input type="number" placeholder="1000" name="zipCode" id="zipCode" />
-        </label>
+        <FieldLabel text="zip code">
+          <Input
+            type="number"
+            placeholder="1000"
+            name="zipCode"
+            value={values.zipCode}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          {errors.zipCode && touched.zipCode ? (
+            <div>{errors.zipCode}</div>
+          ) : null}
+        </FieldLabel>
       </div>
       <div className={styles['contact-email']}>
-        <label className={styles.helper}>
-          email
+        <FieldLabel text="email">
           <Input
-            type="text"
-            placeholder="rowe.shana@mina.biz"
+            type="email"
             name="email"
-            id="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
-        </label>
+          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+        </FieldLabel>
       </div>
     </div>
   );
 }
+
+Contact.propTypes = {
+  values: types.shape({
+    country: types.oneOf(COUNTRIES),
+    city: types.oneOf(CITIES),
+    direction: types.string,
+    houseNumber: types.oneOfType(types.string, types.number),
+    apartmentNumber: types.oneOfType(types.string, types.number),
+    floorNumber: types.oneOfType(types.string, types.number),
+    zipCode: types.oneOfType(types.string, types.number),
+    email: types.string,
+  }),
+  errors: types.shape({
+    country: types.string,
+    city: types.string,
+    direction: types.string,
+    houseNumber: types.string,
+    apartmentNumber: types.string,
+    floorNumber: types.string,
+    zipCode: types.string,
+    email: types.string,
+  }),
+  touched: types.shape({
+    country: types.string,
+    city: types.string,
+    direction: types.string,
+    houseNumber: types.string,
+    apartmentNumber: types.string,
+    floorNumber: types.string,
+    zipCode: types.string,
+    email: types.string,
+  }),
+  handleChange: types.func,
+  handleBlur: types.func,
+};

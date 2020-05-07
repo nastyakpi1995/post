@@ -70,20 +70,6 @@
         .validation-number__first {
           width: 25%;
           margin-right: 3%;
-
-          .number__align {
-            height: 30%;
-            margin-bottom: auto;
-          }
-          .helper {
-            font-family: Avenir Next;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #bbbecd;
-          }
         }
         .validation-number__second {
           width: 72%;
@@ -97,20 +83,6 @@
           & input[type=number] {
             -moz-appearance: textfield;
           }
-
-          .number__align {
-            height: 30%;
-            margin-bottom: auto;
-          }
-          .helper {
-            font-family: Avenir Next;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #bbbecd;
-          }
         }
       }
       .validation-password {
@@ -122,15 +94,6 @@
         font-weight: normal;
         font-size: 16px;
         color: #252f4d;
-      }
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
       }
       .validation-changelist {
         display: block;

@@ -15,7 +15,11 @@ const Checkbox = ({ name, onHandleChange, value }) => (
 Checkbox.propTypes = {
   name: PropTypes.string,
   onHandleChange: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType(
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.number,
+  ),
 };
 
 export default Checkbox;

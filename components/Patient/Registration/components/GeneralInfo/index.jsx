@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Header, TermsOfUse } from '../../common';
 import Input from '../../../../view/ui/Input';
+import FieldLabel from '../../../../view/ui/FieldLabel';
 import { Button, Checkbox, Select } from '../../../common';
 import { MOBILE_PHONE_CODES } from '../../constants';
 import styles from './style.module.scss';
@@ -54,8 +55,7 @@ export default function GeneralInfo({ onHandleChangePage }) {
               </p>
               <div className={styles['validation-number']}>
                 <div className={styles['validation-number__first']}>
-                  <label className={cn(styles.number__align, styles.helper)}>
-                    area code
+                  <FieldLabel text="area code">
                     <Select
                       options={MOBILE_PHONE_CODES}
                       name="phoneCode"
@@ -63,11 +63,10 @@ export default function GeneralInfo({ onHandleChangePage }) {
                       onHandleChange={handleBlur}
                       value={values.numberCode}
                     />
-                  </label>
+                  </FieldLabel>
                 </div>
                 <div className={styles['validation-number__second']}>
-                  <label className={cn(styles.number__align, styles.helper)}>
-                    local number
+                  <FieldLabel text="local number">
                     <Input
                       type="number"
                       onBlur={handleBlur}
@@ -76,10 +75,10 @@ export default function GeneralInfo({ onHandleChangePage }) {
                       name="phoneNumber"
                       value={values.localNumber}
                     />
-                    {errors.localNumber && touched.localNumber ? (
-                      <div>{errors.localNumber}</div>
+                    {errors.phoneNumber && touched.phoneNumber ? (
+                      <div>{errors.phoneNumber}</div>
                     ) : null}
-                  </label>
+                  </FieldLabel>
                 </div>
               </div>
               <p className={styles['validation-password__helper']}>
@@ -87,37 +86,33 @@ export default function GeneralInfo({ onHandleChangePage }) {
                 and special characters
               </p>
               <div className={styles['validation-password']}>
-                <label className={styles.helper}>
-                  password
+                <FieldLabel text="password">
                   <Input
                     type="password"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     placeholder="Password"
                     name="password"
-                    id="password"
                     value={values.password}
                   />
                   {touched.password && errors.password ? (
                     <div>{errors.password}</div>
                   ) : null}
-                </label>
+                </FieldLabel>
               </div>
               <div className={styles['validation-password']}>
-                <label className={styles.helper}>
-                  repeat password
+                <FieldLabel text="repeat password">
                   <Input
                     type="password"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     placeholder="Repeat Password"
                     name="repeatPassword"
-                    id="repeatPassword"
                   />
                   {touched.repeatPassword && errors.repeatPassword ? (
                     <div>{errors.repeatPassword}</div>
                   ) : null}
-                </label>
+                </FieldLabel>
               </div>
               <div className={styles['validation-changelist']}>
                 <div
@@ -171,12 +166,10 @@ export default function GeneralInfo({ onHandleChangePage }) {
               </div>
               <Button
                 type="submit"
-                id="continueLogIn"
                 className={styles['validation-button__save']}
                 text="save and continue"
               />
               <Button
-                id="logIn"
                 className={styles['validation-button__login']}
                 text="Log in"
               />

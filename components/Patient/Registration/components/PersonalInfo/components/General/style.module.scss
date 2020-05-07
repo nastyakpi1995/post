@@ -12,41 +12,21 @@
   }
   .general-name {
     margin-top: 20px;
-
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
-    }
   }
   .general-surname {
     margin-top: 20px;
-
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
-    }
   }
   .general-id {
     margin-top: 30px;
 
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
+    & input::-webkit-outer-spin-button,
+    & input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    & input[type=number] {
+      -moz-appearance: textfield;
     }
   }
 }

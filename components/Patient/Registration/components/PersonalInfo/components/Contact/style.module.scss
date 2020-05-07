@@ -1,6 +1,16 @@
 .validation-contact {
   padding-top: 40px;
 
+  & input::-webkit-outer-spin-button,
+  & input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  & input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   .validation-description {
     font-family: Avenir Next;
     font-style: normal;
@@ -18,15 +28,6 @@
       width: 48%;
       margin-right: 4%;
 
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
-      }
       .select {
         width: 100%;
         border: 1px solid #ebf1f6;
@@ -45,15 +46,6 @@
     .contact-city {
       width: 48%;
 
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
-      }
       .select {
         width: 100%;
         border: 1px solid #ebf1f6;
@@ -72,16 +64,6 @@
   }
   .contact-direction {
     margin-top: 20px;
-
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
-    }
   }
   .contact-optional {
     display: flex;
@@ -90,69 +72,19 @@
     .contact-house {
       width: 31%;
       margin-right: 3.5%;
-
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
-      }
     }
     .contact-apartment {
       width: 31%;
       margin-right: 3.5%;
-
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
-      }
     }
     .contact-floor {
       width: 31%;
-
-      .helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 10px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #bbbecd;
-      }
     }
   }
   .contact-zip {
     margin-top: 20px;
-
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
-    }
   }
   .contact-email {
     margin-top: 20px;
-
-    .helper {
-      font-family: Avenir Next;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #bbbecd;
-    }
   }
 }

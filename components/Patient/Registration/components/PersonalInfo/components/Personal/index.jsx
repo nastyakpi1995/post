@@ -1,28 +1,64 @@
 import React from 'react';
+import types from 'prop-types';
 import Input from '../../../../../../view/ui/Input';
+import FieldLabel from '../../../../../../view/ui/FieldLabel';
+import { GENDER_TYPES } from '../../../../constants';
+import { Select } from '../../../../../common';
 import styles from './style.module.scss';
 
-export default function Personal() {
+export default function Personal({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+}) {
   return (
     <div className={styles['validation-personal']}>
       <p className={styles['validation-description']}>Personal information</p>
       <div className={styles['personal-wrapper']}>
         <div className={styles['personal-date']}>
-          <label className={styles.helper}>
-            date of birth
-            <Input type="date" placeholder="2017-06-01" name="date" id="date" />
-          </label>
+          <FieldLabel text="date of birth">
+            <Input
+              type="date"
+              value={values.dateOfBirth}
+              onHandleChange={handleChange}
+              name="date"
+            />
+          </FieldLabel>
         </div>
         <div className={styles['personal-gender']}>
-          <label className={styles.helper}>
-            gender
-            <select className={styles.select} id="gender">
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </label>
+          <FieldLabel text="gender">
+            <Select
+              options={GENDER_TYPES}
+              name="gender"
+              value={values.gender}
+              onHandleBlur={handleBlur}
+              onHandleChange={handleChange}
+            />
+            {errors.gender && touched.gender ? (
+              <div>{errors.gender}</div>
+            ) : null}
+          </FieldLabel>
         </div>
       </div>
     </div>
   );
 }
+
+Personal.propTypes = {
+  values: types.shape({
+    dateOfBirth: types.string,
+    gender: types.oneOf(GENDER_TYPES),
+  }),
+  errors: types.shape({
+    dateOfBirth: types.string,
+    gender: types.string,
+  }),
+  touched: types.shape({
+    dateOfBirth: types.string,
+    gender: types.string,
+  }),
+  handleChange: types.func,
+  handleBlur: types.func,
+};
