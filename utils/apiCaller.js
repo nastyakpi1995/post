@@ -9,7 +9,7 @@ import getToken from './getToken';
 
 // ----------------
 
-export default async function fetch(config, after = false, token = true) {
+export default async function apiCaller(config, after = false, token = true) {
   let userToken = null;
 
   if (token) {
@@ -28,7 +28,7 @@ export default async function fetch(config, after = false, token = true) {
 
   const fullConfig = {
     // TODO || _ENV.api
-    baseURL: process.env.API_URL,
+    // baseURL: process.env.API_URL,
     method: 'get',
     ...config,
     headers: { ...config.headers, ...defaultHeaders },

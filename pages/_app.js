@@ -12,7 +12,7 @@ import createStore from '../redux';
 
 import isServer from '../utils/isServer';
 import getToken from '../utils/getToken';
-import fetch from '../utils/fetch';
+import fetch from '../utils/apiCaller';
 
 // Styles
 

@@ -18,7 +18,7 @@
 //   prop: types.string,
 // };
 
-// // Default value for props
+// // vbyz
 
 // Name.defaultProps = {};
 
