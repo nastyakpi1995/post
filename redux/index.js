@@ -1,23 +1,23 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducers from './reducers';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createLogger } from 'redux-logger';
+import isServer from '../utils/isServer';
 
-const middlewares = [];
+import middlewareSettings from './middleware';
+import * as reducers from './reducers';
 
-const enhancers = [];
-/* 
-if (process.browser) {
-  const composed =
-    window &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      trace: true,
-      traceLimit: 25,
-    });
-  enhancers.push(composed);
-} 
-*/
+const composeEnhancers =
+  (!isServer() && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-export default createStore(
-  rootReducers,
-  compose(applyMiddleware(...middlewares), ...enhancers),
-);
+export default function createReduxStore(preloadedState) {
+  const middleware = [middlewareSettings];
+
+  if (process.env.NODE_ENV === `development`) {
+    middleware.push(createLogger({ collapsed: true, duration: true }));
+  }
+
+  return createStore(
+    combineReducers(reducers),
+    preloadedState,
+    composeEnhancers(applyMiddleware(...middleware)),
+  );
+}
