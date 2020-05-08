@@ -1,9 +1,6 @@
 FROM node:lts-alpine
 
 ENV PORT 3000
-
-
-ENV API=161.35.23.61
 ENV API_URL=https://docwoo-back-dev.scenario-projects.com/
 
 # Create app directory
