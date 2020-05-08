@@ -5,7 +5,7 @@ services:
       - 3000:3000
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - /home/node/app
       - /home/node/app/node_modules
