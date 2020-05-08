@@ -1,9 +1,9 @@
 FROM node:lts-alpine
 
 ENV PORT 3000
-ENV API 134.122.69.192	
-ENV BACK_URL docwoo-back-stage.scenario-projects.com
-ENV FRONT_URL docwoo-front-stage.scenario-projects.com		
+ENV API 134.122.69.192
+ENV BACK_URL https://docwoo-back-stage.scenario-projects.com
+
 # Create app directory
 WORKDIR /home/node/app
 # Installing dependencies
