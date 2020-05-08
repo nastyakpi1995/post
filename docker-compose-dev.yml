@@ -1,12 +1,8 @@
 version: "3.3"
 services:
-  nextjs:
+  frontend:
     ports:
       - 3000:3000
     build:
       context: .
       dockerfile: Dockerfile.dev
-    volumes:
-      - /home/node/app
-      - /home/node/app/node_modules
-      - /home/node/app/.next
