@@ -3,11 +3,11 @@
 
 .input {
   height: 44px;
-  background-color: var(--primary);
+  background-color: var(primary);
   border-radius: $borderRadius;
   box-shadow: none;
-  border: 1px solid var(--borderColor);
-  color: var(--onPrimary);
+  border: 1px solid #ebf1f6;
+  color: var(onPrimary);
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -19,14 +19,12 @@
   transition: border-color $animTimeFast, background-color $animTimeFast,
     opacity $animTime;
 
-  -webkit-appearance: none;
-
   &::placeholder {
-    color: var(--onPrimaryLight-2);
+    color: var(onPrimaryLight-2);
   }
 
   &:focus {
-    border-color: var(--thirdLight);
+    border-color: var(thirdLight);
     box-shadow: none;
   }
 

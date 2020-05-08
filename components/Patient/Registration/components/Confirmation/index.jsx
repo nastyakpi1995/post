@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { Header } from '../../common';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button } from '../../../common';
+import { Button } from '../../../../view/ui';
 import styles from './style.module.scss';
 
 const RegisterSchema = Yup.object({

@@ -4,7 +4,7 @@ import Input from '../../../../../../view/ui/Input';
 import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import { CITIES, COUNTRIES } from '../../../../constants';
 import styles from './style.module.scss';
-import { Select } from '../../../../../common';
+import { Select } from '../../../../../../view/ui';
 
 export default function Contact({
   values,
