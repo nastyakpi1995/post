@@ -1,0 +1,36 @@
+@import '../../../../styles/constants/config.scss';
+
+.checkbox {
+  justify-content: center;
+  border-radius: $borderRadiusSmall;
+  align-items: center;
+  transition: $animTime;
+  border: 2px solid var(--primaryDark-3);
+  cursor: pointer;
+  display: flex;
+  height: 18px;
+  width: 18px;
+
+  // Elements
+
+  &__icon {
+    transition: $animTime;
+    opacity: 0;
+  }
+
+  &--checked {
+    border-color: transparent;
+
+    &.checkbox--color-secondary {
+      background: var(--secondary);
+    }
+
+    &.checkbox--color-valid {
+      background: var(--valid);
+    }
+
+    .checkbox__icon {
+      opacity: 1;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import React from 'react';
 
 // Style
 
-import style from './style.module.scss';
+import styles from './text.module.scss';
 
 // ----------------
 
@@ -15,28 +15,32 @@ export default function Text({
   size,
   bold,
   h,
+  tagName,
   font,
   underline,
   className,
+  uppercase,
 }) {
+  const Tag = tagName || 'p';
+
   return (
-    <span
+    <Tag
       className={cn(
         {
-          [style.text]: true,
-          [style[`text--color-${color}`]]: color,
-          [style[`text--size-${size}`]]: size,
-          [style[`text--font-${font}`]]: font,
-          [style['text--medium']]: medium,
-          [style[`text--h${h}`]]: h,
-          [style['text--bold']]: bold,
-          [style['text--underline']]: underline,
+          [styles.text]: true,
+          [styles[`text--color-${color}`]]: color,
+          [styles[`text--size-${size}`]]: size,
+          [styles[`text--font-${font}`]]: font,
+          [styles['text--medium']]: medium,
+          [styles['text--bold']]: bold,
+          [styles['text--underline']]: underline,
+          [styles['text--uppercase']]: uppercase,
         },
         className,
       )}
     >
       {children}
-    </span>
+    </Tag>
   );
 }
 
@@ -46,19 +50,11 @@ Text.propTypes = {
   children: types.oneOfType([types.string, types.number, types.node]),
   className: types.string,
   medium: types.bool,
-  color: types.oneOf(['onPrimary', 'inherit']),
-  size: types.oneOf([
-    'extra-small',
-    'small',
-    'default',
-    'middle',
-    'big',
-    'extra-big',
-    'inherit',
-  ]),
+  color: types.oneOf(['onPrimary', 'onPrimaryLight-2']),
+  size: types.oneOf(['xs', 'sm', 'default', 'md', 'xl', 'xxl']),
   bold: types.bool,
-  h: types.oneOf(['1', '2', '3']),
   underline: types.bool,
+  uppercase: types.bool,
 };
 
 // Default value for props

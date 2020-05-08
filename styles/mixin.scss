@@ -1,0 +1,29 @@
+@mixin center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+// svg-size
+
+@mixin svg-size($size) {
+  > div {
+    height: $size;
+    width: $size;
+  }
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// svg-color
+
+@mixin svg-color($color) {
+  svg {
+    path {
+      fill: $color;
+    }
+  }
+}
