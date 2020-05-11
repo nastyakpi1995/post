@@ -1,9 +1,7 @@
-/* eslint-disable import/no-unresolved */
-// const withSass = require('@zeit/next-sass');
+const { API_URL } = process.env;
 
-// module.exports = withSass({
-//   cssModules: true,
-//   cssLoaderOptions: {
-//     localIdentName: '[local]__[hash:base64:5]',
-//   },
-// });
+module.exports = {
+  env: {
+    API_URL,
+  },
+};

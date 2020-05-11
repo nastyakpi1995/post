@@ -12,7 +12,6 @@ import createStore from '../redux';
 
 import isServer from '../utils/isServer';
 import getToken from '../utils/getToken';
-import fetch from '../utils/apiCaller';
 
 // Styles
 
@@ -31,15 +30,9 @@ export default class Root extends App {
       const token = getToken();
 
       // eslint-disable-next-line no-unused-vars
-      let user = {};
+      const user = {};
 
       if (token) {
-        try {
-          user = await fetch('https://jsonplaceholder.typicode.com/users/1');
-        } catch (err) {
-          return {};
-        }
-
         userData = { ...userData, ...user };
       }
     } else {

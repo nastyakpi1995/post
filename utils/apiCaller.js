@@ -24,8 +24,7 @@ export default async function apiCaller(config, after = false, token = true) {
 
   // Data preparation
 
-  // const { data } = config.data;
-
+  console.log('1', process.env.API_URL);
   const fullConfig = {
     // TODO || _ENV.api
     // baseURL: process.env.API_URL,
