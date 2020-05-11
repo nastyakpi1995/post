@@ -6,7 +6,7 @@ const Select = ({ options, value, name, onHandleChange, onHandleBlur }) => (
   <select
     value={value}
     name={name}
-    className={styles['validation-number__code']}
+    className={styles.select}
     onChange={onHandleChange}
     onBlur={onHandleBlur}
   >

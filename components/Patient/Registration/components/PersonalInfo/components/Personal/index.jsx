@@ -3,7 +3,7 @@ import types from 'prop-types';
 import Input from '../../../../../../view/ui/Input';
 import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import { GENDER_TYPES } from '../../../../constants';
-import { Select } from '../../../../../common';
+import { Select } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
 export default function Personal({

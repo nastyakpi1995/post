@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ type = 'button', className, text, onHandleClick }) => (
+const Button = ({
+  type = 'button',
+  className = '',
+  iconWrapperClassName = '',
+  text = '',
+  Icon,
+  onHandleClick = () => {},
+}) => (
   <button type={type} className={className} onClick={onHandleClick}>
+    <span className={iconWrapperClassName}>{Icon && <Icon />}</span>
     {text}
   </button>
 );

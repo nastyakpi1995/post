@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Personal from '../index';
+import Header from '../index';
 
 it('renders correctly', () => {
-  const component = renderer.create(<Personal />).toJSON();
+  const component = renderer.create(<Header />).toJSON();
   expect(component).toMatchSnapshot();
 });

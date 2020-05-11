@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import Button from '../../../common/Button';
+import Button from '../../../../view/ui/Button';
 import styles from './style.module.scss';
 
 const Header = () => (

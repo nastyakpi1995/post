@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { Header, TermsOfUse } from '../../common';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button, Checkbox, Select } from '../../../common';
+import { Button, Checkbox, Select } from '../../../../view/ui';
 import { MOBILE_PHONE_CODES } from '../../constants';
 import styles from './style.module.scss';
 

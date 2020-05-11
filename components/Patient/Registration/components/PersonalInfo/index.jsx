@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Header } from '../../common';
-import { Button } from '../../../common';
+import { Button } from '../../../../view/ui';
 import { General, Contact, Personal } from './components';
 import { GENDER_TYPES, COUNTRIES, CITIES } from '../../constants';
 import styles from './style.module.scss';
