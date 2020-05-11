@@ -40,6 +40,10 @@
     color: $primary;
   }
 
+  &--color-third {
+    color: $third;
+  }
+
   &--rotate-90 {
     transform: rotate(90deg);
   }

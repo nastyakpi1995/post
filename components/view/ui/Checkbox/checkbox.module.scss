@@ -1,15 +1,16 @@
 @import '../../../../styles/constants/config.scss';
+@import '../../../../styles/mixin.scss';
 
 .checkbox {
-  justify-content: center;
-  border-radius: $borderRadiusSmall;
-  align-items: center;
+  @include center;
   transition: $animTime;
-  border: 2px solid var(--primaryDark-3);
+  border: 1px solid $borderColor;
   cursor: pointer;
   display: flex;
-  height: 18px;
-  width: 18px;
+  border-radius: $borderRadiusSmall;
+  height: 26px;
+  width: 26px;
+  background-color: $primary;
 
   // Elements
 
@@ -19,16 +20,6 @@
   }
 
   &--checked {
-    border-color: transparent;
-
-    &.checkbox--color-secondary {
-      background: var(--secondary);
-    }
-
-    &.checkbox--color-valid {
-      background: var(--valid);
-    }
-
     .checkbox__icon {
       opacity: 1;
     }

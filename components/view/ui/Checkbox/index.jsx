@@ -1,34 +1,38 @@
 import classNames from 'classnames';
 import types from 'prop-types';
 import React from 'react';
+import { FaCheck } from 'react-icons/fa';
+
+import ReactIcon from '../ReactIcon';
 
 // Style
 
 import styles from './checkbox.module.scss';
 
-export default function CheckBox({ onClick, checked, color }) {
+export default function Checkbox({ onClick, checked, color }) {
   // Modifiers
 
   const CheckBoxClass = classNames({
     [styles.checkbox]: true,
-    [styles[`checkbox--color-${color}`]]: color,
     [styles['checkbox--checked']]: checked,
   });
 
   // Render
 
   return (
-    <button className={CheckBoxClass} onClick={onClick}>
-      <div className="checkbox__icon">
-        {/* <SvgIcon color="primary" size="sm" src={ICONS.check} /> */}
+    <div className={CheckBoxClass} onClick={onClick}>
+      <div className={styles.checkbox__icon}>
+        <ReactIcon size="sm" color="third">
+          <FaCheck />
+        </ReactIcon>
       </div>
-    </button>
+    </div>
   );
 }
 
 // Type of props
 
-CheckBox.propTypes = {
+Checkbox.propTypes = {
   onClick: types.func.isRequired,
   checked: types.bool,
   color: types.oneOf(['valid', 'secondary']),
@@ -36,6 +40,6 @@ CheckBox.propTypes = {
 
 // Default value for props
 
-CheckBox.defaultProps = {
+Checkbox.defaultProps = {
   color: 'valid',
 };
