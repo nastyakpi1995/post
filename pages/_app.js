@@ -16,6 +16,7 @@ import getToken from '../utils/getToken';
 // Styles
 
 import '../styles/index.scss';
+import 'react-phone-number-input/style.css';
 
 export default class Root extends App {
   constructor(props) {

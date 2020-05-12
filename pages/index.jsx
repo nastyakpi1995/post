@@ -4,6 +4,8 @@ import Registration from '../components/Patient/Registration';
 
 import getUser from '../redux/actions/userActions';
 
+import InputNumber from '../components/view/ui/InputNumber';
+
 function Home(props) {
   useEffect(() => {
     props.getUser();
@@ -11,7 +13,8 @@ function Home(props) {
   return (
     <div className="container">
       <div className="mainContainer">
-        <Registration />
+        {/* <Registration /> */}
+        <InputNumber />
       </div>
     </div>
   );
