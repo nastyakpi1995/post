@@ -1,3 +1,38 @@
 {
-  "test": "test"
+  "select": [{ "option": "en" }, { "option": "ua" }],
+  "information": {
+    "city": "city",
+    "email": "email",
+    "gender": "gender",
+    "country": "country",
+    "zipCode": "zip code",
+    "direction": "direction",
+    "floor": "floor (optional)",
+    "nationalId": "national id",
+    "houseNumber": "house number",
+    "dateOfBirth": "date of birth",
+    "save profile data": "save profile data",
+    "personalInformation": "Personal information",
+    "generalInformation": "General information",
+    "contactInformation": "Contact information"
+  },
+  "button": {
+    "cancel": "cancel",
+    "nextStep": "next step",
+    "logIn": "Log in",
+    "changed": "changed",
+    "canceled": "Canceled",
+    "loginAsDoctor": "login as doctor",
+    "saveProfileData": "save profile data",
+    "saveAndContinue": "save and continue",
+    "clinic": "Clinic",
+    "search": "Search"
+  },
+  "errors": {
+    "max15": "Must be 15 characters or less",
+    "moreThan0": "Could not be negative",
+    "keepMeLoggedIn": "Keep me logged in",
+    "termsOfUse": "Terms of Use",
+    "blank": "Can't be blank"
+  }
 }

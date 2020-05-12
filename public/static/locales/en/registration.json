@@ -4,6 +4,54 @@
     "phoneInfo": "We use phone number as a login. Be calm, we won't give your number to anyone.",
     "areaCode": "Area code",
     "localNumber": "Local Number",
-    "passwordInfo": "Password has to have at least 8 characters, letters, numbers, and special characters"
+    "passwordInfo": "Password has to have at least 8 characters, letters, numbers, and special characters",
+    "password": "password",
+    "repeatPassword": "repeat password",
+    "passwordValidationField": "password is a required field",
+    "repeatPasswordValidationField": "repeatPassword is a required field",
+    "acceptReadDocWho": "I have read and accept DocWho Terms of Use and Privacy Policy.",
+    "keepLogged": "Keep me logged in",
+    "buttonSave": "save and continue"
+  },
+  "personalInfo": {
+    "h1": "Complete Your Profil",
+    "confirmationCodeSend": "We've sent the confirmation code to the number",
+    "conf": "Please fill the field and you'll be loged in.",
+    "confirmationCode": "confirmation code",
+    "requestCodeAgain": "request code again",
+    "buttonLogIn": "log In",
+    "buttonSubmit": "submit confirmation code",
+    "buttonSave": "save profile data",
+    "general": {
+      "h1": "Complete Your Profile",
+      "title": "General information",
+      "firstName": "first name",
+      "lastName": "last name",
+      "nationalId": "national id",
+      "gender": "gender"
+    },
+    "сontact": {
+      "contactInformation": "Contact information",
+      "country": "country",
+      "city": "city",
+      "direction": "direction",
+      "houseNumber": "house number",
+      "apartmentNumber": "apartment number",
+      "optional": "floor (optional)",
+      "zipCode": "zip code",
+      "email": "email"
+    },
+    "personal": {
+      "personalInformation": "Personal information",
+      "gender": "gender"
+    }
+  },
+  "confirmation": {
+    "confirmationCodeTitle": "What is your confirmation code?",
+    "parolValidation": "Please fill the field and you paroll be loged in.",
+    "confirmationCode": "confirmation code",
+    "buttonSubmit": "submit confirmation code",
+    "requestCode": "request code again",
+    "buttonLogIn": "log In"
   }
 }
