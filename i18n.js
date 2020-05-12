@@ -2,7 +2,7 @@ const NextI18Next = require('next-i18next/dist/commonjs').default;
 
 const languages = ['en'];
 const options = {
-  defaultLanguage: 'en',
+  // defaultLanguage: 'en', TODO: add it when we will have a list on languages
   otherLanguages: ['en'],
 };
 

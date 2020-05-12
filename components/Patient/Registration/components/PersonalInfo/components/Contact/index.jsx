@@ -4,7 +4,7 @@ import Input from '../../../../../../view/ui/Input';
 import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import { CITIES, COUNTRIES } from '../../../../constants';
 import styles from './style.module.scss';
-import { Select } from '../../../../../../view/ui';
+import { NativeSelect } from '../../../../../../view/ui';
 
 export default function Contact({
   values,
@@ -19,7 +19,7 @@ export default function Contact({
       <div className={styles['contact-wrapper']}>
         <div className={styles['contact-country']}>
           <FieldLabel text="country">
-            <Select
+            <NativeSelect
               options={COUNTRIES}
               name="country"
               value={values.country}
@@ -30,7 +30,7 @@ export default function Contact({
         </div>
         <div className={styles['contact-city']}>
           <FieldLabel text="city">
-            <Select
+            <NativeSelect
               options={CITIES}
               name="city"
               value={values.city}

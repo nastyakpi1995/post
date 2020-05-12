@@ -7,7 +7,7 @@ import { withTranslation } from 'i18n';
 import { Header, TermsOfUse } from '../../common';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button, Checkbox, Select } from '../../../../view/ui';
+import { Button, Checkbox, NativeSelect } from '../../../../view/ui';
 import { MOBILE_PHONE_CODES } from '../../constants';
 import styles from './style.module.scss';
 
@@ -58,7 +58,7 @@ function GeneralInfo({ onHandleChangePage, t }) {
               <div className={styles['validation-number']}>
                 <div className={styles['validation-number__first']}>
                   <FieldLabel text={t('generalInfo.areaCode')}>
-                    <Select
+                    <NativeSelect
                       options={MOBILE_PHONE_CODES}
                       name="phoneCode"
                       onHandleBlur={handleChange}
@@ -174,6 +174,10 @@ function GeneralInfo({ onHandleChangePage, t }) {
     </div>
   );
 }
+
+GeneralInfo.getInitialProps = async () => ({
+  namespacesRequired: ['registration'],
+});
 
 GeneralInfo.propTypes = {
   onHandleChangePage: PropTypes.func,

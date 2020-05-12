@@ -45,7 +45,8 @@ class Root extends App {
   }
 
   render() {
-    const { Component } = this.props;
+    const { Component: C } = this.props;
+    const Component = appWithTranslation(C);
 
     return (
       <>
@@ -65,4 +66,4 @@ class Root extends App {
   }
 }
 
-export default appWithTranslation(Root);
+export default Root;

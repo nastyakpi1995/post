@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { i18n, withTranslation } from 'i18n';
-import { Button, Select } from '../../../../view/ui';
+import { Button, NativeSelect } from '../../../../view/ui';
 import styles from './style.module.scss';
 
 const Header = ({ t }) => (
@@ -18,7 +18,7 @@ const Header = ({ t }) => (
         text={t('loginAsDoctor')}
       />
       {i18n.languages && (
-        <Select
+        <NativeSelect
           onHandleChange={(event) => {
             i18n.changeLanguage(event.target.value);
             return event.target.value;
@@ -31,5 +31,9 @@ const Header = ({ t }) => (
     </div>
   </div>
 );
+
+Header.getInitialProps = async () => ({
+  namespacesRequired: ['header'],
+});
 
 export default withTranslation('header')(Header);

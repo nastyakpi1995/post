@@ -1,9 +1,8 @@
 import React from 'react';
 import types from 'prop-types';
 import Input from '../../../../../../view/ui/Input';
-import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import { GENDER_TYPES } from '../../../../constants';
-import { Select } from '../../../../../../view/ui';
+import { FieldLabel, NativeSelect } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
 export default function Personal({
@@ -29,7 +28,7 @@ export default function Personal({
         </div>
         <div className={styles['personal-gender']}>
           <FieldLabel text="gender">
-            <Select
+            <NativeSelect
               options={GENDER_TYPES}
               name="gender"
               value={values.gender}

@@ -23,6 +23,7 @@ export default function Button({
   load,
   height,
   width,
+  text = '',
 }) {
   // Modifiers
 
@@ -55,7 +56,7 @@ export default function Button({
             color="inherit"
             uppercase={uppercase}
           >
-            {children}
+            {text || children}
           </Text>
         </div>
       )}

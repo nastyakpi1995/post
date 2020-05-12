@@ -1,7 +1,6 @@
 import React from 'react';
 import types from 'prop-types';
-import Input from '../../../../../../view/ui/Input';
-import FieldLabel from '../../../../../../view/ui/FieldLabel';
+import { Input, FieldLabel } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
 export default function General({
