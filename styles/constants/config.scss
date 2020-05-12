@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 // -------- Animation durations --------
 
 $animTimeSlow: 0.35s;
@@ -7,6 +9,8 @@ $animTime: 0.3s;
 // -------- UI params --------
 
 $borderRadius: 8px;
+$borderRadiusSmall: 4px;
+$borderRadiusBig: 24px;
 
 // -------- Breakpoints --------
 

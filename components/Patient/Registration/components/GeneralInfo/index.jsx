@@ -129,10 +129,10 @@ function GeneralInfo({ onHandleChangePage, t }) {
                 >
                   <Checkbox
                     name="terms"
-                    onHandleChange={handleChange}
-                    value={values.terms}
+                    // onHandleChange={handleChange}
+                    onClick={() => {}}
+                    // value={values.terms}
                   />
-                  <label htmlFor="license" className={styles.label} />
                   <TermsOfUse />
                   {touched.terms && errors.terms ? (
                     <div>{errors.terms}</div>
@@ -151,18 +151,11 @@ function GeneralInfo({ onHandleChangePage, t }) {
                 >
                   <Checkbox
                     name="saveUser"
-                    onHandleChange={handleChange}
-                    value={values.saveUser}
+                    // onHandleChange={handleChange}
+                    // value={values.saveUser}
+                    onClick={() => {}}
                   />
-                  <label
-                    htmlFor="saveUser"
-                    className={cn(styles.checkbox__title, styles.label)}
-                  >
-                    Keep me logged in
-                    {touched.saveUser && errors.saveUser ? (
-                      <div>{errors.saveUser}</div>
-                    ) : null}
-                  </label>
+                  Keep me logged in
                 </div>
               </div>
               <Button

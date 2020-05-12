@@ -1,21 +1,20 @@
-import React from 'react';
-import Head from 'next/head';
-import { Provider } from 'react-redux';
-import store from '../redux';
+import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import Registration from '../components/Patient/Registration';
 
-export default function Home() {
+import getUser from '../redux/actions/userActions';
+
+function Home(props) {
+  useEffect(() => {
+    props.getUser();
+  }, []);
   return (
-    <Provider store={store}>
-      <div className="container">
-        <Head>
-          <title>WooDoc</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <div className="mainContainer">
-          <Registration />
-        </div>
+    <div className="container">
+      <div className="mainContainer">
+        <Registration />
       </div>
-    </Provider>
+    </div>
   );
 }
+
+export default connect(null, { getUser })(Home);

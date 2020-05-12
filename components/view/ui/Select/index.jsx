@@ -1,38 +1,75 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+import Select from 'react-select';
+import types from 'prop-types';
 
-const Select = ({
-  options,
+// Style
+
+import styles from './select.module.scss';
+
+export default function SelectComponent({
   value,
-  name,
-  onHandleChange,
-  onHandleBlur,
+  options,
+  onChange,
+  placeholder,
   ...rest
-}) => (
-  <select
-    value={value}
-    name={name}
-    className={styles.select}
-    onChange={onHandleChange}
-    onBlur={onHandleBlur}
-    {...rest}
-  >
-    {options.length > 0 &&
-      options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-  </select>
-);
+}) {
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      borderColor: '#ebf1f6',
+      '&:hover': '',
+      cursor: 'pointer',
+      borderRadius: 8,
+      height: 44,
+    }),
+    menuList: (provided) => ({
+      ...provided,
+      paddingBottom: 0,
+      paddingTop: 0,
+    }),
+    option: (provided, state) => {
+      return {
+        ...provided,
+        marginBottom: 0,
+        marginTop: 0,
+        backgroundColor: state.isSelected ? '#0fc7c7' : 'transparent',
+        '&:hover': {
+          backgroundColor: '#0fc7c7',
+          color: '#fff',
+        },
+      };
+    },
+    menu: (provided) => ({
+      ...provided,
+      marginBottom: 0,
+      borderRadius: 8,
+      marginTop: 0,
+      overflow: 'hidden',
+    }),
+  };
 
-Select.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
-  name: PropTypes.string,
-  onHandleChange: PropTypes.func,
-  onHandleBlur: PropTypes.func,
-  value: PropTypes.string,
+  return (
+    <div className={styles.selectComponent}>
+      <Select
+        instanceId="id"
+        classNamePrefix="test"
+        styles={customStyles}
+        placeholder={placeholder}
+        onChange={onChange}
+        className="select"
+        options={options}
+        value={value}
+        {...rest}
+      />
+    </div>
+  );
+}
+
+// Type of props
+
+SelectComponent.propTypes = {
+  placeholder: types.string,
+  value: types.object,
+  options: types.array,
+  onChange: types.func,
 };
-
-export default Select;

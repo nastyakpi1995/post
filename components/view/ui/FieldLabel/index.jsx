@@ -2,16 +2,24 @@ import React from 'react';
 import cn from 'classnames';
 import types from 'prop-types';
 
-import style from './style.module.scss';
+// Components
 
-export default function FieldLabel(props) {
-  const { className = '', text = '', children = null, ...rest } = props;
+import Text from '../Text';
 
+// Styles
+
+import styles from './style.module.scss';
+
+export default function FieldLabel({ text, children, className }) {
   return (
-    <label className={cn(style.fieldLabel, className)} {...rest}>
-      {text}
+    <div className={styles.fieldLabel}>
+      <div className={styles.fieldLabel__title}>
+        <Text uppercase medium tagName="p" size="xs" color="onPrimaryLight-2">
+          {text}
+        </Text>
+      </div>
       {children}
-    </label>
+    </div>
   );
 }
 

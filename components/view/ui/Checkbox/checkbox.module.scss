@@ -1,0 +1,28 @@
+@import '../../../../styles/constants/config.scss';
+@import '../../../../styles/mixin.scss';
+
+.checkbox {
+  @include center;
+  transition: $animTime;
+  border: 1px solid $borderColor;
+  cursor: pointer;
+  display: flex;
+  border-radius: $borderRadiusSmall;
+  height: 26px;
+  width: 26px;
+  min-width: 26px;
+  background-color: $primary;
+
+  // Elements
+
+  &__icon {
+    transition: $animTime;
+    opacity: 0;
+  }
+
+  &--checked {
+    .checkbox__icon {
+      opacity: 1;
+    }
+  }
+}
