@@ -3,7 +3,7 @@ import getToken from './getToken';
 
 // Constants
 
-// import _ENV from '../constants/env';
+import _ENV from '../constants/env';
 
 // Utils
 
@@ -24,10 +24,11 @@ export default async function apiCaller(config, after = false, token = true) {
 
   // Data preparation
 
-  console.log('1', process.env.API_URL);
+  console.log('1', process.env.API_URL || _ENV.api);
+
   const fullConfig = {
     // TODO || _ENV.api
-    // baseURL: process.env.API_URL,
+    baseURL: process.env.API_URL || _ENV.api,
     method: 'get',
     ...config,
     headers: { ...config.headers, ...defaultHeaders },

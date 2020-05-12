@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-// import Button from '../../../common/Button';
+import Button from '../../../../view/ui/Button';
 import styles from './style.module.scss';
 
 const Header = () => (
@@ -12,10 +12,10 @@ const Header = () => (
       </a>
     </div>
     <div className={styles['header-buttons']}>
-      {/* <Button
+      <Button
         className={styles['header-button__login']}
         text="login as doctor"
-      /> */}
+      />
       <select className={styles['header-button__language']}>
         <option>en</option>
         <option>ua</option>

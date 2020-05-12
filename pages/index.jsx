@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
-import Registration from '../components/Patient/Registration/Step1/Step1';
+import React, { useEffect } from 'react';
+import Registration from '../components/Patient/Registration';
 
 import getUser from '../redux/actions/userActions';
 

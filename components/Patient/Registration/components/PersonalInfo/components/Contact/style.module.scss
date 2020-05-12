@@ -1,0 +1,90 @@
+.validation-contact {
+  padding-top: 40px;
+
+  & input::-webkit-outer-spin-button,
+  & input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  & input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .validation-description {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #252f4d;
+    margin: 0;
+  }
+  .contact-wrapper {
+    display: flex;
+    margin-top: 20px;
+
+    .contact-country {
+      width: 48%;
+      margin-right: 4%;
+
+      .select {
+        width: 100%;
+        border: 1px solid #ebf1f6;
+        height: 44px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background: #fff;
+        padding: 0 14px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+    }
+    .contact-city {
+      width: 48%;
+
+      .select {
+        width: 100%;
+        border: 1px solid #ebf1f6;
+        height: 44px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        background: #fff;
+        padding: 0 14px;
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #252f4d;
+      }
+    }
+  }
+  .contact-direction {
+    margin-top: 20px;
+  }
+  .contact-optional {
+    display: flex;
+    margin-top: 20px;
+
+    .contact-house {
+      width: 31%;
+      margin-right: 3.5%;
+    }
+    .contact-apartment {
+      width: 31%;
+      margin-right: 3.5%;
+    }
+    .contact-floor {
+      width: 31%;
+    }
+  }
+  .contact-zip {
+    margin-top: 20px;
+  }
+  .contact-email {
+    margin-top: 20px;
+  }
+}
