@@ -1,25 +1,45 @@
+import classNames from 'classnames';
+import types from 'prop-types';
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+import { FaCheck } from 'react-icons/fa';
 
-const Checkbox = ({ name, onHandleChange, value }) => (
-  <input
-    type="checkbox"
-    name={name}
-    checked={value}
-    className={styles.checkbox}
-    onChange={onHandleChange}
-  />
-);
+import ReactIcon from '../ReactIcon';
+
+// Style
+
+import styles from './checkbox.module.scss';
+
+export default function Checkbox({ onClick, checked, color }) {
+  // Modifiers
+
+  const CheckBoxClass = classNames({
+    [styles.checkbox]: true,
+    [styles['checkbox--checked']]: checked,
+  });
+
+  // Render
+
+  return (
+    <div className={CheckBoxClass} onClick={onClick}>
+      <div className={styles.checkbox__icon}>
+        <ReactIcon size="sm" color="third">
+          <FaCheck />
+        </ReactIcon>
+      </div>
+    </div>
+  );
+}
+
+// Type of props
 
 Checkbox.propTypes = {
-  name: PropTypes.string,
-  onHandleChange: PropTypes.func,
-  value: PropTypes.oneOfType(
-    PropTypes.string,
-    PropTypes.bool,
-    PropTypes.number,
-  ),
+  onClick: types.func.isRequired,
+  checked: types.bool,
+  color: types.oneOf(['valid', 'secondary']),
 };
 
-export default Checkbox;
+// Default value for props
+
+Checkbox.defaultProps = {
+  color: 'valid',
+};

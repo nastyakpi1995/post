@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 
 // Components
@@ -6,13 +6,43 @@ import { Provider } from 'react-redux';
 import Head from 'next/head';
 import App from 'next/app';
 
-import store from '../redux';
+import createStore from '../redux';
+
+// Utils
+
+import isServer from '../utils/isServer';
+import getToken from '../utils/getToken';
 
 // Styles
 
 import '../styles/index.scss';
 
 export default class Root extends App {
+  constructor(props) {
+    super(props);
+    this.store = createStore();
+  }
+
+  static async getInitialProps() {
+    let userData = {};
+
+    if (isServer()) {
+      const token = getToken();
+
+      // eslint-disable-next-line no-unused-vars
+      const user = {};
+
+      if (token) {
+        userData = { ...userData, ...user };
+      }
+    } else {
+      userData = this.store.getState();
+    }
+    return {
+      ...(isServer() ? { preloadedState: { user: userData } } : {}),
+    };
+  }
+
   render() {
     const { Component } = this.props;
 
@@ -25,7 +55,8 @@ export default class Root extends App {
           />
           <title>Title</title>
         </Head>
-        <Provider store={store}>
+
+        <Provider store={this.store}>
           <Component {...this.props} />
         </Provider>
       </>
