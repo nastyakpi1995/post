@@ -1,0 +1,36 @@
+@import '../../../../styles/constants/config.scss';
+
+.input {
+  &__field {
+    border: 1px solid $borderColor;
+    border-radius: $borderRadius;
+    background-color: $primary;
+    height: 44px;
+    box-shadow: none;
+    color: $onPrimary;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0 16px;
+    outline: none;
+    width: 100%;
+    transition: border-color $animTimeFast, background-color $animTimeFast,
+      opacity $animTime;
+    -webkit-appearance: none;
+
+    &::placeholder {
+      color: $onPrimaryLight-2;
+    }
+
+    &:focus {
+      border-color: $thirdLight;
+      box-shadow: none;
+    }
+
+    // Modifiers
+
+    &:disabled {
+      opacity: 0.6;
+    }
+  }
+}
