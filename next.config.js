@@ -4,5 +4,4 @@ module.exports = {
   env: {
     API_URL,
   },
-  publicRuntimeConfig: { API_URL },
 };
