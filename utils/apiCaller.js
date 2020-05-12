@@ -1,10 +1,6 @@
 import axios from 'axios';
 import getToken from './getToken';
 
-// Constants
-
-import _ENV from '../constants/env';
-
 // Utils
 
 // ----------------
@@ -24,11 +20,11 @@ export default async function apiCaller(config, after = false, token = true) {
 
   // Data preparation
 
-  console.log('1', process.env.API_URL || _ENV.api);
+  console.log('1', process.env.API_URL);
 
   const fullConfig = {
     // TODO || _ENV.api
-    baseURL: process.env.API_URL || _ENV.api,
+    baseURL: process.env.API_URL,
     method: 'get',
     ...config,
     headers: { ...config.headers, ...defaultHeaders },
