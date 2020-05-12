@@ -39,6 +39,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-bind': 0,
     'react/button-has-type': 0,
-    'no-unused-vars': 0
+    'no-unused-vars': 0,
+    "import/no-unresolved": "off"
   },
 };

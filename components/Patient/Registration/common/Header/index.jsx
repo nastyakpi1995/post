@@ -1,9 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
-import Button from '../../../../view/ui/Button';
+import { i18n, withTranslation } from 'i18n';
+import { Button, Select } from '../../../../view/ui';
 import styles from './style.module.scss';
 
-const Header = () => (
+const Header = ({ t }) => (
   <div className={styles.header}>
     <div className={styles['header-logo']}>
       <a className={cn(styles.link, styles.logo__value)} href="#">
@@ -14,14 +15,21 @@ const Header = () => (
     <div className={styles['header-buttons']}>
       <Button
         className={styles['header-button__login']}
-        text="login as doctor"
+        text={t('loginAsDoctor')}
       />
-      <select className={styles['header-button__language']}>
-        <option>en</option>
-        <option>ua</option>
-      </select>
+      {i18n.languages && (
+        <Select
+          onHandleChange={(event) => {
+            i18n.changeLanguage(event.target.value);
+            return event.target.value;
+          }}
+          options={i18n.languages}
+          value={i18n.language}
+          className={styles['header-button__language']}
+        />
+      )}
     </div>
   </div>
 );
 
-export default Header;
+export default withTranslation('header')(Header);

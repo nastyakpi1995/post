@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { appWithTranslation } from 'i18n';
 
 // Components
 
@@ -12,7 +13,7 @@ import store from '../redux';
 
 import '../styles/index.scss';
 
-export default class Root extends App {
+class Root extends App {
   render() {
     const { Component } = this.props;
 
@@ -32,3 +33,5 @@ export default class Root extends App {
     );
   }
 }
+
+export default appWithTranslation(Root);

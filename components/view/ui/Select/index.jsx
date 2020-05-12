@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.scss';
 
-const Select = ({ options, value, name, onHandleChange, onHandleBlur }) => (
+const Select = ({
+  options,
+  value,
+  name,
+  onHandleChange,
+  onHandleBlur,
+  ...rest
+}) => (
   <select
     value={value}
     name={name}
     className={styles.select}
     onChange={onHandleChange}
     onBlur={onHandleBlur}
+    {...rest}
   >
     {options.length > 0 &&
       options.map((option) => (

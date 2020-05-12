@@ -1,0 +1,9 @@
+{
+  "generalInfo": {
+    "createAccount": "Create an account",
+    "phoneInfo": "We use phone number as a login. Be calm, we won't give your number to anyone.",
+    "areaCode": "Area code",
+    "localNumber": "Local Number",
+    "passwordInfo": "Password has to have at least 8 characters, letters, numbers, and special characters"
+  }
+}
