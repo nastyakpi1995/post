@@ -1,0 +1,52 @@
+@import '../../../../styles/constants/config.scss';
+
+.loader {
+  border-style: solid;
+  border-radius: 50%;
+  animation: loaderAnim 0.8s infinite, show 0.4s;
+  margin: auto;
+
+  // Modifiers
+
+  &--color-light {
+    border-color: $primary transparent $primary transparent;
+  }
+
+  &--color-dark {
+    border-color: $onPrimaryLight-3 transparent $onPrimaryLight-3 transparent;
+  }
+
+  &--size-xs {
+    border-width: 2px;
+    height: 18px;
+    width: 18px;
+  }
+
+  &--size-sm {
+    border-width: 2px;
+    height: 26px;
+    width: 26px;
+  }
+
+  &--size-md {
+    border-width: 3px;
+    height: 34px;
+    width: 34px;
+  }
+
+  &--size-lg {
+    border-width: 4px;
+    height: 54px;
+    width: 54px;
+  }
+}
+
+@keyframes loaderAnim {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -4,7 +4,7 @@ import React from 'react';
 
 // Style
 
-import style from './style.module.scss';
+import styles from './input.module.scss';
 
 // ----------------
 
@@ -23,26 +23,28 @@ export default function Input(props) {
 
   // Modifiers
 
-  // const inputFieldClass = cn({
-  //   [style.input__field]: true,
-  //   'input__field--error': false,
-  //   [className]: className,
-  // });
+  const inputFieldClass = cn({
+    [styles.input__field]: true,
+    [styles['input__field--error']]: false,
+    [className]: className,
+  });
 
   // Render
 
   return (
-    <input
-      placeholder={placeholder}
-      className={style.input}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      value={value}
-      name={name}
-      type={type}
-      {...rest}
-    />
+    <div className={styles.input}>
+      <input
+        placeholder={placeholder}
+        className={inputFieldClass}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        value={value}
+        name={name}
+        type={type}
+        {...rest}
+      />
+    </div>
   );
 }
 

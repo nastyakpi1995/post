@@ -1,6 +1,7 @@
 FROM node:lts-alpine
 
 ENV PORT=3000
+ENV HOST_ENV=stage
 ENV API_URL=https://docwoo-back-stage.scenario-projects.com
 
 # Create app directory

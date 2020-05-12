@@ -1,0 +1,95 @@
+@import '../../../../styles/constants/config.scss';
+
+.button {
+  border-radius: $borderRadiusBig;
+  transition: opacity $animTime, background-color $animTime, color $animTime;
+  padding: 0 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:active {
+    opacity: 0.75;
+  }
+
+  // Elements
+
+  &__content {
+    align-items: center;
+    display: inline-flex;
+  }
+
+  &--load {
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &--border {
+    border: 1px solid $borderColor;
+    background-color: transparent;
+    color: $third;
+    &:hover {
+      border-color: transparent;
+      background-color: $third;
+      color: $primary;
+    }
+  }
+
+  // colors
+
+  &--color-third {
+    background-color: $third;
+    color: $primary;
+  }
+
+  &--color-secondary {
+    background-color: $secondary;
+    color: $primary;
+  }
+
+  &--color-on-primary {
+    color: $primary;
+    background-color: $onPrimary;
+  }
+
+  // height
+
+  &--height-md {
+    height: 36px;
+    font-size: 12px;
+  }
+
+  &--height-big {
+    font-size: 14px;
+    height: 48px;
+  }
+
+  // width
+
+  &--width-xs {
+    max-width: 95px;
+  }
+
+  &--width-sm {
+    max-width: 115px;
+  }
+
+  &--width-md {
+    max-width: 200px;
+  }
+}

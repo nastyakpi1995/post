@@ -39,6 +39,15 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-no-bind': 0,
     'react/button-has-type': 0,
-    'no-unused-vars': 0
+    'no-unused-vars': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'no-unused-vars': 0,
+    'import/no-unresolved': 'off',
+  },
+  env: {
+    jest: true,
+    browser: true,
+    node: true,
   },
 };
