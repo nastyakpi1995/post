@@ -1,25 +1,22 @@
 import React from 'react';
 import types from 'prop-types';
+import { withTranslation } from 'i18n';
 import Input from '../../../../../../view/ui/Input';
 import FieldLabel from '../../../../../../view/ui/FieldLabel';
 import { CITIES, COUNTRIES } from '../../../../constants';
+import { NativeSelect } from '../../../../../../view/ui';
 import styles from './style.module.scss';
-import { Select } from '../../../../../../view/ui';
 
-export default function Contact({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-}) {
+function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
   return (
     <div className={styles['validation-contact']}>
-      <p className={styles['validation-description']}>Contact information</p>
+      <p className={styles['validation-description']}>
+        {t('personalInfo.contact.title')}
+      </p>
       <div className={styles['contact-wrapper']}>
         <div className={styles['contact-country']}>
-          <FieldLabel text="country">
-            <Select
+          <FieldLabel text={t('personalInfo.contact.country')}>
+            <NativeSelect
               options={COUNTRIES}
               name="country"
               value={values.country}
@@ -29,8 +26,8 @@ export default function Contact({
           </FieldLabel>
         </div>
         <div className={styles['contact-city']}>
-          <FieldLabel text="city">
-            <Select
+          <FieldLabel text={t('personalInfo.contact.city')}>
+            <NativeSelect
               options={CITIES}
               name="city"
               value={values.city}
@@ -41,7 +38,7 @@ export default function Contact({
         </div>
       </div>
       <div className={styles['contact-direction']}>
-        <FieldLabel text="direction">
+        <FieldLabel text={t('personalInfo.contact.direction')}>
           <Input
             type="text"
             name="direction"
@@ -56,7 +53,7 @@ export default function Contact({
       </div>
       <div className={styles['contact-optional']}>
         <div className={styles['contact-house']}>
-          <FieldLabel text="house number">
+          <FieldLabel text={t('personalInfo.contact.houseNumber')}>
             <Input
               type="number"
               placeholder="26"
@@ -71,10 +68,9 @@ export default function Contact({
           </FieldLabel>
         </div>
         <div className={styles['contact-apartment']}>
-          <FieldLabel text="apartment number">
+          <FieldLabel text={t('personalInfo.contact.apartmentNumber')}>
             <Input
               type="number"
-              placeholder="3"
               name="apartmentNumber"
               value={values.apartmentNumber}
               onChange={handleChange}
@@ -86,7 +82,7 @@ export default function Contact({
           </FieldLabel>
         </div>
         <div className={styles['contact-floor']}>
-          <FieldLabel text="floor (optional)">
+          <FieldLabel text={t('personalInfo.contact.floorNumber')}>
             <Input
               type="number"
               placeholder="2"
@@ -99,7 +95,7 @@ export default function Contact({
         </div>
       </div>
       <div className={styles['contact-zip']}>
-        <FieldLabel text="zip code">
+        <FieldLabel text={t('personalInfo.contact.zipCode')}>
           <Input
             type="number"
             placeholder="1000"
@@ -114,7 +110,7 @@ export default function Contact({
         </FieldLabel>
       </div>
       <div className={styles['contact-email']}>
-        <FieldLabel text="email">
+        <FieldLabel text={t('personalInfo.contact.email')}>
           <Input
             type="email"
             name="email"
@@ -134,10 +130,10 @@ Contact.propTypes = {
     country: types.oneOf(COUNTRIES),
     city: types.oneOf(CITIES),
     direction: types.string,
-    houseNumber: types.oneOfType(types.string, types.number),
-    apartmentNumber: types.oneOfType(types.string, types.number),
-    floorNumber: types.oneOfType(types.string, types.number),
-    zipCode: types.oneOfType(types.string, types.number),
+    houseNumber: types.oneOfType([types.string, types.number]),
+    apartmentNumber: types.oneOfType([types.string, types.number]),
+    floorNumber: types.oneOfType([types.string, types.number]),
+    zipCode: types.oneOfType([types.string, types.number]),
     email: types.string,
   }),
   errors: types.shape({
@@ -162,4 +158,7 @@ Contact.propTypes = {
   }),
   handleChange: types.func,
   handleBlur: types.func,
+  t: types.func,
 };
+
+export default withTranslation('registration')(Contact);

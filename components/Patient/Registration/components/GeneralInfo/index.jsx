@@ -2,24 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { Header, TermsOfUse } from '../../common';
+import { withTranslation } from 'i18n';
+import { TermsOfUse } from '../../common/TermsOfUse';
+import Header from '../../../../view/objects/AuthHeader';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button, Checkbox, Select } from '../../../../view/ui';
+import { Button, Checkbox, NativeSelect } from '../../../../view/ui';
 import { MOBILE_PHONE_CODES } from '../../constants';
+import RegisterSchema from '../../Forms/registerForm/GeneralForm';
 import styles from './style.module.scss';
 
-const RegisterSchema = Yup.object({
-  password: Yup.string().max(15, 'Must be 15 characters or less').required(),
-  repeatPassword: Yup.string()
-    .max(15, 'Must be 15 characters or less')
-    .required(),
-  phoneNumber: Yup.number().required().moreThan(0, 'Could not be negative'),
-  saveUser: Yup.bool().oneOf([true], 'Keep me logged in'),
-  terms: Yup.bool().oneOf([true], 'Terms of Use'),
-});
-export default function GeneralInfo({ onHandleChangePage }) {
+function GeneralInfo({ onHandleChangePage, t }) {
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -33,7 +26,7 @@ export default function GeneralInfo({ onHandleChangePage }) {
             saveUser: true,
             terms: true,
           }}
-          validationSchema={RegisterSchema}
+          validationSchema={RegisterSchema(t)}
           onSubmit={(values, actions) => {
             // TODO: should save values to redux here
             onHandleChangePage();
@@ -48,15 +41,16 @@ export default function GeneralInfo({ onHandleChangePage }) {
             handleSubmit,
           }) => (
             <form onSubmit={handleSubmit} className={styles.validation}>
-              <h1 className={styles['validation-title']}>Create an account</h1>
+              <h1 className={styles['validation-title']}>
+                {t('generalInfo.createAccount')}
+              </h1>
               <p className={styles['validation-number__helper']}>
-                We use phone number as a login. Be calm, we won&apos;t give your
-                number to anyone.
+                {t('generalInfo.phoneInfo')}
               </p>
               <div className={styles['validation-number']}>
                 <div className={styles['validation-number__first']}>
-                  <FieldLabel text="area code">
-                    <Select
+                  <FieldLabel text={t('generalInfo.areaCode')}>
+                    <NativeSelect
                       options={MOBILE_PHONE_CODES}
                       name="phoneCode"
                       onHandleBlur={handleChange}
@@ -66,7 +60,7 @@ export default function GeneralInfo({ onHandleChangePage }) {
                   </FieldLabel>
                 </div>
                 <div className={styles['validation-number__second']}>
-                  <FieldLabel text="local number">
+                  <FieldLabel text={t('generalInfo.localNumber')}>
                     <Input
                       type="number"
                       onBlur={handleBlur}
@@ -82,11 +76,10 @@ export default function GeneralInfo({ onHandleChangePage }) {
                 </div>
               </div>
               <p className={styles['validation-password__helper']}>
-                Password has to have at least 8 characters, letters, numbers,
-                and special characters
+                {t('generalInfo.passwordInfo')}
               </p>
               <div className={styles['validation-password']}>
-                <FieldLabel text="password">
+                <FieldLabel text={t('generalInfo.password')}>
                   <Input
                     type="password"
                     onBlur={handleBlur}
@@ -101,7 +94,7 @@ export default function GeneralInfo({ onHandleChangePage }) {
                 </FieldLabel>
               </div>
               <div className={styles['validation-password']}>
-                <FieldLabel text="repeat password">
+                <FieldLabel text={t('generalInfo.repeatPassword')}>
                   <Input
                     type="password"
                     onBlur={handleBlur}
@@ -154,17 +147,17 @@ export default function GeneralInfo({ onHandleChangePage }) {
                     // value={values.saveUser}
                     onClick={() => {}}
                   />
-                  Keep me logged in
+                  {t('generalInfo.keepLogged')}
                 </div>
               </div>
               <Button
                 type="submit"
                 className={styles['validation-button__save']}
-                text="save and continue"
+                text={t('generalInfo.save')}
               />
               <Button
                 className={styles['validation-button__login']}
-                text="Log in"
+                text={t('generalInfo.login')}
               />
             </form>
           )}
@@ -176,4 +169,7 @@ export default function GeneralInfo({ onHandleChangePage }) {
 
 GeneralInfo.propTypes = {
   onHandleChangePage: PropTypes.func,
+  t: PropTypes.func,
 };
+
+export default withTranslation('registration')(GeneralInfo);

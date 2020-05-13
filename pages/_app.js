@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
+import { appWithTranslation } from 'i18n';
 
 // Components
 
@@ -18,7 +19,7 @@ import getToken from '../utils/getToken';
 import 'react-phone-input-2/lib/material.css';
 import '../styles/index.scss';
 
-export default class Root extends App {
+class Root extends App {
   constructor(props) {
     super(props);
     this.store = createStore();
@@ -45,7 +46,8 @@ export default class Root extends App {
   }
 
   render() {
-    const { Component } = this.props;
+    const { Component: C } = this.props;
+    const Component = appWithTranslation(C);
 
     return (
       <>
@@ -65,3 +67,5 @@ export default class Root extends App {
     );
   }
 }
+
+export default Root;

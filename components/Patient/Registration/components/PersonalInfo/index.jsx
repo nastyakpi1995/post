@@ -1,34 +1,22 @@
 import React from 'react';
+import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { Header } from '../../common';
+import Header from '../../../../view/objects/AuthHeader';
 import { Button } from '../../../../view/ui';
 import { General, Contact, Personal } from './components';
 import { GENDER_TYPES, COUNTRIES, CITIES } from '../../constants';
 import styles from './style.module.scss';
+import RegisterSchema from '../../Forms/registerForm/ConfigmationForm';
 
-const RegisterSchema = Yup.object({
-  firstName: Yup.string().required(),
-  lastName: Yup.string().required(),
-  nationalId: Yup.string().required(),
-  dateOfBirth: Yup.string().required(),
-  gender: Yup.string().required(),
-  country: Yup.string().required(),
-  city: Yup.string().required(),
-  direction: Yup.string().required(),
-  houseNumber: Yup.string().required(),
-  apartmentNumber: Yup.number(),
-  floorNumber: Yup.number(),
-  zipCode: Yup.number().required(),
-  email: Yup.string().email().required(),
-});
-export default function PersonalInfo({ onHandleChangePage = () => {} }) {
+function PersonalInfo({ onHandleChangePage = () => {}, t }) {
   return (
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.container}>
         <div className={styles.validation}>
-          <h1 className={styles['validation-title']}>Complete Your Profile</h1>
+          <h1 className={styles['validation-title']}>
+            {t('personalInfo.title')}
+          </h1>
           <Formik
             initialValues={{
               firstName: '',
@@ -45,7 +33,7 @@ export default function PersonalInfo({ onHandleChangePage = () => {} }) {
               zipCode: '',
               email: '',
             }}
-            validationSchema={RegisterSchema}
+            validationSchema={RegisterSchema(t)}
             onSubmit={(values, actions) => {
               // TODO: should save values to redux here
               onHandleChangePage();
@@ -85,7 +73,7 @@ export default function PersonalInfo({ onHandleChangePage = () => {} }) {
                   <Button
                     type="submit"
                     className={styles['validation-button__saveProfile']}
-                    text="save profile data"
+                    text={t('personalInfo.save')}
                   />
                 </div>
               </form>
@@ -96,3 +84,5 @@ export default function PersonalInfo({ onHandleChangePage = () => {} }) {
     </div>
   );
 }
+
+export default withTranslation('registration')(PersonalInfo);
