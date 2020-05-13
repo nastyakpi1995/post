@@ -1,19 +1,8 @@
-const { API_URL, HOST_ENV } = process.env;
+const { API_URL, GOOGLE_MAPS_KEY } = process.env;
 
 module.exports = {
   env: {
     API_URL,
-    HOST_ENV: HOST_ENV || 'development',
+    GOOGLE_MAPS_KEY,
   },
-  publicRuntimeConfig: { MODE: HOST_ENV || 'development', API_URL },
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        targets: {
-          esmodules: true,
-        },
-      },
-    ],
-  ],
 };
