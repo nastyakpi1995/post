@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { Formik } from 'formik';
 import { withTranslation } from 'i18n';
-import { TermsOfUse } from '../../common/TermsOfUse';
+import TermsOfUse from '../../common/TermsOfUse';
 import Header from '../../../../view/objects/AuthHeader';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
