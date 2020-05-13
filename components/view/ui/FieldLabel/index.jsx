@@ -10,7 +10,7 @@ import Text from '../Text';
 
 import styles from './style.module.scss';
 
-export default function FieldLabel({ text, children, className }) {
+export default function FieldLabel({ text, children, className, error }) {
   return (
     <div className={styles.fieldLabel}>
       <div className={styles.fieldLabel__title}>
@@ -19,6 +19,7 @@ export default function FieldLabel({ text, children, className }) {
         </Text>
       </div>
       {children}
+      {error && <div className={styles.fieldLabel__error}>{error}</div>}
     </div>
   );
 }

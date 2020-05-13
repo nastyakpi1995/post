@@ -1,0 +1,18 @@
+@import '../../../../styles/constants/config.scss';
+
+.error-message {
+  display: flex;
+  align-items: center;
+  display: inline-flex;
+  padding: 7px 10px;
+  border-radius: $borderRadius;
+
+  &__icon {
+    margin-right: 5px;
+  }
+
+  &--error {
+    background-color: $secondaryLight;
+    color: $secondary;
+  }
+}

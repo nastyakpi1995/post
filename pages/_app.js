@@ -15,8 +15,8 @@ import getToken from '../utils/getToken';
 
 // Styles
 
+import 'react-phone-input-2/lib/material.css';
 import '../styles/index.scss';
-import 'react-phone-number-input/style.css';
 
 export default class Root extends App {
   constructor(props) {
@@ -58,6 +58,7 @@ export default class Root extends App {
         </Head>
 
         <Provider store={this.store}>
+          <div id="modal-root" />
           <Component {...this.props} />
         </Provider>
       </>

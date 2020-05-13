@@ -1,7 +1,15 @@
 @import '../../../../styles/constants/colors';
+@import '../../../../styles/mixin.scss';
 
 .fieldLabel {
   &__title {
     margin-bottom: 10px;
+  }
+  &__error {
+    max-width: 100%;
+    font-size: 12px;
+    margin-top: 5px;
+    color: $secondary;
+    @include ellipsis;
   }
 }

@@ -17,6 +17,7 @@ export default function Input(props) {
     onBlur,
     value,
     name,
+    error,
     type,
     ...rest
   } = props;
@@ -24,15 +25,15 @@ export default function Input(props) {
   // Modifiers
 
   const inputFieldClass = cn({
-    [styles.input__field]: true,
-    [styles['input__field--error']]: false,
+    [styles.container__field]: true,
+    [styles['container__field--error']]: error,
     [className]: className,
   });
 
   // Render
 
   return (
-    <div className={styles.input}>
+    <div className={styles.container}>
       <input
         placeholder={placeholder}
         className={inputFieldClass}
@@ -58,10 +59,5 @@ Input.propTypes = {
   onBlur: types.func,
   value: types.oneOfType([types.string, types.number]),
   name: types.string,
-};
-
-// Default value for props
-
-Input.defaultProps = {
-  className: '',
+  error: types.bool,
 };

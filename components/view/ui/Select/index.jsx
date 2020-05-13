@@ -73,4 +73,5 @@ SelectComponent.propTypes = {
   value: types.object,
   options: types.array,
   onChange: types.func,
+  onFocus: types.func,
 };
