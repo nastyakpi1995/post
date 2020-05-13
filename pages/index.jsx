@@ -4,11 +4,6 @@ import Registration from '../components/Patient/Registration';
 
 import getUser from '../redux/actions/userActions';
 
-import InputPhone from '../components/view/ui/InputPhone';
-import Input from '../components/view/ui/Input';
-import { FieldLabel } from '../components/view/ui';
-import Modal from '../components/view/ui/Modal';
-
 function Home(props) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -17,11 +12,7 @@ function Home(props) {
   return (
     <div className="container">
       <div className="mainContainer">
-        {/* <Registration /> */}
-        <button onClick={() => setOpen(!open)}>click</button>
-        <Modal close={() => setOpen(false)} open={open}>
-          123123123
-        </Modal>
+        <Registration />
       </div>
     </div>
   );
