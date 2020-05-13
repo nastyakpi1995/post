@@ -1,23 +1,20 @@
 import React from 'react';
 import types from 'prop-types';
+import { withTranslation } from 'i18n';
 import Input from '../../../../../../view/ui/Input';
 import { GENDER_TYPES } from '../../../../constants';
 import { FieldLabel, NativeSelect } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
-export default function Personal({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-}) {
+function Personal({ values, errors, touched, handleChange, handleBlur, t }) {
   return (
     <div className={styles['validation-personal']}>
-      <p className={styles['validation-description']}>Personal information</p>
+      <p className={styles['validation-description']}>
+        {t('personalInfo.personal.title')}
+      </p>
       <div className={styles['personal-wrapper']}>
         <div className={styles['personal-date']}>
-          <FieldLabel text="date of birth">
+          <FieldLabel text={t('personalInfo.personal.dateOfBirth')}>
             <Input
               type="date"
               value={values.dateOfBirth}
@@ -27,7 +24,7 @@ export default function Personal({
           </FieldLabel>
         </div>
         <div className={styles['personal-gender']}>
-          <FieldLabel text="gender">
+          <FieldLabel text={t('personalInfo.personal.gender')}>
             <NativeSelect
               options={GENDER_TYPES}
               name="gender"
@@ -60,4 +57,7 @@ Personal.propTypes = {
   }),
   handleChange: types.func,
   handleBlur: types.func,
+  t: types.func,
 };
+
+export default withTranslation('registration')(Personal);

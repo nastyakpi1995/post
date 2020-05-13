@@ -32,8 +32,4 @@ const Header = ({ t }) => (
   </div>
 );
 
-Header.getInitialProps = async () => ({
-  namespacesRequired: ['header'],
-});
-
 export default withTranslation('header')(Header);

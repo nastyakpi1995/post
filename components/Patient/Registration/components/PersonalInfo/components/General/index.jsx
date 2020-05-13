@@ -1,20 +1,17 @@
 import React from 'react';
 import types from 'prop-types';
+import { withTranslation } from 'i18n';
 import { Input, FieldLabel } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
-export default function General({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-}) {
+function General({ values, errors, touched, handleChange, handleBlur, t }) {
   return (
     <div className={styles['validation-general']}>
-      <p className={styles['validation-description']}>General information</p>
+      <p className={styles['validation-description']}>
+        {t('personalInfo.general.title')}
+      </p>
       <div className={styles['general-name']}>
-        <FieldLabel text="first name">
+        <FieldLabel text={t('personalInfo.general.firstName')}>
           <Input
             type="text"
             placeholder="Frederick"
@@ -29,7 +26,7 @@ export default function General({
         </FieldLabel>
       </div>
       <div className={styles['general-surname']}>
-        <FieldLabel text="last name">
+        <FieldLabel text={t('personalInfo.general.lastName')}>
           <Input
             type="text"
             placeholder="Valdez"
@@ -44,7 +41,7 @@ export default function General({
         </FieldLabel>
       </div>
       <div className={styles['general-id']}>
-        <FieldLabel text="national id">
+        <FieldLabel text={t('personalInfo.general.nationalId')}>
           <Input
             type="number"
             placeholder="0123456789"
@@ -66,7 +63,7 @@ General.propTypes = {
   values: types.shape({
     firstName: types.string,
     lastName: types.string,
-    nationalId: types.oneOfType(types.number, types.string),
+    nationalId: types.oneOfType([types.number, types.string]),
   }),
   errors: types.shape({
     firstName: types.string,
@@ -80,4 +77,7 @@ General.propTypes = {
   }),
   handleChange: types.func,
   handleBlur: types.func,
+  t: types.func,
 };
+
+export default withTranslation('registration')(General);

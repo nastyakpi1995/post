@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Header } from '../../common';
@@ -8,19 +9,19 @@ import FieldLabel from '../../../../view/ui/FieldLabel';
 import { Button } from '../../../../view/ui';
 import styles from './style.module.scss';
 
-const RegisterSchema = Yup.object({
-  confirmCode: Yup.string()
-    .test(
-      'confirmCode',
-      'Must be exactly 8 characters',
-      (val) => val.length === 8,
-    )
-    .required(),
-});
-export default function Confirmation({
+const RegisterSchema = (t) =>
+  Yup.object({
+    confirmCode: Yup.string()
+      .test('confirmCode', t('validation.exactly8'), (val) => val.length === 8)
+      .required(t('validation.required')),
+  });
+
+function Confirmation({
   onHandleChangePage = () => {},
   handleRequestCode = () => {},
   handleLogIn = () => {},
+  t,
+  mobileNumber = '+32345789524', // example
 }) {
   return (
     <div className={styles.wrapper}>
@@ -28,7 +29,7 @@ export default function Confirmation({
       <div className={styles.container}>
         <Formik
           initialValues={{ confirmCode: '' }}
-          validationSchema={RegisterSchema}
+          validationSchema={RegisterSchema(t)}
           onSubmit={(values, actions) => {
             // TODO: should save values to redux here
             onHandleChangePage();
@@ -44,15 +45,14 @@ export default function Confirmation({
           }) => (
             <form className={styles.validation} onSubmit={handleSubmit}>
               <h1 className={styles['validation-title']}>
-                What is your confirmation code?
+                {t('confirmation.title')}
               </h1>
               <p className={styles['validation-number__helper']}>
-                We&apos;ve sent the confirmation code to the number{' '}
-                <span className={styles.telephone}>+32345789524</span>. Please
-                fill the field and you&apos;ll be loged in.
+                {`${t('confirmation.weHaveSent')} `}
+                <span className={styles.telephone}>{`${mobileNumber}. `}</span>
+                {t('confirmation.pleaseFillTheField')}
               </p>
-              <FieldLabel>
-                confirmation code
+              <FieldLabel text={t('confirmation.label')}>
                 <Input
                   type="text"
                   placeholder="12-34-56"
@@ -69,18 +69,18 @@ export default function Confirmation({
                 type="submit"
                 id="submitCode"
                 className={styles['validation-button__submitCode']}
-                text="submit confirmation code"
+                text={t('confirmation.buttonSubmit')}
               />
               <Button
                 id="requestCode"
                 className={styles['validation-button__requestCode']}
-                text="request code again"
+                text={t('confirmation.requestCode')}
                 handleClick={handleRequestCode}
               />
               <Button
                 id="logInCode"
                 className={styles['validation-button__login']}
-                text="Log in"
+                text={t('confirmation.login')}
                 handleClick={handleLogIn}
               />
             </form>
@@ -95,4 +95,7 @@ Confirmation.propTypes = {
   onHandleChangePage: PropTypes.func,
   handleRequestCode: PropTypes.func,
   handleLogIn: PropTypes.func,
+  t: PropTypes.func,
 };
+
+export default withTranslation('registration')(Confirmation);

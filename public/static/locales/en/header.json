@@ -1,20 +1,9 @@
 {
   "loginAsDoctor": "login as doctor",
-  "button": {
-    "homecare": "Homecare",
-    "clinic": "Clinic",
-    "appointments": "Appointments",
-    "findDoctor": "Find a doctor",
-    "history": "History",
-    "requestHomecare": "request homecare",
-    "logo": "JM"
-  },
-  "input": {
-    "searchCity": "City name or ZIP code",
-    "searchDoctors": "Doctors name or speciality"
-  },
-  "logo": {
-    "spanDoc": "Doc",
-    "spanWoo": "Woo"
-  }
+  "homecare": "Homecare",
+  "clinic": "Clinic",
+  "appointments": "Appointments",
+  "findDoctor": "Find a doctor",
+  "history": "History",
+  "requestHomecare": "request homecare"
 }

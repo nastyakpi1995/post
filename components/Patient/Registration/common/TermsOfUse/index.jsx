@@ -1,23 +1,26 @@
 import React from 'react';
 import cn from 'classnames';
+import { withTranslation } from 'i18n';
 import styles from './style.module.scss';
 
-const TermsOfUse = () => (
-  <p className={styles.checkbox__title}>
-    I have read and accept DocWho{' '}
-    <span>
-      <a href="#" className={cn(styles.link, styles.terms)}>
-        Terms of Use
-      </a>
-    </span>{' '}
-    and{' '}
-    <span>
-      <a href="#" className={cn(styles.link, styles.policy)}>
-        Privacy Policy
-      </a>
-    </span>
-    .
-  </p>
-);
+function TermsOfUse({ t }) {
+  return (
+    <p className={styles.checkbox__title}>
+      {`${t('generalInfo.privacyPolicy.iHaveRead')} `}
+      <span>
+        <a href="#" className={cn(styles.link, styles.terms)}>
+          {`${t('generalInfo.privacyPolicy.terms')} `}
+        </a>
+      </span>
+      {`${t('generalInfo.privacyPolicy.and')} `}
+      <span>
+        <a href="#" className={cn(styles.link, styles.policy)}>
+          {t('generalInfo.privacyPolicy.privacyPolicy')}
+        </a>
+      </span>
+      .
+    </p>
+  );
+}
 
-export default TermsOfUse;
+export default withTranslation('registration')(TermsOfUse);

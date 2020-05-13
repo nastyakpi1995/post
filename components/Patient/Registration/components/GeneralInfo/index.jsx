@@ -11,15 +11,20 @@ import { Button, Checkbox, NativeSelect } from '../../../../view/ui';
 import { MOBILE_PHONE_CODES } from '../../constants';
 import styles from './style.module.scss';
 
-const RegisterSchema = Yup.object({
-  password: Yup.string().max(15, 'Must be 15 characters or less').required(),
-  repeatPassword: Yup.string()
-    .max(15, 'Must be 15 characters or less')
-    .required(),
-  phoneNumber: Yup.number().required().moreThan(0, 'Could not be negative'),
-  saveUser: Yup.bool().oneOf([true], 'Keep me logged in'),
-  terms: Yup.bool().oneOf([true], 'Terms of Use'),
-});
+const RegisterSchema = (t) =>
+  Yup.object({
+    password: Yup.string()
+      .max(15, t('validation.length15'))
+      .required(t('validation.required')),
+    repeatPassword: Yup.string()
+      .max(15, t('validation.length15'))
+      .required(t('validation.required')),
+    phoneNumber: Yup.number()
+      .required(t('validation.required'))
+      .moreThan(0, t('validation.noNegative')),
+    saveUser: Yup.bool().oneOf([true], 'Keep me logged in'),
+    terms: Yup.bool().oneOf([true], 'Terms of Use'),
+  });
 function GeneralInfo({ onHandleChangePage, t }) {
   return (
     <div className={styles.wrapper}>
@@ -34,7 +39,7 @@ function GeneralInfo({ onHandleChangePage, t }) {
             saveUser: true,
             terms: true,
           }}
-          validationSchema={RegisterSchema}
+          validationSchema={RegisterSchema(t)}
           onSubmit={(values, actions) => {
             // TODO: should save values to redux here
             onHandleChangePage();
@@ -87,7 +92,7 @@ function GeneralInfo({ onHandleChangePage, t }) {
                 {t('generalInfo.passwordInfo')}
               </p>
               <div className={styles['validation-password']}>
-                <FieldLabel text="password">
+                <FieldLabel text={t('generalInfo.password')}>
                   <Input
                     type="password"
                     onBlur={handleBlur}
@@ -102,7 +107,7 @@ function GeneralInfo({ onHandleChangePage, t }) {
                 </FieldLabel>
               </div>
               <div className={styles['validation-password']}>
-                <FieldLabel text="repeat password">
+                <FieldLabel text={t('generalInfo.repeatPassword')}>
                   <Input
                     type="password"
                     onBlur={handleBlur}
@@ -155,17 +160,17 @@ function GeneralInfo({ onHandleChangePage, t }) {
                     // value={values.saveUser}
                     onClick={() => {}}
                   />
-                  Keep me logged in
+                  {t('generalInfo.keepLogged')}
                 </div>
               </div>
               <Button
                 type="submit"
                 className={styles['validation-button__save']}
-                text="save and continue"
+                text={t('generalInfo.save')}
               />
               <Button
                 className={styles['validation-button__login']}
-                text="Log in"
+                text={t('generalInfo.login')}
               />
             </form>
           )}
@@ -174,10 +179,6 @@ function GeneralInfo({ onHandleChangePage, t }) {
     </div>
   );
 }
-
-GeneralInfo.getInitialProps = async () => ({
-  namespacesRequired: ['registration'],
-});
 
 GeneralInfo.propTypes = {
   onHandleChangePage: PropTypes.func,
