@@ -1,7 +1,6 @@
 @import '../../../../styles/constants/config.scss';
 
 .text {
-  letter-spacing: 1px;
   font-weight: 400;
 
   // Modifiers
@@ -15,7 +14,6 @@
   }
 
   &--size-h1 {
-    font-weight: bold;
     font-size: 32px;
 
     @media (max-width: $md) {
@@ -28,7 +26,6 @@
   }
 
   &--size-h2 {
-    font-weight: bold;
     font-size: 24px;
 
     @media (max-width: $md) {
@@ -80,8 +77,12 @@
     font-weight: 500;
   }
 
-  &--bold {
+  &--semibold {
     font-weight: 600;
+  }
+
+  &--bold {
+    font-weight: 700;
   }
 
   &--uppercase {
@@ -91,5 +92,9 @@
   &--underline {
     border-bottom: 2px solid var(--onPrimary);
     padding-bottom: 3px;
+  }
+
+  &--spacing {
+    letter-spacing: 1px;
   }
 }

@@ -20,6 +20,8 @@ export default function Text({
   underline,
   className,
   uppercase,
+  spacing,
+  semibold,
 }) {
   const Tag = tagName || 'p';
 
@@ -33,6 +35,8 @@ export default function Text({
           [styles[`text--font-${font}`]]: font,
           [styles['text--medium']]: medium,
           [styles['text--bold']]: bold,
+          [styles['text--semibold']]: semibold,
+          [styles['text--spacing']]: spacing,
           [styles['text--underline']]: underline,
           [styles['text--uppercase']]: uppercase,
         },
