@@ -5,5 +5,15 @@ import Input from './Input';
 import Select from './Select';
 import Switch from './Switch';
 import Text from './Text';
+import NativeSelect from './NativeSelect';
 
-export { Checkbox, Button, Select, FieldLabel, Input, Switch, Text };
+export {
+  Checkbox,
+  Button,
+  Select,
+  FieldLabel,
+  Input,
+  Switch,
+  Text,
+  NativeSelect,
+};

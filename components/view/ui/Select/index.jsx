@@ -1,7 +1,6 @@
-import classNames from 'classnames';
+import React from 'react';
 import Select from 'react-select';
 import types from 'prop-types';
-import React from 'react';
 
 // Style
 
@@ -12,6 +11,7 @@ export default function SelectComponent({
   options,
   onChange,
   placeholder,
+  ...rest
 }) {
   const customStyles = {
     control: (provided) => ({
@@ -59,6 +59,7 @@ export default function SelectComponent({
         className="select"
         options={options}
         value={value}
+        {...rest}
       />
     </div>
   );
