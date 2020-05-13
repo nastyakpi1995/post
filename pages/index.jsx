@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Registration from '../components/Patient/Registration';
 
 import getUser from '../redux/actions/userActions';
 
 function Home(props) {
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     props.getUser();
   }, []);

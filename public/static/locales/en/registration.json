@@ -1,0 +1,61 @@
+{
+  "generalInfo": {
+    "createAccount": "Create an account",
+    "phoneInfo": "We use phone number as a login. Be calm, we won't give your number to anyone.",
+    "areaCode": "Area code",
+    "localNumber": "Local Number",
+    "passwordInfo": "Password has to have at least 8 characters, letters, numbers, and special characters",
+    "password": "password",
+    "repeatPassword": "repeat password",
+    "keepLogged": "Keep me logged in",
+    "save": "save and continue",
+    "login": "log In",
+    "privacyPolicy": {
+      "iHaveRead": "I have read and accept DocWho",
+      "terms": "Terms of Use",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    }
+  },
+  "personalInfo": {
+    "title": "Complete Your Profile",
+    "save": "save profile data",
+    "general": {
+      "title": "General information",
+      "firstName": "first name",
+      "lastName": "last name",
+      "nationalId": "national id"
+    },
+    "contact": {
+      "title": "Contact information",
+      "country": "country",
+      "city": "city",
+      "direction": "direction",
+      "houseNumber": "house number",
+      "apartmentNumber": "apartment number",
+      "floorNumber": "floor (optional)",
+      "zipCode": "zip code",
+      "email": "email"
+    },
+    "personal": {
+      "title": "Personal information",
+      "dateOfBirth": "date of birth",
+      "gender": "gender"
+    }
+  },
+  "confirmation": {
+    "title": "What is your confirmation code?",
+    "label": "confirmation code",
+    "weHaveSent": "We've sent the confirmation code to the number",
+    "pleaseFillTheField": "Please fill the field and you'll be loged in.",
+    "buttonSubmit": "submit confirmation code",
+    "requestCode": "request code again",
+    "buttonLogIn": "log In"
+  },
+  "validation": {
+    "required": "This field is required",
+    "length15": "Must be 15 characters or less",
+    "exactly8": "Must be exactly 8 characters",
+    "noNegative": "Could not be negative"
+  }
+}

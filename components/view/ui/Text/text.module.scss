@@ -13,6 +13,10 @@
     color: $onPrimaryLight-2;
   }
 
+  &--color-inherit {
+    color: inherit;
+  }
+
   &--size-h1 {
     font-size: 32px;
 
