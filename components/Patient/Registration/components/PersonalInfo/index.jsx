@@ -1,29 +1,13 @@
 import React from 'react';
 import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { Header } from '../../common';
+import Header from '../../../../view/objects/AuthHeader';
 import { Button } from '../../../../view/ui';
 import { General, Contact, Personal } from './components';
 import { GENDER_TYPES, COUNTRIES, CITIES } from '../../constants';
 import styles from './style.module.scss';
+import RegisterSchema from '../../Forms/registerForm/ConfigmationForm';
 
-const RegisterSchema = (t) =>
-  Yup.object({
-    firstName: Yup.string().required(t('validation.required')),
-    lastName: Yup.string().required(t('validation.required')),
-    nationalId: Yup.string().required(t('validation.required')),
-    dateOfBirth: Yup.string().required(t('validation.required')),
-    gender: Yup.string().required(t('validation.required')),
-    country: Yup.string().required(t('validation.required')),
-    city: Yup.string().required(t('validation.required')),
-    direction: Yup.string().required(t('validation.required')),
-    houseNumber: Yup.string().required(t('validation.required')),
-    apartmentNumber: Yup.number(),
-    floorNumber: Yup.number(),
-    zipCode: Yup.number().required(t('validation.required')),
-    email: Yup.string().email().required(t('validation.required')),
-  });
 function PersonalInfo({ onHandleChangePage = () => {}, t }) {
   return (
     <div className={styles.wrapper}>

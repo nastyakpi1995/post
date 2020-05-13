@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { i18n, withTranslation } from 'i18n';
-import { Button, NativeSelect } from '../../../../view/ui';
+import { Button, NativeSelect } from '../../ui';
 import styles from './style.module.scss';
 
 const Header = ({ t }) => (

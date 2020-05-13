@@ -2,29 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { withTranslation } from 'i18n';
-import { Header, TermsOfUse } from '../../common';
+import { TermsOfUse } from '../../common/TermsOfUse';
+import Header from "../../../../view/objects/AuthHeader";
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
 import { Button, Checkbox, NativeSelect } from '../../../../view/ui';
 import { MOBILE_PHONE_CODES } from '../../constants';
+import RegisterSchema from '../../Forms/registerForm/GeneralForm';
 import styles from './style.module.scss';
 
-const RegisterSchema = (t) =>
-  Yup.object({
-    password: Yup.string()
-      .max(15, t('validation.length15'))
-      .required(t('validation.required')),
-    repeatPassword: Yup.string()
-      .max(15, t('validation.length15'))
-      .required(t('validation.required')),
-    phoneNumber: Yup.number()
-      .required(t('validation.required'))
-      .moreThan(0, t('validation.noNegative')),
-    saveUser: Yup.bool().oneOf([true], 'Keep me logged in'),
-    terms: Yup.bool().oneOf([true], 'Terms of Use'),
-  });
 function GeneralInfo({ onHandleChangePage, t }) {
   return (
     <div className={styles.wrapper}>

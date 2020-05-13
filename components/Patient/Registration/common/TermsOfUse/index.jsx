@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { withTranslation } from 'i18n';
 import styles from './style.module.scss';
 
-function TermsOfUse({ t }) {
+export function TermsOfUse({ t }) {
   return (
     <p className={styles.checkbox__title}>
       {`${t('generalInfo.privacyPolicy.iHaveRead')} `}
