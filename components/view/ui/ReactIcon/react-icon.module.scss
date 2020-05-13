@@ -44,6 +44,10 @@
     color: $third;
   }
 
+  &--color-secondary {
+    color: $secondary;
+  }
+
   &--rotate-90 {
     transform: rotate(90deg);
   }

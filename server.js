@@ -1,3 +1,4 @@
+// eslint-disable-next-line global-require
 Object.keys(process.env).length === 0 && require('dotenv').config();
 const express = require('express');
 const next = require('next');

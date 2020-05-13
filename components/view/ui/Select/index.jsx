@@ -11,6 +11,7 @@ export default function SelectComponent({
   options,
   onChange,
   placeholder,
+  onFocus,
   ...rest
 }) {
   const customStyles = {
@@ -56,6 +57,7 @@ export default function SelectComponent({
         styles={customStyles}
         placeholder={placeholder}
         onChange={onChange}
+        onFocus={onFocus}
         className="select"
         options={options}
         value={value}
@@ -72,4 +74,5 @@ SelectComponent.propTypes = {
   value: types.object,
   options: types.array,
   onChange: types.func,
+  onFocus: types.func,
 };
