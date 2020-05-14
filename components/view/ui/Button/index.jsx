@@ -9,21 +9,20 @@ import Text from '../Text';
 
 // Style
 
-import styles from './button.module.scss';
+import styles from './style.module.scss';
 
 export default function Button({
   uppercase,
   disabled,
-  children,
+  text,
   onClick,
-  style,
+  className,
   color,
   type,
   border,
   load,
   height,
   width,
-  text = '',
 }) {
   // Modifiers
 
@@ -41,22 +40,17 @@ export default function Button({
 
   return (
     <button
-      className={ButtonClass}
+      className={className || ButtonClass}
       disabled={disabled}
       onClick={load || disabled ? null : onClick}
-      style={style}
       type={type}
     >
       {load ? (
         <Loader />
       ) : (
         <div className="button__content">
-          <Text
-            // medium={medium}
-            color="inherit"
-            uppercase={uppercase}
-          >
-            {text || children}
+          <Text color="inherit" uppercase={uppercase}>
+            {text}
           </Text>
         </div>
       )}
@@ -67,7 +61,7 @@ export default function Button({
 // Default value for props
 
 Button.defaultProps = {
-  children: 'Text',
+  text: 'Text',
   color: 'third',
   type: 'button',
   height: 'md',
@@ -78,10 +72,10 @@ Button.defaultProps = {
 
 Button.propTypes = {
   uppercase: types.bool,
-  children: types.oneOfType([types.string, types.number, types.node]),
+  text: types.oneOfType([types.string, types.number, types.node]),
   disabled: types.bool,
   onClick: types.func,
-  style: types.object,
+  className: types.string,
   border: types.bool,
   color: types.oneOf(['third', 'secondary', 'on-primary']),
   height: types.oneOf(['md', 'big']),

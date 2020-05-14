@@ -71,7 +71,7 @@ export default function SelectComponent({
 
 SelectComponent.propTypes = {
   placeholder: types.string,
-  value: types.object,
+  value: types.oneOfType([types.string, types.object]),
   options: types.array,
   onChange: types.func,
   onFocus: types.func,

@@ -1,20 +1,21 @@
 .wrapper {
   display: block;
   background: #252f4d;
+  height: 1000px;
 
   .container {
     background: #f5fafe;
     width: 70%;
-    height: 100vh;
+    height: 940px;
     border-radius: 25px 25px 0 0;
     margin: 0 auto;
 
     .validation {
       display: block;
       width: 39%;
-      padding-top: 5%;
+      padding-top: 9%;
       margin: 0 auto;
-      height: 95%;
+      height: 9%;
 
       .validation-button__login {
         border: 1px solid #f5fafe;
@@ -68,11 +69,11 @@
         width: 100%;
 
         .validation-number__first {
-          width: 25%;
+          width: 30%;
           margin-right: 3%;
         }
         .validation-number__second {
-          width: 72%;
+          width: 67%;
 
           & input::-webkit-outer-spin-button,
           & input::-webkit-inner-spin-button {

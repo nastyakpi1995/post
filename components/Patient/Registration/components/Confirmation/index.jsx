@@ -6,6 +6,7 @@ import Header from '../../../../view/objects/AuthHeader';
 import Input from '../../../../view/ui/Input';
 import FieldLabel from '../../../../view/ui/FieldLabel';
 import { Button } from '../../../../view/ui';
+import ErrorMessage from '../../../../view/ui/ErrorMessage';
 import styles from './style.module.scss';
 import RegisterSchema from '../../Forms/registerForm/ConfigmationForm';
 
@@ -55,7 +56,7 @@ function Confirmation({
                   name="confirmCode"
                 />
                 {touched.confirmCode && errors.confirmCode ? (
-                  <div>{errors.confirmCode}</div>
+                  <ErrorMessage text={errors.confirmCode} />
                 ) : null}
               </FieldLabel>
               <Button
@@ -73,7 +74,7 @@ function Confirmation({
               <Button
                 id="logInCode"
                 className={styles['validation-button__login']}
-                text={t('confirmation.login')}
+                text={t('confirmation.buttonLogIn')}
                 handleClick={handleLogIn}
               />
             </form>

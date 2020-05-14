@@ -4,7 +4,7 @@ import React from 'react';
 
 // Style
 
-import styles from './input.module.scss';
+import styles from './style.module.scss';
 
 // ----------------
 

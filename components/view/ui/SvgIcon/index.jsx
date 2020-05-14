@@ -5,7 +5,7 @@ import React from 'react';
 
 // Style
 
-import styles from './svg-icon.module.scss';
+import styles from './style.module.scss';
 
 export default function SvgIcon(props) {
   const {
