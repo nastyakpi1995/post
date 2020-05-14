@@ -1,16 +1,11 @@
-@import '../../../../styles/constants/colors';
+.selectComponent {
+  cursor: pointer;
 
-.select {
-  border: 1px solid $borderColor;
-  height: 44px;
-  box-sizing: border-box;
-  padding: 0 14px;
-  border-radius: 8px;
-  background: $primary;
-  font-family: Avenir Next;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  color: $onPrimary;
-  width: 100%;
+  .select {
+    background-color: green;
+  }
+
+  .test__control {
+    background-color: red;
+  }
 }

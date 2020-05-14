@@ -7,9 +7,9 @@ import ReactIcon from '../ReactIcon';
 
 // Style
 
-import styles from './checkbox.module.scss';
+import styles from './style.module.scss';
 
-export default function Checkbox({ onClick, checked, color }) {
+export default function Checkbox({ onClick, checked, color, name, onChange }) {
   // Modifiers
 
   const CheckBoxClass = classNames({
@@ -20,7 +20,16 @@ export default function Checkbox({ onClick, checked, color }) {
   // Render
 
   return (
-    <div className={CheckBoxClass} onClick={onClick}>
+    <div className={CheckBoxClass} onClick={onClick || (() => {})}>
+      {onChange && name && (
+        <input
+          name={name}
+          type="checkbox"
+          onChange={onChange}
+          className={styles['checkbox__hidden-input']}
+          checked={checked}
+        />
+      )}
       <div className={styles.checkbox__icon}>
         <ReactIcon size="sm" color="third">
           <FaCheck />
@@ -33,8 +42,10 @@ export default function Checkbox({ onClick, checked, color }) {
 // Type of props
 
 Checkbox.propTypes = {
-  onClick: types.func.isRequired,
+  onClick: types.func,
+  onChange: types.func,
   checked: types.bool,
+  name: types.string,
   color: types.oneOf(['valid', 'secondary']),
 };
 

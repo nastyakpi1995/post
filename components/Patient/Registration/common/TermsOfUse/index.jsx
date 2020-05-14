@@ -6,13 +6,13 @@ import styles from './style.module.scss';
 const TermsOfUse = ({ t }) => {
   return (
     <p className={styles.checkbox__title}>
-      {t('generalInfo.privacyPolicy.iHaveRead')}
+      {t('generalInfo.privacyPolicy.iHaveRead')}{' '}
       <span>
         <a href="#" className={cn(styles.link, styles.terms)}>
-          {t('generalInfo.privacyPolicy.terms')}
+          {t('generalInfo.privacyPolicy.terms')}{' '}
         </a>
       </span>
-      {t('generalInfo.privacyPolicy.and')}
+      {t('generalInfo.privacyPolicy.and')}{' '}
       <span>
         <a href="#" className={cn(styles.link, styles.policy)}>
           {t('generalInfo.privacyPolicy.privacyPolicy')}

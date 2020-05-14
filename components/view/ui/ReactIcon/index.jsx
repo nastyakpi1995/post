@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 // Styles
 
-import styles from './react-icon.module.scss';
+import styles from './style.module.scss';
 
 export default function ReactIcon({
   className,
