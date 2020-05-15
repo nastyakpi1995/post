@@ -14,7 +14,14 @@ export default function FieldLabel({ text, children, className, error }) {
   return (
     <div className={styles.fieldLabel}>
       <div className={styles.fieldLabel__title}>
-        <Text uppercase medium tagName="p" size="xs" color="onPrimaryLight-2">
+        <Text
+          uppercase
+          spacing
+          medium
+          tagName="p"
+          size="xs"
+          color="onPrimaryLight-2"
+        >
           {text}
         </Text>
       </div>

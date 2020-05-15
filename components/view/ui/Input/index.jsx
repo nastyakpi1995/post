@@ -19,6 +19,7 @@ export default function Input(props) {
     name,
     error,
     type,
+    id,
     ...rest
   } = props;
 
@@ -43,6 +44,7 @@ export default function Input(props) {
         value={value}
         name={name}
         type={type}
+        id={id}
         {...rest}
       />
     </div>
@@ -60,4 +62,10 @@ Input.propTypes = {
   value: types.oneOfType([types.string, types.number]),
   name: types.string,
   error: types.bool,
+  type: types.string,
+  id: types.string,
+};
+
+Input.defaultProps = {
+  type: 'text',
 };

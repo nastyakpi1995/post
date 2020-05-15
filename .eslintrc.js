@@ -44,5 +44,6 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'import/no-unresolved': 'off',
     'no-unused-expressions': 0,
+    'import/prefer-default-export': 0,
   },
 };

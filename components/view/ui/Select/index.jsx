@@ -4,7 +4,7 @@ import types from 'prop-types';
 
 // Style
 
-import styles from './select.module.scss';
+import styles from './style.module.scss';
 
 export default function SelectComponent({
   value,

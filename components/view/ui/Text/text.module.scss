@@ -9,8 +9,16 @@
     color: $onPrimary;
   }
 
+  &--color-primary {
+    color: $primary;
+  }
+
   &--color-onPrimaryLight-2 {
     color: $onPrimaryLight-2;
+  }
+
+  &--color-third {
+    color: $third;
   }
 
   &--color-inherit {
@@ -100,5 +108,13 @@
 
   &--spacing {
     letter-spacing: 1px;
+  }
+
+  &--line-height-md {
+    line-height: 34px;
+  }
+
+  &--line-height-sm {
+    line-height: 22px;
   }
 }

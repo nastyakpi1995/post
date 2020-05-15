@@ -1,0 +1,11 @@
+@import '../../../../../styles/constants/config.scss';
+
+.help-block {
+  margin-top: 80px;
+  background-color: $thirdDark;
+  padding: 25px 20px;
+  border-radius: $borderRadius;
+
+  &__text {
+  }
+}

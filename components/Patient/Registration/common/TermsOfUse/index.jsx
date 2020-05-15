@@ -6,7 +6,7 @@ import styles from './style.module.scss';
 export function TermsOfUse({ t }) {
   return (
     <p className={styles.checkbox__title}>
-      {`${t('generalInfo.privacyPolicy.iHaveRead')} `}
+      {/* {`${t('generalInfo.privacyPolicy.iHaveRead')} `}
       <span>
         <a href="#" className={cn(styles.link, styles.terms)}>
           {`${t('generalInfo.privacyPolicy.terms')} `}
@@ -18,7 +18,7 @@ export function TermsOfUse({ t }) {
           {t('generalInfo.privacyPolicy.privacyPolicy')}
         </a>
       </span>
-      .
+      . */}
     </p>
   );
 }

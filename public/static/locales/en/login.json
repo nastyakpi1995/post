@@ -1,0 +1,12 @@
+{
+  "loginTitle": "Login with phone number",
+  "loginCheckboxText": "Keep me logged in",
+  "loginButtonButtonText1": "Login",
+  "loginButtonButtonText2": "Forgot your password?",
+  "loginAsideTitle": "Don't have an account? Join DocWho as a",
+  "loginAsideDesc": "Save time, attract new patients, reduce the rate of dishonored appointments and provide a new service to patients",
+  "loginAsideButton": "register",
+  "loginHelpText": "Need help? Contact our customer support service by email",
+  "loginDoctor": "Doctor",
+  "loginPatient": "Patient"
+}

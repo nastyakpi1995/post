@@ -24,6 +24,7 @@ export default function Button({
   height,
   width,
   text = '',
+  medium,
 }) {
   // Modifiers
 
@@ -51,11 +52,7 @@ export default function Button({
         <Loader />
       ) : (
         <div className="button__content">
-          <Text
-            // medium={medium}
-            color="inherit"
-            uppercase={uppercase}
-          >
+          <Text medium={medium} color="inherit" uppercase={uppercase}>
             {text || children}
           </Text>
         </div>
@@ -84,8 +81,8 @@ Button.propTypes = {
   style: types.object,
   border: types.bool,
   color: types.oneOf(['third', 'secondary', 'on-primary']),
-  height: types.oneOf(['md', 'big']),
-  width: types.oneOf(['xs', 'sm', 'md']),
+  height: types.oneOf(['md', 'lg']),
+  width: types.oneOf(['xs', 'sm', 'md', 'full']),
   load: types.bool,
   type: types.oneOf(['button', 'submit']),
 };
