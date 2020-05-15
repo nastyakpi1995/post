@@ -5,7 +5,7 @@ import { i18n, withTranslation } from 'i18n';
 import { Formik, Field } from 'formik';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 import * as Yup from 'yup';
-import isNil from 'lodash/isNil';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
 
@@ -40,14 +40,18 @@ function LoginForm({ t, onSubmit, type, authErrors }) {
 
   const FormTitle = classNames({
     [styles['login-form__title']]: true,
-    [styles['login-form__title--error']]: !isNil(authErrors),
+    [styles['login-form__title--error']]: !isEmpty(authErrors),
   });
 
   return (
     <Formik
       initialValues={{ phone_number: '', password: '', user_type: type }}
       onSubmit={(values, actions) => {
-        onSubmit(values);
+        try {
+          onSubmit(values);
+        } catch (error) {
+          console.log();
+        }
       }}
       validationSchema={Yup.object().shape({
         phone_number: Yup.number().required(),
@@ -87,15 +91,15 @@ function LoginForm({ t, onSubmit, type, authErrors }) {
                 {t('loginTitle')}
               </Text>
             </p>
-            {/*
-            {!isNil(authErrors) && (
+
+            {!isEmpty(authErrors) && (
               <div className={styles['login-form__container-error']}>
                 <ErrorMessage
                   type="error"
                   text="Incorrect National ID number or password. "
                 />
               </div>
-            )} */}
+            )}
 
             <ContainerRow>
               <Field name="phone_number">

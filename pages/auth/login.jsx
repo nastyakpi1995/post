@@ -25,13 +25,18 @@ class LoginRoute extends Component {
   }
 
   render() {
-    return <LoginPage type="CUS" onSubmit={this.handleSubmit} />;
+    const { authErrors } = this.props;
+    return (
+      <LoginPage
+        authErrors={authErrors}
+        type="CUS"
+        onSubmit={this.handleSubmit}
+      />
+    );
   }
 }
 
-export default connect(
-  (state) => {
-    return {};
-  },
-  { loginAction: login },
-)(LoginRoute);
+export default connect((state) => ({ authErrors: state.auth.authErrors }), {
+  loginAction: login,
+  // clearError: clearLoginError,
+})(LoginRoute);

@@ -9,7 +9,7 @@ export default function (state, action) {
 
   switch (action.type) {
     case AUTH_TYPES.LOGIN_REQUEST: {
-      return { ...state, isFetching: true };
+      return { ...state, isFetching: true, authErrors: {} };
     }
 
     case AUTH_TYPES.LOGIN_SUCCESS: {

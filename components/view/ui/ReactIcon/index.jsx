@@ -42,7 +42,7 @@ ReactIcon.propTypes = {
   pointer: types.bool,
   rotate: types.oneOf(['90', '180', '270', '360']),
   size: types.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl']),
-  color: types.oneOf(['primary', 'third']),
+  color: types.oneOf(['primary', 'third', 'secondary']),
   className: types.string,
 };
 

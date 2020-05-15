@@ -63,7 +63,6 @@ export default function Button({
 // Default value for props
 
 Button.defaultProps = {
-  text: 'Text',
   color: 'third',
   type: 'button',
   height: 'md',
