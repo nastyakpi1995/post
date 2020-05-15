@@ -63,7 +63,7 @@ General.propTypes = {
   values: types.shape({
     firstName: types.string,
     lastName: types.string,
-    nationalId: types.oneOfType([types.number, types.string]),
+    nationalId: types.oneOfType([types.string, types.number]),
   }),
   errors: types.shape({
     firstName: types.string,

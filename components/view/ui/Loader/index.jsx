@@ -4,7 +4,7 @@ import React from 'react';
 
 // Style
 
-import styles from './loader.module.scss';
+import styles from './style.module.scss';
 
 export default function Loader(props) {
   const { style, color, size } = props;
