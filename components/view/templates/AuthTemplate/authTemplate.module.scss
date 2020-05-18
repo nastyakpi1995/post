@@ -1,0 +1,50 @@
+@import '../../../../styles/constants/config.scss';
+
+.auth-template {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr;
+
+  &__body {
+    background-color: $onPrimary;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  &__container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: $md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__content {
+    padding: 70px 15px 15px 15px;
+    background-color: $primaryLight;
+    display: flex;
+    align-items: center;
+    border-radius: 20px 0 0 0;
+    @media (max-width: $md) {
+      padding-top: 30px;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+
+  &__aside {
+    padding: 70px 15px 15px 15px;
+    background-color: $third;
+    display: flex;
+    align-items: center;
+    border-radius: 0 20px 0 0;
+    @media (max-width: $md) {
+      padding-top: 30px;
+      border-radius: 0;
+    }
+  }
+}

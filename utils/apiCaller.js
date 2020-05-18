@@ -20,15 +20,11 @@ export default async function apiCaller(config, after = false, token = true) {
 
   // Data preparation
 
-  console.log('1', process.env.API_URL);
-
   const fullConfig = {
-    // TODO || _ENV.api
     baseURL: process.env.API_URL,
     method: 'get',
     ...config,
     headers: { ...config.headers, ...defaultHeaders },
-    // data,
   };
 
   // Request
@@ -40,7 +36,7 @@ export default async function apiCaller(config, after = false, token = true) {
     }
 
     return res.data;
-  } catch (err) {
-    return {};
+  } catch (error) {
+    return Promise.reject(error);
   }
 }

@@ -1,0 +1,21 @@
+.container-row {
+  &--size-xs {
+    margin-bottom: 15px;
+  }
+
+  &--size-sm {
+    margin-bottom: 20px;
+  }
+
+  &--size-md {
+    margin-bottom: 30px;
+  }
+
+  &--size-lg {
+    margin-bottom: 40px;
+  }
+
+  &--size-xl {
+    margin-bottom: 50px;
+  }
+}

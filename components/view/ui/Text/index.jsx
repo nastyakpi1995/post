@@ -20,6 +20,9 @@ export default function Text({
   underline,
   className,
   uppercase,
+  spacing,
+  semibold,
+  lineHeight,
 }) {
   const Tag = tagName || 'p';
 
@@ -33,8 +36,11 @@ export default function Text({
           [styles[`text--font-${font}`]]: font,
           [styles['text--medium']]: medium,
           [styles['text--bold']]: bold,
+          [styles['text--semibold']]: semibold,
+          [styles['text--spacing']]: spacing,
           [styles['text--underline']]: underline,
           [styles['text--uppercase']]: uppercase,
+          [styles[`text--line-height-${lineHeight}`]]: lineHeight,
         },
         className,
       )}
@@ -50,11 +56,18 @@ Text.propTypes = {
   children: types.oneOfType([types.string, types.number, types.node]),
   className: types.string,
   medium: types.bool,
-  color: types.oneOf(['onPrimary', 'onPrimaryLight-2', 'inherit']),
-  size: types.oneOf(['xs', 'sm', 'default', 'md', 'xl', 'xxl']),
+  color: types.oneOf([
+    'onPrimary',
+    'onPrimaryLight-2',
+    'inherit',
+    'third',
+    'primary',
+  ]),
+  size: types.oneOf(['xs', 'sm', 'default', 'md', 'xl', 'xxl', 'h2']),
   bold: types.bool,
   underline: types.bool,
   uppercase: types.bool,
+  lineHeight: types.string,
 };
 
 // Default value for props

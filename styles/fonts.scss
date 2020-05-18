@@ -10,13 +10,21 @@
   font-family: 'AvenirNext';
   font-weight: 500;
   font-style: normal;
+  src: url('/fonts/AvenirNextCyr-Medium.woff2') format('woff2'),
+    url('/fonts/AvenirNextCyr-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'AvenirNext';
+  font-weight: 600;
+  font-style: normal;
   src: url('/fonts/AvenirNextCyr-Demi.woff2') format('woff2'),
     url('/fonts/AvenirNextCyr-Demi.woff') format('woff');
 }
 
 @font-face {
   font-family: 'AvenirNext';
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
   src: url('/fonts/AvenirNextCyr-Bold.woff2') format('woff2'),
     url('/fonts/AvenirNextCyr-Bold.woff') format('woff');

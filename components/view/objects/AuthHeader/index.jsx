@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { i18n, withTranslation } from 'i18n';
+import Router from 'next/router';
 import { Button, NativeSelect } from '../../ui';
 import styles from './style.module.scss';
 
@@ -16,6 +17,7 @@ const Header = ({ t }) => (
       <Button
         className={styles['header-button__login']}
         text={t('loginAsDoctor')}
+        onClick={() => Router.push({ pathname: '/auth/doctor' })}
       />
       {i18n.languages && (
         <NativeSelect

@@ -1,21 +1,16 @@
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import Registration from './auth/signup';
 
-import getUser from '../redux/actions/userActions';
+// ----------------
 
-function Home(props) {
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    props.getUser();
-  }, []);
-  return (
-    <div className="container">
-      <div className="mainContainer">
-        <Registration />
-      </div>
-    </div>
-  );
+class HomePage extends Component {
+  static routeName = 'Login';
+
+  static login = true;
+
+  render() {
+    return <div>Home Page</div>;
+  }
 }
 
-export default connect(null, { getUser })(Home);
+export default HomePage;

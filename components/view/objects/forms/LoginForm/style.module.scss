@@ -1,0 +1,25 @@
+@import '../../../../../styles/constants/config.scss';
+.login-form {
+  flex: 1;
+  max-width: 330px;
+  margin: 0 auto;
+
+  &__title {
+    margin-bottom: 50px;
+    @media (max-width: $md) {
+      margin-bottom: 30px;
+    }
+
+    &--error {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__container-error {
+    margin-bottom: 20px;
+  }
+
+  &__container-link {
+    text-align: center;
+  }
+}

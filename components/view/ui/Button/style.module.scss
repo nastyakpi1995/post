@@ -74,9 +74,12 @@
     font-size: 12px;
   }
 
-  &--height-big {
+  &--height-lg {
     font-size: 14px;
     height: 48px;
+    @media (max-width: $md) {
+      height: 38px;
+    }
   }
 
   // width

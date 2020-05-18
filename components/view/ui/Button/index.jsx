@@ -23,6 +23,8 @@ export default function Button({
   load,
   height,
   width,
+  medium,
+  children,
 }) {
   // Modifiers
 
@@ -49,8 +51,8 @@ export default function Button({
         <Loader />
       ) : (
         <div className="button__content">
-          <Text color="inherit" uppercase={uppercase}>
-            {text}
+          <Text medium={medium} color="inherit" uppercase={uppercase}>
+            {text || children}
           </Text>
         </div>
       )}
@@ -61,7 +63,6 @@ export default function Button({
 // Default value for props
 
 Button.defaultProps = {
-  text: 'Text',
   color: 'third',
   type: 'button',
   height: 'md',
@@ -78,8 +79,8 @@ Button.propTypes = {
   className: types.string,
   border: types.bool,
   color: types.oneOf(['third', 'secondary', 'on-primary']),
-  height: types.oneOf(['md', 'big']),
-  width: types.oneOf(['xs', 'sm', 'md']),
+  height: types.oneOf(['md', 'lg']),
+  width: types.oneOf(['xs', 'sm', 'md', 'full']),
   load: types.bool,
   type: types.oneOf(['button', 'submit']),
 };
