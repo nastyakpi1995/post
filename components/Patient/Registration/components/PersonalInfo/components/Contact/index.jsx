@@ -1,13 +1,24 @@
 import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
-import Input from '../../../../../../view/ui/Input';
-import FieldLabel from '../../../../../../view/ui/FieldLabel';
-import { CITIES, COUNTRIES } from '../../../../constants';
-import { NativeSelect } from '../../../../../../view/ui';
+import { getCountries, getCities } from 'countries-cities';
+import {
+  Input,
+  FieldLabel,
+  Select,
+  ErrorMessage,
+} from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
-function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
+function Contact({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  t,
+  setFieldValue,
+}) {
   return (
     <div className={styles['validation-contact']}>
       <p className={styles['validation-description']}>
@@ -16,23 +27,38 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
       <div className={styles['contact-wrapper']}>
         <div className={styles['contact-country']}>
           <FieldLabel text={t('personalInfo.contact.country')}>
-            <NativeSelect
-              options={COUNTRIES}
+            <Select
+              options={getCountries().map((item) => ({
+                value: item,
+                label: item,
+              }))}
               name="country"
-              value={values.country}
-              onHandleBlur={handleBlur}
-              onHandleChange={handleChange}
+              onChange={({ value, label }) => {
+                setFieldValue('country', value);
+                setFieldValue('city', getCities(value));
+              }}
+              defaultValue={{ value: values.country, label: values.country }}
+              getOptionValue={() => ({
+                value: values.country,
+                label: values.country,
+              })}
             />
           </FieldLabel>
         </div>
         <div className={styles['contact-city']}>
           <FieldLabel text={t('personalInfo.contact.city')}>
-            <NativeSelect
-              options={CITIES}
+            <Select
+              options={getCities(values.country).map((item) => ({
+                value: item,
+                label: item,
+              }))}
               name="city"
-              value={values.city}
-              onHandleBlur={handleBlur}
-              onHandleChange={handleChange}
+              onChange={({ value, label }) => setFieldValue('city', value)}
+              defaultValue={{ value: values.city, label: values.city }}
+              getOptionValue={() => ({
+                value: values.city,
+                label: values.city,
+              })}
             />
           </FieldLabel>
         </div>
@@ -45,9 +71,12 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
             value={values.direction}
             onChange={handleChange}
             onBlur={handleBlur}
+            error={
+              errors.direction && touched.direction ? errors.direction : null
+            }
           />
           {errors.direction && touched.direction ? (
-            <div>{errors.direction}</div>
+            <ErrorMessage text={errors.direction} />
           ) : null}
         </FieldLabel>
       </div>
@@ -56,14 +85,18 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
           <FieldLabel text={t('personalInfo.contact.houseNumber')}>
             <Input
               type="number"
-              placeholder="26"
               name="houseNumber"
               value={values.houseNumber}
               onChange={handleChange}
               onBlur={handleBlur}
+              error={
+                errors.houseNumber && touched.houseNumber
+                  ? errors.houseNumber
+                  : null
+              }
             />
             {errors.houseNumber && touched.houseNumber ? (
-              <div>{errors.houseNumber}</div>
+              <ErrorMessage text={errors.houseNumber} />
             ) : null}
           </FieldLabel>
         </div>
@@ -75,9 +108,14 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
               value={values.apartmentNumber}
               onChange={handleChange}
               onBlur={handleBlur}
+              error={
+                errors.apartmentNumber && touched.apartmentNumber
+                  ? errors.apartmentNumber
+                  : null
+              }
             />
             {errors.apartmentNumber && touched.apartmentNumber ? (
-              <div>{errors.apartmentNumber}</div>
+              <ErrorMessage text={errors.apartmentNumber} />
             ) : null}
           </FieldLabel>
         </div>
@@ -85,12 +123,15 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
           <FieldLabel text={t('personalInfo.contact.floorNumber')}>
             <Input
               type="number"
-              placeholder="2"
-              name="floorNumber"
-              value={values.floorNumber}
+              name="floor"
+              value={values.floor}
               onChange={handleChange}
               onBlur={handleBlur}
+              error={errors.floor && touched.floor ? errors.floor : null}
             />
+            {errors.floor && touched.floor ? (
+              <ErrorMessage text={errors.floor} />
+            ) : null}
           </FieldLabel>
         </div>
       </div>
@@ -98,14 +139,14 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
         <FieldLabel text={t('personalInfo.contact.zipCode')}>
           <Input
             type="number"
-            placeholder="1000"
             name="zipCode"
             value={values.zipCode}
             onChange={handleChange}
             onBlur={handleBlur}
+            error={errors.zipCode && touched.zipCode ? errors.zipCode : null}
           />
           {errors.zipCode && touched.zipCode ? (
-            <div>{errors.zipCode}</div>
+            <ErrorMessage text={errors.zipCode} />
           ) : null}
         </FieldLabel>
       </div>
@@ -117,8 +158,11 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            error={errors.email && touched.email ? errors.email : null}
           />
-          {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          {errors.email && touched.email ? (
+            <ErrorMessage text={errors.email} />
+          ) : null}
         </FieldLabel>
       </div>
     </div>
@@ -127,8 +171,8 @@ function Contact({ values, errors, touched, handleChange, handleBlur, t }) {
 
 Contact.propTypes = {
   values: types.shape({
-    country: types.oneOf(COUNTRIES),
-    city: types.oneOf(CITIES),
+    country: types.any,
+    city: types.any,
     direction: types.string,
     houseNumber: types.oneOfType([types.string, types.number]),
     apartmentNumber: types.oneOfType([types.string, types.number]),

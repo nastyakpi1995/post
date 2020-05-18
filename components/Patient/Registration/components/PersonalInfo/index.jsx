@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
+import { getCountries, getCities } from 'countries-cities';
 import Header from '../../../../view/objects/AuthHeader';
 import { Button } from '../../../../view/ui';
 import { General, Contact, Personal } from './components';
-import { GENDER_TYPES, COUNTRIES, CITIES } from '../../constants';
+import { GENDER_TYPES } from '../../constants';
 import styles from './style.module.scss';
-import RegisterSchema from '../../Forms/registerForm/ConfigmationForm';
+import RegisterPersonalSchema from '../../Forms/registerForm/PersonalForm';
+import * as registrationActions from '../../../../../redux/actions/registrationActions';
 
-function PersonalInfo({ onHandleChangePage = () => {}, t }) {
+function PersonalInfo({
+  onHandleChangePage,
+  t,
+  personalInfoSuccess,
+  onRequestPersonalInfo,
+}) {
+  useEffect(() => {
+    if (personalInfoSuccess) {
+      onHandleChangePage();
+    }
+  }, [personalInfoSuccess]);
+
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -24,19 +38,24 @@ function PersonalInfo({ onHandleChangePage = () => {}, t }) {
               nationalId: '',
               dateOfBirth: '2002-08-16',
               gender: GENDER_TYPES[0],
-              country: COUNTRIES[0],
-              city: CITIES[0],
+              country: getCountries()[21], // Belgium
+              city: getCities(getCountries()[21])[0],
               direction: '',
               houseNumber: '',
               apartmentNumber: '',
-              floorNumber: '',
+              floor: '',
               zipCode: '',
               email: '',
             }}
-            validationSchema={RegisterSchema(t)}
+            validationSchema={RegisterPersonalSchema(t)}
             onSubmit={(values, actions) => {
-              // TODO: should save values to redux here
-              onHandleChangePage();
+              setTimeout(() => {
+                const updatedData = {
+                  ...values,
+                  gender: values.gender === GENDER_TYPES[0] ? 'm' : 'fm',
+                };
+                onRequestPersonalInfo(updatedData);
+              }, 0);
             }}
           >
             {({
@@ -46,6 +65,7 @@ function PersonalInfo({ onHandleChangePage = () => {}, t }) {
               handleChange,
               handleBlur,
               handleSubmit,
+              setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 <General
@@ -61,6 +81,7 @@ function PersonalInfo({ onHandleChangePage = () => {}, t }) {
                   touched={touched}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
                 />
                 <Contact
                   values={values}
@@ -68,6 +89,7 @@ function PersonalInfo({ onHandleChangePage = () => {}, t }) {
                   touched={touched}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
                 />
                 <div className={styles['validation-button']}>
                   <Button
@@ -85,4 +107,17 @@ function PersonalInfo({ onHandleChangePage = () => {}, t }) {
   );
 }
 
-export default withTranslation('registration')(PersonalInfo);
+const mapDispatchToProps = (dispatch) => ({
+  onRequestPersonalInfo: (data) =>
+    dispatch(registrationActions.requestPersonalInfo(data)),
+});
+
+const mapStateToProps = (state) => ({
+  personalInfo: state.registration.personalInfo,
+  personalInfoErrors: state.registration.personalInfoErrors,
+  personalInfoSuccess: state.registration.personalInfoSuccess,
+});
+
+export default withTranslation('registration')(
+  connect(mapStateToProps, mapDispatchToProps)(PersonalInfo),
+);

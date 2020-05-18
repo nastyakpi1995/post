@@ -8,10 +8,11 @@ export default function InputPhone({
   value,
   onChange,
   country,
-  name,
+  name = '',
   id,
   res,
   error,
+  enableAreaCodes,
 }) {
   return (
     <div className={styles.container}>
@@ -19,6 +20,7 @@ export default function InputPhone({
         inputClass={`input-phone__input ${error && 'error'}`}
         containerClass="input-phone__container"
         onChange={onChange}
+        enableAreaCodes={enableAreaCodes}
         country={country}
         value={value}
         name={name}
@@ -33,6 +35,7 @@ export default function InputPhone({
 
 InputPhone.propTypes = {
   value: types.string.isRequired,
+  enableAreaCodes: types.bool,
   onChange: types.func.isRequired,
   country: types.string,
   name: types.string,

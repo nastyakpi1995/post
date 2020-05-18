@@ -2,14 +2,14 @@ import React from 'react';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-export default function RegisterSchema(t) {
+export default function RegisterConfirmSchema(t) {
   return Yup.object({
     confirmCode: Yup.string()
-      .test('confirmCode', t('validation.exactly8'), (val) => val.length === 8)
+      .test('confirmCode', t('validation.exactly8'), (val) => val.length === 6)
       .required(t('validation.required')),
   });
 }
 
-RegisterSchema.propTypes = {
+RegisterConfirmSchema.propTypes = {
   t: PropTypes.func,
 };

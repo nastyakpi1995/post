@@ -1,12 +1,16 @@
 import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
-import Input from '../../../../../../view/ui/Input';
 import { GENDER_TYPES } from '../../../../constants';
-import { FieldLabel, NativeSelect } from '../../../../../../view/ui';
+import {
+  FieldLabel,
+  Select,
+  Input,
+  ErrorMessage,
+} from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
-function Personal({ values, errors, touched, handleChange, handleBlur, t }) {
+function Personal({ values, errors, touched, handleChange, t, setFieldValue }) {
   return (
     <div className={styles['validation-personal']}>
       <p className={styles['validation-description']}>
@@ -25,15 +29,21 @@ function Personal({ values, errors, touched, handleChange, handleBlur, t }) {
         </div>
         <div className={styles['personal-gender']}>
           <FieldLabel text={t('personalInfo.personal.gender')}>
-            <NativeSelect
-              options={GENDER_TYPES}
+            <Select
+              options={GENDER_TYPES.map((item) => ({
+                value: item,
+                label: item,
+              }))}
               name="gender"
-              value={values.gender}
-              onHandleBlur={handleBlur}
-              onHandleChange={handleChange}
+              onChange={({ value, label }) => setFieldValue('gender', value)}
+              defaultValue={{ value: values.gender, label: values.gender }}
+              getOptionValue={() => ({
+                value: values.gender,
+                label: values.gender,
+              })}
             />
             {errors.gender && touched.gender ? (
-              <div>{errors.gender}</div>
+              <ErrorMessage text={errors.gender} />
             ) : null}
           </FieldLabel>
         </div>
@@ -56,7 +66,6 @@ Personal.propTypes = {
     gender: types.string,
   }),
   handleChange: types.func,
-  handleBlur: types.func,
   t: types.func,
 };
 

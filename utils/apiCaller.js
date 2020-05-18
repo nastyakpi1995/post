@@ -36,7 +36,10 @@ export default async function apiCaller(config, after = false, token = true) {
     }
 
     return res.data;
-  } catch (error) {
-    return Promise.reject(error);
+  } catch (err) {
+    if (err.response) {
+      throw err.response.data || err.response.statusText;
+    }
+    return Promise.reject(err);
   }
 }

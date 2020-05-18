@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { Formik } from 'formik';
 import { withTranslation } from 'i18n';
+import { connect } from 'react-redux';
 import TermsOfUse from '../../common/TermsOfUse';
 import Header from '../../../../view/objects/AuthHeader';
-import Input from '../../../../view/ui/Input';
-import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button, Checkbox } from '../../../../view/ui';
-import InputPhone from '../../../../view/ui/InputPhone';
-import ErrorMessage from '../../../../view/ui/ErrorMessage';
-import { MOBILE_PHONE_CODES } from '../../constants';
+import {
+  Button,
+  Checkbox,
+  Input,
+  FieldLabel,
+  InputPhone,
+  ErrorMessage,
+} from '../../../../view/ui';
+import * as registrationActions from '../../../../../redux/actions/registrationActions';
 import RegisterSchema from '../../Forms/registerForm/GeneralForm';
 import styles from './style.module.scss';
 
-function GeneralInfo({ onHandleChangePage, t }) {
+function GeneralInfo({
+  onHandleChangePage,
+  t,
+  onRequestSignUp,
+  serverErrors,
+  generalSuccess,
+}) {
+  useEffect(() => {
+    if (generalSuccess) {
+      onHandleChangePage();
+    }
+  }, [generalSuccess]);
+
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -24,14 +40,24 @@ function GeneralInfo({ onHandleChangePage, t }) {
             password: '',
             phoneNumber: '',
             repeatPassword: '',
-            phoneCode: MOBILE_PHONE_CODES[0],
+            phoneCode: '1',
             saveUser: true,
             terms: true,
           }}
           validationSchema={RegisterSchema(t)}
           onSubmit={(values, actions) => {
-            // TODO: should save values to redux here
-            onHandleChangePage();
+            setTimeout(() => {
+              const updatedValues = {
+                ...values,
+                phoneNumber: `+${values.phoneCode}${values.phoneNumber}`,
+                userType: 'CUS',
+              };
+              delete updatedValues.saveUser;
+              delete updatedValues.terms;
+              delete updatedValues.phoneCode;
+              onRequestSignUp(updatedValues);
+              actions.setFieldTouched('phoneNumber', false);
+            }, 0);
           }}
         >
           {({
@@ -41,6 +67,7 @@ function GeneralInfo({ onHandleChangePage, t }) {
             handleChange,
             handleBlur,
             handleSubmit,
+            setFieldValue,
           }) => {
             return (
               <form onSubmit={handleSubmit} className={styles.validation}>
@@ -55,8 +82,12 @@ function GeneralInfo({ onHandleChangePage, t }) {
                     <FieldLabel text={t('generalInfo.areaCode')}>
                       <InputPhone
                         name="phoneCode"
+                        country="us"
                         value={values.phoneCode}
-                        onChange={handleChange}
+                        onChange={(phone) => {
+                          setFieldValue('phoneCode', phone);
+                        }}
+                        enableAreaCodes
                       />
                     </FieldLabel>
                   </div>
@@ -73,6 +104,13 @@ function GeneralInfo({ onHandleChangePage, t }) {
                       {errors.phoneNumber && touched.phoneNumber ? (
                         <ErrorMessage text={errors.phoneNumber} />
                       ) : null}
+                      {serverErrors &&
+                      serverErrors.phoneNumber &&
+                      !touched.phoneNumber
+                        ? serverErrors.phoneNumber.map((el) => {
+                            return <ErrorMessage key={el} text={el} />;
+                          })
+                        : null}
                     </FieldLabel>
                   </div>
                 </div>
@@ -88,6 +126,11 @@ function GeneralInfo({ onHandleChangePage, t }) {
                       placeholder="Password"
                       name="password"
                       value={values.password}
+                      error={
+                        touched.password && errors.password
+                          ? errors.password
+                          : null
+                      }
                     />
                     {touched.password && errors.password ? (
                       <ErrorMessage text={errors.password} />
@@ -102,9 +145,18 @@ function GeneralInfo({ onHandleChangePage, t }) {
                       onChange={handleChange}
                       placeholder="Repeat Password"
                       name="repeatPassword"
+                      error={
+                        touched.repeatPassword && errors.repeatPassword
+                          ? errors.repeatPassword
+                          : null
+                      }
                     />
                     {touched.repeatPassword && errors.repeatPassword ? (
-                      <ErrorMessage text={errors.repeatPassword} />
+                      values.repeatPassword === values.password ? (
+                        <ErrorMessage text={errors.repeatPassword} />
+                      ) : (
+                        <ErrorMessage text="Passwords are not equal" />
+                      )
                     ) : null}
                   </FieldLabel>
                 </div>
@@ -175,4 +227,17 @@ GeneralInfo.propTypes = {
   t: PropTypes.func,
 };
 
-export default withTranslation('registration')(GeneralInfo);
+const mapDispatchToProps = (dispatch) => ({
+  onRequestSignUp: (data) =>
+    dispatch(registrationActions.requestConfirmation(data)),
+});
+
+const mapStateToProps = (state) => ({
+  generalInfo: state.registration.generalInfo,
+  generalSuccess: state.registration.generalSuccess,
+  serverErrors: state.registration.generalErrors,
+});
+
+export default withTranslation('registration')(
+  connect(mapStateToProps, mapDispatchToProps)(GeneralInfo),
+);
