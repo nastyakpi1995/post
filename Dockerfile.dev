@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 ENV PORT=3000
 ENV HOST_ENV=development
-ENV API_URL=https://docwoo-back-dev.scenario-projects.com
+ENV API_URL=https://docwoo-back-dev.scenario-projects.com/api/v1
 
 # Create app directory
 WORKDIR /home/node/app
