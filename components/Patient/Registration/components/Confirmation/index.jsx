@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
+import { connect } from 'react-redux';
 import Header from '../../../../view/objects/AuthHeader';
-import Input from '../../../../view/ui/Input';
-import FieldLabel from '../../../../view/ui/FieldLabel';
-import { Button } from '../../../../view/ui';
+import { Button, Input, FieldLabel } from '../../../../view/ui';
 import ErrorMessage from '../../../../view/ui/ErrorMessage';
 import styles from './style.module.scss';
-import RegisterSchema from '../../Forms/registerForm/ConfigmationForm';
+import RegisterConfirmSchema from '../../Forms/registerForm/ConfigmationForm';
+import * as registrationActions from '../../../../../redux/actions/registrationActions';
 
 function Confirmation({
   onHandleChangePage = () => {},
   handleRequestCode = () => {},
   handleLogIn = () => {},
   t,
-  mobileNumber = '+32345789524', // example
+  onSentConfirmation,
+  serverErrors,
+  generalInfo,
+  confirmationSuccess,
 }) {
+  useEffect(() => {
+    if (confirmationSuccess) {
+      onHandleChangePage();
+    }
+  }, [confirmationSuccess]);
+
   return (
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.container}>
         <Formik
           initialValues={{ confirmCode: '' }}
-          validationSchema={RegisterSchema(t)}
+          validationSchema={RegisterConfirmSchema(t)}
           onSubmit={(values, actions) => {
-            // TODO: should save values to redux here
-            onHandleChangePage();
+            setTimeout(() => {
+              const updatedData = {
+                ...generalInfo,
+                ...values,
+              };
+
+              onSentConfirmation(updatedData);
+            }, 0);
           }}
         >
           {({
@@ -43,7 +58,9 @@ function Confirmation({
               </h1>
               <p className={styles['validation-number__helper']}>
                 {`${t('confirmation.weHaveSent')} `}
-                <span className={styles.telephone}>{`${mobileNumber}. `}</span>
+                <span
+                  className={styles.telephone}
+                >{`${generalInfo.phoneNumber}. `}</span>
                 {t('confirmation.pleaseFillTheField')}
               </p>
               <FieldLabel text={t('confirmation.label')}>
@@ -54,6 +71,11 @@ function Confirmation({
                   onChange={handleChange}
                   onBlur={handleBlur}
                   name="confirmCode"
+                  error={
+                    touched.confirmCode && errors.confirmCode
+                      ? errors.confirmCode
+                      : null
+                  }
                 />
                 {touched.confirmCode && errors.confirmCode ? (
                   <ErrorMessage text={errors.confirmCode} />
@@ -92,4 +114,18 @@ Confirmation.propTypes = {
   t: PropTypes.func,
 };
 
-export default withTranslation('registration')(Confirmation);
+const mapDispatchToProps = (dispatch) => ({
+  onSentConfirmation: (generalInfo) =>
+    dispatch(registrationActions.requestGeneralInfo(generalInfo)),
+});
+
+const mapStateToProps = (state) => ({
+  generalInfo: state.registration.generalInfo,
+  serverErrors: state.registration.confirmationErrors,
+  confirmationSuccess: state.registration.confirmationSuccess,
+  generalSuccess: state.registration.generalSuccess,
+});
+
+export default withTranslation('registration')(
+  connect(mapStateToProps, mapDispatchToProps)(Confirmation),
+);

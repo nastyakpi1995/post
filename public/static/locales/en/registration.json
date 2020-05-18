@@ -55,7 +55,7 @@
   "validation": {
     "required": "This field is required",
     "length15": "Must be 15 characters or less",
-    "exactly8": "Must be exactly 8 characters",
+    "exactly8": "Must be exactly 6 characters",
     "noNegative": "Could not be negative"
   }
 }

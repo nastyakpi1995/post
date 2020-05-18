@@ -5,11 +5,18 @@ import PropTypes from 'prop-types';
 export default function RegisterSchema(t) {
   return Yup.object({
     password: Yup.string()
+      .min(8, 'Password must contain at least 8 characters.')
       .max(15, t('validation.length15'))
       .required(t('validation.required')),
     repeatPassword: Yup.string()
+      .min(8, 'Password must contain at least 8 characters.')
       .max(15, t('validation.length15'))
-      .required(t('validation.required')),
+      .required(t('validation.required'))
+      .test('passwords-match', 'Passwords must match ya fool', function (
+        value,
+      ) {
+        return this.parent.password === value;
+      }),
     phoneNumber: Yup.number()
       .required(t('validation.required'))
       .moreThan(0, t('validation.noNegative')),

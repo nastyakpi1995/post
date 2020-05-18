@@ -6,6 +6,8 @@ import Select from './Select';
 import Switch from './Switch';
 import Text from './Text';
 import NativeSelect from './NativeSelect';
+import ErrorMessage from './ErrorMessage';
+import InputPhone from './InputPhone';
 
 export {
   Checkbox,
@@ -16,4 +18,6 @@ export {
   Switch,
   Text,
   NativeSelect,
+  ErrorMessage,
+  InputPhone,
 };

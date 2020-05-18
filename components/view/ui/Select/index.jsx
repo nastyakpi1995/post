@@ -17,29 +17,28 @@ export default function SelectComponent({
   const customStyles = {
     control: (provided) => ({
       ...provided,
+      boxShadow: 'none',
       borderColor: '#ebf1f6',
       '&:hover': '',
       cursor: 'pointer',
       borderRadius: 8,
       height: 44,
+      fontSize: '16px',
     }),
     menuList: (provided) => ({
       ...provided,
       paddingBottom: 0,
       paddingTop: 0,
     }),
-    option: (provided, state) => {
-      return {
-        ...provided,
-        marginBottom: 0,
-        marginTop: 0,
-        backgroundColor: state.isSelected ? '#0fc7c7' : 'transparent',
-        '&:hover': {
-          backgroundColor: '#0fc7c7',
-          color: '#fff',
-        },
-      };
-    },
+    option: (provided, state) => ({
+      ...provided,
+      marginBottom: 0,
+      marginTop: 0,
+      backgroundColor: state.isSelected ? '#0fc7c7' : 'transparent',
+      '&:hover': {
+        backgroundColor: '#0fc7c7',
+      },
+    }),
     menu: (provided) => ({
       ...provided,
       marginBottom: 0,
@@ -52,7 +51,10 @@ export default function SelectComponent({
   return (
     <div className={styles.selectComponent}>
       <Select
-        instanceId="id"
+        components={{
+          IndicatorSeparator: () => null,
+          ...rest.components,
+        }}
         classNamePrefix="test"
         styles={customStyles}
         placeholder={placeholder}

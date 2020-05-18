@@ -20,12 +20,10 @@ export default function Registration() {
       );
     case STEPS_MAP.PERSONAL_INFO:
       return (
-        <PersonalInfo
-          onHandleChangePage={() => {
-            // TODO: save data here
-          }}
-        />
+        <PersonalInfo onHandleChangePage={() => setPage(STEPS_MAP.SUCCESS)} />
       );
+    case STEPS_MAP.SUCCESS:
+      return <div>success</div>;
     default:
       return null;
   }

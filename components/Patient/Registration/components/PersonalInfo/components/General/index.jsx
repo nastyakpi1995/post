@@ -1,7 +1,7 @@
 import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
-import { Input, FieldLabel } from '../../../../../../view/ui';
+import { Input, FieldLabel, ErrorMessage } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
 function General({ values, errors, touched, handleChange, handleBlur, t }) {
@@ -14,14 +14,16 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
         <FieldLabel text={t('personalInfo.general.firstName')}>
           <Input
             type="text"
-            placeholder="Frederick"
             name="firstName"
             value={values.firstName}
             onBlur={handleBlur}
             onChange={handleChange}
+            error={
+              errors.firstName && touched.firstName ? errors.firstName : null
+            }
           />
           {errors.firstName && touched.firstName ? (
-            <div>{errors.firstName}</div>
+            <ErrorMessage text={errors.firstName} />
           ) : null}
         </FieldLabel>
       </div>
@@ -29,14 +31,14 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
         <FieldLabel text={t('personalInfo.general.lastName')}>
           <Input
             type="text"
-            placeholder="Valdez"
             name="lastName"
             value={values.lastName}
             onBlur={handleBlur}
             onChange={handleChange}
+            error={errors.lastName && touched.lastName ? errors.lastName : null}
           />
           {errors.lastName && touched.lastName ? (
-            <div>{errors.lastName}</div>
+            <ErrorMessage text={errors.lastName} />
           ) : null}
         </FieldLabel>
       </div>
@@ -44,14 +46,16 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
         <FieldLabel text={t('personalInfo.general.nationalId')}>
           <Input
             type="number"
-            placeholder="0123456789"
             name="nationalId"
             value={values.nationalId}
             onBlur={handleBlur}
             onChange={handleChange}
+            error={
+              errors.nationalId && touched.nationalId ? errors.nationalId : null
+            }
           />
           {errors.nationalId && touched.nationalId ? (
-            <div>{errors.nationalId}</div>
+            <ErrorMessage text={errors.nationalId} />
           ) : null}
         </FieldLabel>
       </div>

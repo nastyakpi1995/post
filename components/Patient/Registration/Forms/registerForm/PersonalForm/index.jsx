@@ -13,8 +13,8 @@ export default function RegisterSchema(t) {
     city: Yup.string().required(t('validation.required')),
     direction: Yup.string().required(t('validation.required')),
     houseNumber: Yup.string().required(t('validation.required')),
-    apartmentNumber: Yup.number(),
-    floorNumber: Yup.number(),
+    apartmentNumber: Yup.number().required(t('validation.required')),
+    floor: Yup.number().required(t('validation.required')),
     zipCode: Yup.number().required(t('validation.required')),
     email: Yup.string().email().required(t('validation.required')),
   });
