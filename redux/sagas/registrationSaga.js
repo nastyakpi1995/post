@@ -40,10 +40,12 @@ function* requestPersonalInfo(data) {
 
 function* requestConfirmationCode(data) {
   try {
-    const updatedData = toSnake(data.payload);
-    delete updatedData.password;
-    delete updatedData.repeat_password;
-    yield call(sendConfirmationInfo, updatedData);
+    const requestData = toSnake(data.payload);
+    requestData.confirm_password = data.payload.repeatPassword;
+    requestData.password1 = data.payload.password;
+    delete requestData.password;
+    delete requestData.repeat_password;
+    yield call(sendConfirmationInfo, requestData);
     yield put(registrationActions.successGeneralInfo(data.payload));
   } catch (e) {
     const updatedData = toCamel(e);

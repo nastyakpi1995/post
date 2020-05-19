@@ -1,9 +1,9 @@
 .header {
   height: 60px;
-  width: 63vw;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  max-width: 70%;
 
   .header-logo {
     font-family: Avenir Next;

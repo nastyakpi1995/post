@@ -11,6 +11,7 @@ import {
 import styles from './style.module.scss';
 
 function Contact({
+  personalInfoErrors,
   values,
   errors,
   touched,
@@ -18,6 +19,7 @@ function Contact({
   handleBlur,
   t,
   setFieldValue,
+  onResetErrors,
 }) {
   return (
     <div className={styles['validation-contact']}>
@@ -67,6 +69,7 @@ function Contact({
         <FieldLabel text={t('personalInfo.contact.direction')}>
           <Input
             type="text"
+            placeholder="Direction"
             name="direction"
             value={values.direction}
             onChange={handleChange}
@@ -84,7 +87,8 @@ function Contact({
         <div className={styles['contact-house']}>
           <FieldLabel text={t('personalInfo.contact.houseNumber')}>
             <Input
-              type="number"
+              type="text"
+              placeholder="1a"
               name="houseNumber"
               value={values.houseNumber}
               onChange={handleChange}
@@ -103,7 +107,8 @@ function Contact({
         <div className={styles['contact-apartment']}>
           <FieldLabel text={t('personalInfo.contact.apartmentNumber')}>
             <Input
-              type="number"
+              type="text"
+              placeholder="2b"
               name="apartmentNumber"
               value={values.apartmentNumber}
               onChange={handleChange}
@@ -124,6 +129,7 @@ function Contact({
             <Input
               type="number"
               name="floor"
+              placeholder="3"
               value={values.floor}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -138,16 +144,33 @@ function Contact({
       <div className={styles['contact-zip']}>
         <FieldLabel text={t('personalInfo.contact.zipCode')}>
           <Input
-            type="number"
+            type="text"
             name="zipCode"
+            placeholder="1000"
             value={values.zipCode}
-            onChange={handleChange}
+            onChange={(e) => {
+              if (personalInfoErrors !== undefined) {
+                if (personalInfoErrors.zipCode !== undefined) {
+                  onResetErrors({
+                    zipCode: [],
+                  });
+                }
+              }
+              handleChange(e);
+            }}
             onBlur={handleBlur}
             error={errors.zipCode && touched.zipCode ? errors.zipCode : null}
           />
           {errors.zipCode && touched.zipCode ? (
             <ErrorMessage text={errors.zipCode} />
           ) : null}
+          {personalInfoErrors
+            ? personalInfoErrors.zipCode
+              ? personalInfoErrors.zipCode.map((el) => {
+                  return <ErrorMessage key={el} text={el} />;
+                })
+              : null
+            : null}
         </FieldLabel>
       </div>
       <div className={styles['contact-email']}>
@@ -157,6 +180,7 @@ function Contact({
             name="email"
             value={values.email}
             onChange={handleChange}
+            placeholder="name@email.com"
             onBlur={handleBlur}
             error={errors.email && touched.email ? errors.email : null}
           />

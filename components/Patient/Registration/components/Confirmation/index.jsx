@@ -19,6 +19,7 @@ function Confirmation({
   serverErrors,
   generalInfo,
   confirmationSuccess,
+  onResetErrors,
 }) {
   useEffect(() => {
     if (confirmationSuccess) {
@@ -63,12 +64,20 @@ function Confirmation({
                 >{`${generalInfo.phoneNumber}. `}</span>
                 {t('confirmation.pleaseFillTheField')}
               </p>
-              <FieldLabel text={t('confirmation.label')}>
+              <FieldLabel text={t('shut up')}>
                 <Input
-                  type="text"
-                  placeholder="12-34-56"
+                  type="number"
+                  className={styles['input-confirmCode']}
+                  placeholder="111111"
                   value={values.confirmCode}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    if (serverErrors.nonFieldErrors) {
+                      onResetErrors({
+                        nonFieldErrors: [],
+                      });
+                    }
+                    handleChange(e);
+                  }}
                   onBlur={handleBlur}
                   name="confirmCode"
                   error={
@@ -80,6 +89,13 @@ function Confirmation({
                 {touched.confirmCode && errors.confirmCode ? (
                   <ErrorMessage text={errors.confirmCode} />
                 ) : null}
+                {serverErrors
+                  ? serverErrors.nonFieldErrors
+                    ? serverErrors.nonFieldErrors.map((el) => {
+                        return <ErrorMessage key={el} text={el} />;
+                      })
+                    : null
+                  : null}
               </FieldLabel>
               <Button
                 type="submit"
@@ -117,6 +133,8 @@ Confirmation.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onSentConfirmation: (generalInfo) =>
     dispatch(registrationActions.requestGeneralInfo(generalInfo)),
+  onResetErrors: (data) =>
+    dispatch(registrationActions.errorConfirmation(data)),
 });
 
 const mapStateToProps = (state) => ({

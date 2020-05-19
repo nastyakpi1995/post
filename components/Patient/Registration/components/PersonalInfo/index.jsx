@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { withTranslation } from 'i18n';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { connect } from 'react-redux';
 import { getCountries, getCities } from 'countries-cities';
 import Header from '../../../../view/objects/AuthHeader';
@@ -16,6 +16,8 @@ function PersonalInfo({
   t,
   personalInfoSuccess,
   onRequestPersonalInfo,
+  personalInfoErrors,
+  onResetErrors,
 }) {
   useEffect(() => {
     if (personalInfoSuccess) {
@@ -67,13 +69,15 @@ function PersonalInfo({
               handleSubmit,
               setFieldValue,
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}>
                 <General
                   values={values}
                   errors={errors}
                   touched={touched}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <Personal
                   values={values}
@@ -82,6 +86,8 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
+                  personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <Contact
                   values={values}
@@ -90,6 +96,8 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
+                  personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <div className={styles['validation-button']}>
                   <Button
@@ -98,7 +106,7 @@ function PersonalInfo({
                     text={t('personalInfo.save')}
                   />
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
@@ -110,6 +118,8 @@ function PersonalInfo({
 const mapDispatchToProps = (dispatch) => ({
   onRequestPersonalInfo: (data) =>
     dispatch(registrationActions.requestPersonalInfo(data)),
+  onResetErrors: (data) =>
+    dispatch(registrationActions.errorPersonalInfo(data)),
 });
 
 const mapStateToProps = (state) => ({

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { withTranslation } from 'i18n';
 import { connect } from 'react-redux';
 import TermsOfUse from '../../common/TermsOfUse';
@@ -24,6 +24,8 @@ function GeneralInfo({
   onRequestSignUp,
   serverErrors,
   generalSuccess,
+  type,
+  onResetErrors,
 }) {
   useEffect(() => {
     if (generalSuccess) {
@@ -40,7 +42,6 @@ function GeneralInfo({
             password: '',
             phoneNumber: '',
             repeatPassword: '',
-            phoneCode: '1',
             saveUser: true,
             terms: true,
           }}
@@ -49,14 +50,12 @@ function GeneralInfo({
             setTimeout(() => {
               const updatedValues = {
                 ...values,
-                phoneNumber: `+${values.phoneCode}${values.phoneNumber}`,
                 userType: 'CUS',
               };
+              updatedValues.phoneNumber = `+${updatedValues.phoneNumber}`;
               delete updatedValues.saveUser;
               delete updatedValues.terms;
-              delete updatedValues.phoneCode;
               onRequestSignUp(updatedValues);
-              actions.setFieldTouched('phoneNumber', false);
             }, 0);
           }}
         >
@@ -70,7 +69,7 @@ function GeneralInfo({
             setFieldValue,
           }) => {
             return (
-              <form onSubmit={handleSubmit} className={styles.validation}>
+              <Form onSubmit={handleSubmit} className={styles.validation}>
                 <h1 className={styles['validation-title']}>
                   {t('generalInfo.createAccount')}
                 </h1>
@@ -81,35 +80,28 @@ function GeneralInfo({
                   <div className={styles['validation-number__first']}>
                     <FieldLabel text={t('generalInfo.areaCode')}>
                       <InputPhone
-                        name="phoneCode"
-                        country="us"
-                        value={values.phoneCode}
+                        name="phoneNumber"
+                        country="ua"
+                        value={values.phoneNumber}
                         onChange={(phone) => {
-                          setFieldValue('phoneCode', phone);
+                          setFieldValue('phoneNumber', phone);
                         }}
                         enableAreaCodes
                       />
-                    </FieldLabel>
-                  </div>
-                  <div className={styles['validation-number__second']}>
-                    <FieldLabel text={t('generalInfo.localNumber')}>
-                      <Input
-                        type="number"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        placeholder={values.localNumber}
-                        name="phoneNumber"
-                        value={values.localNumber}
-                      />
-                      {errors.phoneNumber && touched.phoneNumber ? (
+                      {touched.phoneNumber && errors.phoneNumber ? (
                         <ErrorMessage text={errors.phoneNumber} />
                       ) : null}
-                      {serverErrors &&
-                      serverErrors.phoneNumber &&
-                      !touched.phoneNumber
+                      {serverErrors.phoneNumber
                         ? serverErrors.phoneNumber.map((el) => {
                             return <ErrorMessage key={el} text={el} />;
                           })
+                        : null}
+                      {serverErrors
+                        ? serverErrors.nonFieldErrors
+                          ? serverErrors.nonFieldErrors.map((el) => {
+                              return <ErrorMessage key={el} text={el} />;
+                            })
+                          : null
                         : null}
                     </FieldLabel>
                   </div>
@@ -122,7 +114,14 @@ function GeneralInfo({
                     <Input
                       type="password"
                       onBlur={handleBlur}
-                      onChange={handleChange}
+                      onChange={(e) => {
+                        if (serverErrors.password1) {
+                          onResetErrors({
+                            password1: [],
+                          });
+                        }
+                        handleChange(e);
+                      }}
                       placeholder="Password"
                       name="password"
                       value={values.password}
@@ -135,6 +134,13 @@ function GeneralInfo({
                     {touched.password && errors.password ? (
                       <ErrorMessage text={errors.password} />
                     ) : null}
+                    {serverErrors
+                      ? serverErrors.password1
+                        ? serverErrors.password1.map((el) => {
+                            return <ErrorMessage key={el} text={el} />;
+                          })
+                        : null
+                      : null}
                   </FieldLabel>
                 </div>
                 <div className={styles['validation-password']}>
@@ -158,6 +164,13 @@ function GeneralInfo({
                         <ErrorMessage text="Passwords are not equal" />
                       )
                     ) : null}
+                    {serverErrors
+                      ? serverErrors.confirm_password
+                        ? serverErrors.confirm_password.map((el) => {
+                            return <ErrorMessage key={el} text={el} />;
+                          })
+                        : null
+                      : null}
                   </FieldLabel>
                 </div>
                 <div className={styles['validation-changelist']}>
@@ -198,7 +211,7 @@ function GeneralInfo({
                       onChange={handleChange}
                       checked={values.saveUser}
                     />
-                    {t('generalInfo.keepLogged')}
+                    <p>{t('generalInfo.keepLogged')}</p>
                   </div>
                   {touched.saveUser && errors.saveUser ? (
                     <ErrorMessage text={errors.saveUser} />
@@ -213,7 +226,7 @@ function GeneralInfo({
                   className={styles['validation-button__login']}
                   text={t('generalInfo.login')}
                 />
-              </form>
+              </Form>
             );
           }}
         </Formik>
@@ -230,6 +243,7 @@ GeneralInfo.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onRequestSignUp: (data) =>
     dispatch(registrationActions.requestConfirmation(data)),
+  onResetErrors: (data) => dispatch(registrationActions.errorGeneralInfo(data)),
 });
 
 const mapStateToProps = (state) => ({

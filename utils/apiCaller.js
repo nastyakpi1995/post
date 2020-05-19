@@ -21,7 +21,9 @@ export default async function apiCaller(config, after = false, token = true) {
   // Data preparation
 
   const fullConfig = {
-    baseURL: process.env.API_URL,
+    baseURL:
+      process.env.API_URL ||
+      'https://docwoo-back-dev.scenario-projects.com/api/v1',
     method: 'get',
     ...config,
     headers: { ...config.headers, ...defaultHeaders },
