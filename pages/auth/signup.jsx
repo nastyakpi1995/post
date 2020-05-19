@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RegisterPage from '../../components/page/RegisterPage';
+import RegisterPage from '../../components/Patient/Registration/components/PersonalInfo/index';
 
 // ----------------
 

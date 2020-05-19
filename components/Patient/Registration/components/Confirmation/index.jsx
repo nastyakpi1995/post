@@ -63,9 +63,10 @@ function Confirmation({
                 >{`${generalInfo.phoneNumber}. `}</span>
                 {t('confirmation.pleaseFillTheField')}
               </p>
-              <FieldLabel text={t('confirmation.label')}>
+              <FieldLabel text={t('shut up')}>
                 <Input
                   type="number"
+                  className={styles['input-confirmCode']}
                   placeholder="111111"
                   value={values.confirmCode}
                   onChange={handleChange}

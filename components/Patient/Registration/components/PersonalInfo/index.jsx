@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { withTranslation } from 'i18n';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 import { connect } from 'react-redux';
 import { getCountries, getCities } from 'countries-cities';
 import Header from '../../../../view/objects/AuthHeader';
@@ -68,7 +68,7 @@ function PersonalInfo({
               handleSubmit,
               setFieldValue,
             }) => (
-              <form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit}>
                 <General
                   values={values}
                   errors={errors}
@@ -102,7 +102,7 @@ function PersonalInfo({
                     text={t('personalInfo.save')}
                   />
                 </div>
-              </form>
+              </Form>
             )}
           </Formik>
         </div>
