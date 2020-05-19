@@ -35,7 +35,12 @@ function Aside({ t, type }) {
         width="md"
         medium
         color="on-primary"
-        onClick={() => Router.push({ pathname: '/auth/signup/' })}
+        onClick={() =>
+          Router.push({
+            pathname: '/auth/signup',
+            query: { type },
+          })
+        }
       >
         {t('loginAsideButton')}
       </Button>

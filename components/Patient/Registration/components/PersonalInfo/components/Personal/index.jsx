@@ -42,9 +42,6 @@ function Personal({ values, errors, touched, handleChange, t, setFieldValue }) {
                 label: values.gender,
               })}
             />
-            {errors.gender && touched.gender ? (
-              <ErrorMessage text={errors.gender} />
-            ) : null}
           </FieldLabel>
         </div>
       </div>

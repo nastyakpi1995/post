@@ -51,7 +51,12 @@ export default function Button({
         <Loader />
       ) : (
         <div className="button__content">
-          <Text medium={medium} color="inherit" uppercase={uppercase}>
+          <Text
+            medium={medium}
+            color="inherit"
+            uppercase={uppercase}
+            className={styles['button-text']}
+          >
             {text || children}
           </Text>
         </div>

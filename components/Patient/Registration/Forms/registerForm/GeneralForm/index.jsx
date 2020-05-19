@@ -17,9 +17,7 @@ export default function RegisterSchema(t) {
       ) {
         return this.parent.password === value;
       }),
-    phoneNumber: Yup.number()
-      .required(t('validation.required'))
-      .moreThan(0, t('validation.noNegative')),
+    phoneNumber: Yup.string().required(t('validation.required')),
     saveUser: Yup.bool().oneOf([true], 'Keep me logged in'),
     terms: Yup.bool().oneOf([true], 'Terms of Use'),
   });

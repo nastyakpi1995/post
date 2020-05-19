@@ -5,19 +5,29 @@
 
   .container {
     background: #f5fafe;
-    width: 70%;
+    max-width: 90%;
     height: 940px;
     border-radius: 25px 25px 0 0;
     margin: 0 auto;
 
     .validation {
       display: block;
-      width: 39%;
-      padding-top: 9%;
+      width: 40%;
+      padding-top: 5%;
       margin: 0 auto;
       height: 91%;
+      max-width: 330px;
 
-      .validation-button__login {
+      h1 {
+        font-family: Avenir Next;
+        font-style: normal;
+        font-weight: 600;
+        color: #252f4d;
+        margin: 10px 0;
+        font-size: 24px;
+      }
+
+      &-button__login {
         border: 1px solid #f5fafe;
         background: #f5fafe;
         display: block;
@@ -31,7 +41,7 @@
         font-size: 14px;
         color: #0fc7c7;
       }
-      .validation-button__save {
+      &-button__save {
         width: 100%;
         text-transform: uppercase;
         display: block;
@@ -48,32 +58,24 @@
         font-size: 14px;
         text-align: center;
         letter-spacing: 1px;
-        margin-top: 60px;
+        margin-top: 45px;
       }
-      .validation-title {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: 600;
-        color: #252f4d;
-        font-size: 24px;
-      }
-      .validation-number__helper {
+
+      &-number__helper {
         font-family: Avenir Next;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
         color: #252f4d;
+        margin-bottom: 30px;
       }
-      .validation-number {
+      &-number {
         display: flex;
         width: 100%;
+        margin-bottom: 30px;
 
-        .validation-number__first {
-          width: 31%;
-          margin-right: 3%;
-        }
-        .validation-number__second {
-          width: 66%;
+        &__first {
+          width: 100%;
 
           & input::-webkit-outer-spin-button,
           & input::-webkit-inner-spin-button {
@@ -88,22 +90,27 @@
       }
       .validation-password {
         margin-top: 20px;
+        &__helper {
+          font-family: Avenir Next;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          color: #252f4d;
+        }
       }
-      .validation-password__helper {
-        font-family: Avenir Next;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        color: #252f4d;
-      }
+
       .validation-changelist {
         display: block;
-        margin-top: 35px;
+        margin-top: 30px;
 
         .checkbox__align {
           position: relative;
           display: flex;
           align-items: baseline;
+
+          p {
+            margin-left: 10px;
+          }
         }
         .validation-changelist__license {
           .label {
@@ -127,11 +134,6 @@
             color: #0fc7c7;
           }
           .checkbox__title {
-            font-family: Avenir Next;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            color: #252f4d;
 
             .terms {
               color: #0fc7c7;
@@ -168,15 +170,21 @@
             content: '✓';
             color: #0fc7c7;
           }
-          .checkbox__title {
-            font-family: Avenir Next;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            color: #252f4d;
-          }
         }
       }
+
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .validation {
+    width: 50%;
+  }
+  .wrapper {
+    height: fit-content;
+  }
+  .container {
+    height: fit-content !important;
   }
 }

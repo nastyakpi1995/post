@@ -4,7 +4,15 @@ import { withTranslation } from 'i18n';
 import { Input, FieldLabel, ErrorMessage } from '../../../../../../view/ui';
 import styles from './style.module.scss';
 
-function General({ values, errors, touched, handleChange, handleBlur, t }) {
+function General({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  t,
+  personalInfoErrors,
+}) {
   return (
     <div className={styles['validation-general']}>
       <p className={styles['validation-description']}>
@@ -15,6 +23,7 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
           <Input
             type="text"
             name="firstName"
+            placeholder="John"
             value={values.firstName}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -32,6 +41,7 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
           <Input
             type="text"
             name="lastName"
+            placeholder="Frederick"
             value={values.lastName}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -45,8 +55,9 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
       <div className={styles['general-id']}>
         <FieldLabel text={t('personalInfo.general.nationalId')}>
           <Input
-            type="number"
+            type="text"
             name="nationalId"
+            placeholder="12345678901"
             value={values.nationalId}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -57,6 +68,13 @@ function General({ values, errors, touched, handleChange, handleBlur, t }) {
           {errors.nationalId && touched.nationalId ? (
             <ErrorMessage text={errors.nationalId} />
           ) : null}
+          {personalInfoErrors
+            ? personalInfoErrors.nationalId
+              ? personalInfoErrors.nationalId.map((el) => {
+                  return <ErrorMessage key={el} text={el} />;
+                })
+              : null
+            : null}
         </FieldLabel>
       </div>
     </div>

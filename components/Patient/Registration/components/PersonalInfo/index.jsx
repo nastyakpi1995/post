@@ -16,6 +16,7 @@ function PersonalInfo({
   t,
   personalInfoSuccess,
   onRequestPersonalInfo,
+  personalInfoErrors,
 }) {
   useEffect(() => {
     if (personalInfoSuccess) {
@@ -74,6 +75,7 @@ function PersonalInfo({
                   touched={touched}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  personalInfoErrors={personalInfoErrors}
                 />
                 <Personal
                   values={values}
@@ -82,6 +84,7 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
+                  personalInfoErrors={personalInfoErrors}
                 />
                 <Contact
                   values={values}
@@ -90,6 +93,7 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
+                  personalInfoErrors={personalInfoErrors}
                 />
                 <div className={styles['validation-button']}>
                   <Button

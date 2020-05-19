@@ -9,6 +9,12 @@
   letter-spacing: 1px;
   width: 100%;
 
+  &-text {
+    font-family: Avenir Next;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
   &:hover {
     opacity: 0.85;
   }

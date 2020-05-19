@@ -65,8 +65,8 @@ function Confirmation({
               </p>
               <FieldLabel text={t('confirmation.label')}>
                 <Input
-                  type="text"
-                  placeholder="12-34-56"
+                  type="number"
+                  placeholder="111111"
                   value={values.confirmCode}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -80,6 +80,13 @@ function Confirmation({
                 {touched.confirmCode && errors.confirmCode ? (
                   <ErrorMessage text={errors.confirmCode} />
                 ) : null}
+                {serverErrors
+                  ? serverErrors.nonFieldErrors
+                    ? serverErrors.nonFieldErrors.map((el) => {
+                        return <ErrorMessage key={el} text={el} />;
+                      })
+                    : null
+                  : null}
               </FieldLabel>
               <Button
                 type="submit"
