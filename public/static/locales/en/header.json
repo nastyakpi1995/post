@@ -1,5 +1,6 @@
 {
   "loginAsDoctor": "login as doctor",
+  "loginAsPatient": "login as Patient",
   "homecare": "Homecare",
   "clinic": "Clinic",
   "appointments": "Appointments",

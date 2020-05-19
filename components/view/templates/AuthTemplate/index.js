@@ -10,11 +10,11 @@ import AuthContainer from '../../layout/AuthContainer';
 
 import styles from './authTemplate.module.scss';
 
-export default function AuthTemplate({ children, aside }) {
+export default function AuthTemplate({ children, aside, type }) {
   return (
     <div className={styles['auth-template']}>
       <div style={{ height: '60px', backgroundColor: '#252f4d' }}>
-        <HeaderAuth />
+        <HeaderAuth type={type} />
       </div>
 
       <div className={styles['auth-template__body']}>
