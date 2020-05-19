@@ -1,6 +1,7 @@
 import React from 'react';
 import { i18n, withTranslation } from 'i18n';
 import types from 'prop-types';
+import { useRouter } from 'next/router';
 
 // Components
 
@@ -15,6 +16,7 @@ import ContainerRow from '../../../layout/ContainerRow';
 import Text from '../../../ui/Text';
 
 function Aside({ t, type }) {
+  const Router = useRouter();
   return (
     <div className={styles['auth-aside']}>
       <ContainerRow size="xs">
@@ -28,7 +30,13 @@ function Aside({ t, type }) {
           {t('loginAsideDesc')}
         </Text>
       </ContainerRow>
-      <Button height="lg" width="md" medium color="on-primary">
+      <Button
+        height="lg"
+        width="md"
+        medium
+        color="on-primary"
+        onClick={() => Router.push({ pathname: '/auth/signup/' })}
+      >
         {t('loginAsideButton')}
       </Button>
       <HelpBlock />

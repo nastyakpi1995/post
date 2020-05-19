@@ -6,7 +6,7 @@ import Aside from '../view/objects/auth/Aside';
 
 export default function LoginPage({ onSubmit, type, authErrors }) {
   return (
-    <AuthTemplate aside={<Aside type={type} />}>
+    <AuthTemplate type={type} aside={<Aside type={type} />}>
       <LoginForm authErrors={authErrors} type={type} onSubmit={onSubmit} />
     </AuthTemplate>
   );

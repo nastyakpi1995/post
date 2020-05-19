@@ -28,7 +28,7 @@ function* login({ payload }) {
   } catch (error) {
     yield put({
       type: AUTH_TYPES.LOGIN_FAIL,
-      payload: error.response.data,
+      payload: error,
     });
   }
 }
