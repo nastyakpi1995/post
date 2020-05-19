@@ -1,7 +1,6 @@
 import React from 'react';
 
-import RegisterPage from '../../components/Patient/Registration/components/PersonalInfo/index';
-
+import RegisterPage from '../../components/page/RegisterPage';
 // ----------------
 
 export default function Registration() {
