@@ -19,6 +19,7 @@ function Confirmation({
   serverErrors,
   generalInfo,
   confirmationSuccess,
+  onResetErrors,
 }) {
   useEffect(() => {
     if (confirmationSuccess) {
@@ -69,7 +70,14 @@ function Confirmation({
                   className={styles['input-confirmCode']}
                   placeholder="111111"
                   value={values.confirmCode}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    if (serverErrors.nonFieldErrors) {
+                      onResetErrors({
+                        nonFieldErrors: [],
+                      });
+                    }
+                    handleChange(e);
+                  }}
                   onBlur={handleBlur}
                   name="confirmCode"
                   error={
@@ -125,6 +133,8 @@ Confirmation.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   onSentConfirmation: (generalInfo) =>
     dispatch(registrationActions.requestGeneralInfo(generalInfo)),
+  onResetErrors: (data) =>
+    dispatch(registrationActions.errorConfirmation(data)),
 });
 
 const mapStateToProps = (state) => ({

@@ -12,6 +12,7 @@ function General({
   handleBlur,
   t,
   personalInfoErrors,
+  onResetErrors,
 }) {
   return (
     <div className={styles['validation-general']}>
@@ -60,7 +61,16 @@ function General({
             placeholder="12345678901"
             value={values.nationalId}
             onBlur={handleBlur}
-            onChange={handleChange}
+            onChange={(e) => {
+              if (personalInfoErrors !== undefined) {
+                if (personalInfoErrors.nationalId !== undefined) {
+                  onResetErrors({
+                    nationalId: [],
+                  });
+                }
+              }
+              handleChange(e);
+            }}
             error={
               errors.nationalId && touched.nationalId ? errors.nationalId : null
             }

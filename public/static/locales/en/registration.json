@@ -53,7 +53,7 @@
     "buttonLogIn": "log In"
   },
   "validation": {
-    "required": "This field is required",
+    "required": "Can’t be blank.",
     "length15": "Must be 15 characters or less",
     "length5": "Should be no longer 5 characters",
     "length4": "Should be no longer 4 characters",

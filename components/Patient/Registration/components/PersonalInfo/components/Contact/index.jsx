@@ -19,6 +19,7 @@ function Contact({
   handleBlur,
   t,
   setFieldValue,
+  onResetErrors,
 }) {
   return (
     <div className={styles['validation-contact']}>
@@ -147,7 +148,16 @@ function Contact({
             name="zipCode"
             placeholder="1000"
             value={values.zipCode}
-            onChange={handleChange}
+            onChange={(e) => {
+              if (personalInfoErrors !== undefined) {
+                if (personalInfoErrors.zipCode !== undefined) {
+                  onResetErrors({
+                    zipCode: [],
+                  });
+                }
+              }
+              handleChange(e);
+            }}
             onBlur={handleBlur}
             error={errors.zipCode && touched.zipCode ? errors.zipCode : null}
           />

@@ -21,7 +21,7 @@ export default function RegisterSchema(t) {
       .max(5, t('validation.length5'))
       .required(t('validation.required')),
     floor: Yup.number()
-      .max(3, t('validation.length3'))
+      .max(999, t('validation.length3'))
       .required(t('validation.required')),
     zipCode: Yup.string()
       .max(4, t('validation.length4'))

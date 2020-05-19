@@ -17,6 +17,7 @@ function PersonalInfo({
   personalInfoSuccess,
   onRequestPersonalInfo,
   personalInfoErrors,
+  onResetErrors,
 }) {
   useEffect(() => {
     if (personalInfoSuccess) {
@@ -76,6 +77,7 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <Personal
                   values={values}
@@ -85,6 +87,7 @@ function PersonalInfo({
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
                   personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <Contact
                   values={values}
@@ -94,6 +97,7 @@ function PersonalInfo({
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
                   personalInfoErrors={personalInfoErrors}
+                  onResetErrors={onResetErrors}
                 />
                 <div className={styles['validation-button']}>
                   <Button
@@ -114,6 +118,8 @@ function PersonalInfo({
 const mapDispatchToProps = (dispatch) => ({
   onRequestPersonalInfo: (data) =>
     dispatch(registrationActions.requestPersonalInfo(data)),
+  onResetErrors: (data) =>
+    dispatch(registrationActions.errorPersonalInfo(data)),
 });
 
 const mapStateToProps = (state) => ({
