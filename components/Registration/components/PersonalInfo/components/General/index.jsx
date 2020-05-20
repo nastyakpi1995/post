@@ -1,7 +1,7 @@
 import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
-import { Input, FieldLabel, ErrorMessage } from '../../../../../../view/ui';
+import { Input, FieldLabel, ErrorMessage } from '../../../../../view/ui';
 import styles from './style.module.scss';
 
 function General({

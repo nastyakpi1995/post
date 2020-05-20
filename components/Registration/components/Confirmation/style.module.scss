@@ -1,13 +1,15 @@
 .wrapper {
   display: block;
   background: #252f4d;
+  min-height: 100vh;
 
   .container {
     background: #f5fafe;
-    max-width: 80%;
-    height: 100vh;
+    max-width: 1074px;
+    min-height: 100vh;
     border-radius: 25px 25px 0 0;
     margin: 0 auto;
+    height: 100vh;
     padding-bottom: 5px;
 
     .validation {
@@ -19,6 +21,16 @@
 
       .input-confirmCode {
         appearance: none;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
       }
 
       .validation-title {
@@ -100,14 +112,11 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .validation {
-    width: 50%;
-  }
-  .wrapper {
-    height: fit-content;
+    width: 100%;
   }
   .container {
-    height: fit-content !important;
+    max-width: 95% !important;
   }
 }

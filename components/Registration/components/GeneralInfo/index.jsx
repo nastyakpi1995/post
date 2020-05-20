@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import { withTranslation } from 'i18n';
 import { connect } from 'react-redux';
 import TermsOfUse from '../../common/TermsOfUse';
-import Header from '../../../../view/objects/AuthHeader';
+import Header from '../../../view/objects/AuthHeader';
 import {
   Button,
   Checkbox,
@@ -13,8 +13,8 @@ import {
   FieldLabel,
   InputPhone,
   ErrorMessage,
-} from '../../../../view/ui';
-import * as registrationActions from '../../../../../redux/actions/registrationActions';
+} from '../../../view/ui';
+import * as registrationActions from '../../../../redux/actions/registrationActions';
 import RegisterSchema from '../../Forms/registerForm/GeneralForm';
 import styles from './style.module.scss';
 
@@ -26,6 +26,7 @@ function GeneralInfo({
   generalSuccess,
   type,
   onResetErrors,
+  onLoginHandler,
 }) {
   useEffect(() => {
     if (generalSuccess) {
@@ -44,19 +45,17 @@ function GeneralInfo({
             repeatPassword: '',
             saveUser: true,
             terms: true,
+            userType: type,
           }}
           validationSchema={RegisterSchema(t)}
           onSubmit={(values, actions) => {
-            setTimeout(() => {
-              const updatedValues = {
-                ...values,
-                userType: 'CUS',
-              };
-              updatedValues.phoneNumber = `+${updatedValues.phoneNumber}`;
-              delete updatedValues.saveUser;
-              delete updatedValues.terms;
-              onRequestSignUp(updatedValues);
-            }, 0);
+            const updatedValues = {
+              ...values,
+            };
+            updatedValues.phoneNumber = `+${updatedValues.phoneNumber}`;
+            delete updatedValues.saveUser;
+            delete updatedValues.terms;
+            onRequestSignUp(updatedValues);
           }}
         >
           {({
@@ -78,12 +77,21 @@ function GeneralInfo({
                 </p>
                 <div className={styles['validation-number']}>
                   <div className={styles['validation-number__first']}>
-                    <FieldLabel text={t('generalInfo.areaCode')}>
+                    <FieldLabel text={t('generalInfo.localNumber')}>
                       <InputPhone
                         name="phoneNumber"
                         country="ua"
                         value={values.phoneNumber}
                         onChange={(phone) => {
+                          if (
+                            serverErrors.phoneNumber ||
+                            serverErrors.nonFieldErrors
+                          ) {
+                            onResetErrors({
+                              phoneNumber: [],
+                              nonFieldErrors: [],
+                            });
+                          }
                           setFieldValue('phoneNumber', phone);
                         }}
                         enableAreaCodes
@@ -96,12 +104,10 @@ function GeneralInfo({
                             return <ErrorMessage key={el} text={el} />;
                           })
                         : null}
-                      {serverErrors
-                        ? serverErrors.nonFieldErrors
-                          ? serverErrors.nonFieldErrors.map((el) => {
-                              return <ErrorMessage key={el} text={el} />;
-                            })
-                          : null
+                      {serverErrors.nonFieldErrors
+                        ? serverErrors.nonFieldErrors.map((el) => {
+                            return <ErrorMessage key={el} text={el} />;
+                          })
                         : null}
                     </FieldLabel>
                   </div>
@@ -225,6 +231,7 @@ function GeneralInfo({
                 <Button
                   className={styles['validation-button__login']}
                   text={t('generalInfo.login')}
+                  onClick={onLoginHandler}
                 />
               </Form>
             );
@@ -238,6 +245,11 @@ function GeneralInfo({
 GeneralInfo.propTypes = {
   onHandleChangePage: PropTypes.func,
   t: PropTypes.func,
+  onRequestSignUp: PropTypes.func,
+  serverErrors: PropTypes.object,
+  generalSuccess: PropTypes.bool,
+  type: PropTypes.string,
+  onResetErrors: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,7 +1,5 @@
 import * as REGISTRATION_TYPES from '../types/registrationTypes';
-import { GENDER_TYPES } from '../../components/Patient/Registration/constants';
-
-const CUS = 'CUS';
+import { GENDER_TYPES } from '../../components/Registration/constants';
 
 const initialState = {
   // general
@@ -9,10 +7,11 @@ const initialState = {
     password: '',
     phoneNumber: '',
     repeatPassword: '',
-    userType: CUS,
+    userType: '',
   },
   generalErrors: {
     phoneNumber: [],
+    nonFiledErrors: [],
   },
   generalSuccess: false,
   generalLoading: false,
@@ -26,6 +25,7 @@ const initialState = {
     phoneNumber: [],
     repeatPassword: [],
     confirmPhone: [],
+    nonFiledErrors: [],
   },
   confirmationLoading: false,
   confirmationSuccess: false,

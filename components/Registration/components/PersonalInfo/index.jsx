@@ -3,13 +3,14 @@ import { withTranslation } from 'i18n';
 import { Formik, Form } from 'formik';
 import { connect } from 'react-redux';
 import { getCountries, getCities } from 'countries-cities';
-import Header from '../../../../view/objects/AuthHeader';
-import { Button } from '../../../../view/ui';
+import PropTypes from 'prop-types';
+import Header from '../../../view/objects/AuthHeader';
+import { Button } from '../../../view/ui';
 import { General, Contact, Personal } from './components';
 import { GENDER_TYPES } from '../../constants';
 import styles from './style.module.scss';
 import RegisterPersonalSchema from '../../Forms/registerForm/PersonalForm';
-import * as registrationActions from '../../../../../redux/actions/registrationActions';
+import * as registrationActions from '../../../../redux/actions/registrationActions';
 
 function PersonalInfo({
   onHandleChangePage,
@@ -18,6 +19,7 @@ function PersonalInfo({
   onRequestPersonalInfo,
   personalInfoErrors,
   onResetErrors,
+  type,
 }) {
   useEffect(() => {
     if (personalInfoSuccess) {
@@ -114,6 +116,16 @@ function PersonalInfo({
     </div>
   );
 }
+
+PersonalInfo.propTypes = {
+  onHandleChangePage: PropTypes.func,
+  t: PropTypes.func,
+  onRequestSignUp: PropTypes.func,
+  serverErrors: PropTypes.object,
+  generalSuccess: PropTypes.bool,
+  type: PropTypes.string,
+  onResetErrors: PropTypes.func,
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onRequestPersonalInfo: (data) =>

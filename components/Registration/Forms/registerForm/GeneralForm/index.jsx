@@ -6,11 +6,9 @@ export default function RegisterSchema(t) {
   return Yup.object({
     password: Yup.string()
       .min(8, 'Password must contain at least 8 characters.')
-      .max(15, t('validation.length15'))
       .required(t('validation.required')),
     repeatPassword: Yup.string()
       .min(8, 'Password must contain at least 8 characters.')
-      .max(15, t('validation.length15'))
       .required(t('validation.required'))
       .test('passwords-match', 'Passwords must match ya fool', function (
         value,

@@ -7,7 +7,7 @@ import {
   FieldLabel,
   Select,
   ErrorMessage,
-} from '../../../../../../view/ui';
+} from '../../../../../view/ui';
 import styles from './style.module.scss';
 
 function Contact({
@@ -55,7 +55,9 @@ function Contact({
                 label: item,
               }))}
               name="city"
-              onChange={({ value, label }) => setFieldValue('city', value)}
+              onChange={({ value, label }) => {
+                setFieldValue('city', value);
+              }}
               defaultValue={{ value: values.city, label: values.city }}
               getOptionValue={() => ({
                 value: values.city,
