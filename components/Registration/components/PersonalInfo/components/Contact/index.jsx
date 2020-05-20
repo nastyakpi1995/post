@@ -7,11 +7,12 @@ import {
   FieldLabel,
   Select,
   ErrorMessage,
+  InputPhone,
 } from '../../../../../view/ui';
 import styles from './style.module.scss';
 
 function Contact({
-  personalInfoErrors,
+  serverErrors = {},
   values,
   errors,
   touched,
@@ -20,6 +21,7 @@ function Contact({
   t,
   setFieldValue,
   onResetErrors,
+  type,
 }) {
   return (
     <div className={styles['validation-contact']}>
@@ -67,114 +69,122 @@ function Contact({
           </FieldLabel>
         </div>
       </div>
-      <div className={styles['contact-direction']}>
-        <FieldLabel text={t('personalInfo.contact.direction')}>
-          <Input
-            type="text"
-            placeholder="Direction"
-            name="direction"
-            value={values.direction}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={
-              errors.direction && touched.direction ? errors.direction : null
-            }
-          />
-          {errors.direction && touched.direction ? (
-            <ErrorMessage text={errors.direction} />
-          ) : null}
-        </FieldLabel>
-      </div>
-      <div className={styles['contact-optional']}>
-        <div className={styles['contact-house']}>
-          <FieldLabel text={t('personalInfo.contact.houseNumber')}>
-            <Input
-              type="text"
-              placeholder="1a"
-              name="houseNumber"
-              value={values.houseNumber}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={
-                errors.houseNumber && touched.houseNumber
-                  ? errors.houseNumber
-                  : null
-              }
-            />
-            {errors.houseNumber && touched.houseNumber ? (
-              <ErrorMessage text={errors.houseNumber} />
-            ) : null}
-          </FieldLabel>
-        </div>
-        <div className={styles['contact-apartment']}>
-          <FieldLabel text={t('personalInfo.contact.apartmentNumber')}>
-            <Input
-              type="text"
-              placeholder="2b"
-              name="apartmentNumber"
-              value={values.apartmentNumber}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={
-                errors.apartmentNumber && touched.apartmentNumber
-                  ? errors.apartmentNumber
-                  : null
-              }
-            />
-            {errors.apartmentNumber && touched.apartmentNumber ? (
-              <ErrorMessage text={errors.apartmentNumber} />
-            ) : null}
-          </FieldLabel>
-        </div>
-        <div className={styles['contact-floor']}>
-          <FieldLabel text={t('personalInfo.contact.floorNumber')}>
-            <Input
-              type="number"
-              name="floor"
-              placeholder="3"
-              value={values.floor}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.floor && touched.floor ? errors.floor : null}
-            />
-            {errors.floor && touched.floor ? (
-              <ErrorMessage text={errors.floor} />
-            ) : null}
-          </FieldLabel>
-        </div>
-      </div>
-      <div className={styles['contact-zip']}>
-        <FieldLabel text={t('personalInfo.contact.zipCode')}>
-          <Input
-            type="text"
-            name="zipCode"
-            placeholder="1000"
-            value={values.zipCode}
-            onChange={(e) => {
-              if (personalInfoErrors !== undefined) {
-                if (personalInfoErrors.zipCode !== undefined) {
-                  onResetErrors({
-                    zipCode: [],
-                  });
+      {type === 'CUS' ? (
+        <>
+          <div className={styles['contact-direction']}>
+            <FieldLabel text={t('personalInfo.contact.direction')}>
+              <Input
+                type="text"
+                placeholder="Direction"
+                name="direction"
+                value={values.direction}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={
+                  errors.direction && touched.direction
+                    ? errors.direction
+                    : null
                 }
-              }
-              handleChange(e);
-            }}
-            onBlur={handleBlur}
-            error={errors.zipCode && touched.zipCode ? errors.zipCode : null}
-          />
-          {errors.zipCode && touched.zipCode ? (
-            <ErrorMessage text={errors.zipCode} />
-          ) : null}
-          {personalInfoErrors
-            ? personalInfoErrors.zipCode
-              ? personalInfoErrors.zipCode.map((el) => {
-                  return <ErrorMessage key={el} text={el} />;
-                })
-              : null
-            : null}
-        </FieldLabel>
-      </div>
+              />
+              {errors.direction && touched.direction ? (
+                <ErrorMessage text={errors.direction} />
+              ) : null}
+            </FieldLabel>
+          </div>
+          <div className={styles['contact-optional']}>
+            <div className={styles['contact-house']}>
+              <FieldLabel text={t('personalInfo.contact.houseNumber')}>
+                <Input
+                  type="text"
+                  placeholder="1a"
+                  name="houseNumber"
+                  value={values.houseNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={
+                    errors.houseNumber && touched.houseNumber
+                      ? errors.houseNumber
+                      : null
+                  }
+                />
+                {errors.houseNumber && touched.houseNumber ? (
+                  <ErrorMessage text={errors.houseNumber} />
+                ) : null}
+              </FieldLabel>
+            </div>
+            <div className={styles['contact-apartment']}>
+              <FieldLabel text={t('personalInfo.contact.apartmentNumber')}>
+                <Input
+                  type="text"
+                  placeholder="2b"
+                  name="apartmentNumber"
+                  value={values.apartmentNumber}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={
+                    errors.apartmentNumber && touched.apartmentNumber
+                      ? errors.apartmentNumber
+                      : null
+                  }
+                />
+                {errors.apartmentNumber && touched.apartmentNumber ? (
+                  <ErrorMessage text={errors.apartmentNumber} />
+                ) : null}
+              </FieldLabel>
+            </div>
+            <div className={styles['contact-floor']}>
+              <FieldLabel text={t('personalInfo.contact.floorNumber')}>
+                <Input
+                  type="number"
+                  name="floor"
+                  placeholder="3"
+                  value={values.floor}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.floor && touched.floor ? errors.floor : null}
+                />
+                {errors.floor && touched.floor ? (
+                  <ErrorMessage text={errors.floor} />
+                ) : null}
+              </FieldLabel>
+            </div>
+          </div>
+          <div className={styles['contact-zip']}>
+            <FieldLabel text={t('personalInfo.contact.zipCode')}>
+              <Input
+                type="text"
+                name="zipCode"
+                placeholder="1000"
+                value={values.zipCode}
+                onChange={(e) => {
+                  if (serverErrors !== undefined) {
+                    if (serverErrors.zipCode !== undefined) {
+                      onResetErrors({
+                        zipCode: [],
+                      });
+                    }
+                  }
+                  handleChange(e);
+                }}
+                onBlur={handleBlur}
+                error={
+                  errors.zipCode && touched.zipCode ? errors.zipCode : null
+                }
+              />
+              {errors.zipCode && touched.zipCode ? (
+                <ErrorMessage text={errors.zipCode} />
+              ) : null}
+              {serverErrors
+                ? serverErrors.zipCode
+                  ? serverErrors.zipCode.map((el) => {
+                      return <ErrorMessage key={el} text={el} />;
+                    })
+                  : null
+                : null}
+            </FieldLabel>
+          </div>
+        </>
+      ) : null}
       <div className={styles['contact-email']}>
         <FieldLabel text={t('personalInfo.contact.email')}>
           <Input
@@ -191,6 +201,39 @@ function Contact({
           ) : null}
         </FieldLabel>
       </div>
+      {type === 'DOC' ? (
+        <div className={styles['doc-number']}>
+          <div className={styles['doc-number__first']}>
+            <FieldLabel text={t('personalInfo.contact.localNumber')}>
+              <InputPhone
+                name="phoneNumber"
+                country="ua"
+                value={values.phoneNumber}
+                onChange={(phone) => {
+                  if (serverErrors.phoneNumber || serverErrors.nonFieldErrors) {
+                    onResetErrors({
+                      phoneNumber: [],
+                      nonFieldErrors: [],
+                    });
+                  }
+                  setFieldValue('phoneNumber', phone);
+                }}
+                enableAreaCodes
+              />
+              {serverErrors.phoneNumber
+                ? serverErrors.phoneNumber.map((el) => {
+                    return <ErrorMessage key={el} text={el} />;
+                  })
+                : null}
+              {serverErrors.nonFieldErrors
+                ? serverErrors.nonFieldErrors.map((el) => {
+                    return <ErrorMessage key={el} text={el} />;
+                  })
+                : null}
+            </FieldLabel>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

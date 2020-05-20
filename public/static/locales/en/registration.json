@@ -24,7 +24,9 @@
       "title": "General information",
       "firstName": "first name",
       "lastName": "last name",
-      "nationalId": "national id"
+      "nationalId": "national id",
+      "enumNum": "inami number",
+      "qualification": "qualification code"
     },
     "contact": {
       "title": "Contact information",
@@ -35,7 +37,8 @@
       "apartmentNumber": "apartment number",
       "floorNumber": "floor (optional)",
       "zipCode": "zip code",
-      "email": "email"
+      "email": "email",
+      "localNumber": "Local Number"
     },
     "personal": {
       "title": "Personal information",
@@ -59,7 +62,7 @@
     "length4": "Should be no longer 4 characters",
     "length3": "Should be no longer 3 characters",
     "length11": "Must be 11 characters or less",
-    "exactly8": "Must be exactly 6 characters",
+    "exactly6": "Must be exactly 6 characters",
     "noNegative": "Could not be negative"
   }
 }

@@ -62,4 +62,29 @@
   .contact-email {
     margin-top: 20px;
   }
+  .doc-number {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+
+    .doc-number__first {
+      width: 100%;
+
+      & input::-webkit-outer-spin-button,
+      & input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      & input[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .contact-house {
+    padding-top: 0 !important;
+  }
 }

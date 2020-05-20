@@ -17,6 +17,12 @@
       height: 91%;
       max-width: 330px;
 
+      .error {
+        border: 1px solid #fc5c7e;
+        background: #f9f9f9;
+        border-radius: 25px;
+      }
+
       h1 {
         font-family: Avenir Next;
         font-style: normal;
@@ -182,5 +188,11 @@
   }
   .container {
     max-width: 95% !important;
+  }
+}
+
+@media (min-height: 680px) {
+  .container {
+    height: 100vh !important;
   }
 }

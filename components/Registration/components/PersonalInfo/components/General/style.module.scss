@@ -16,6 +16,20 @@
   .general-surname {
     margin-top: 20px;
   }
+
+  .doc-wrapper {
+    display: flex;
+    margin-top: 20px;
+
+    .doc-inami {
+      width: 48%;
+      margin-right: 4%;
+    }
+    .doc-qualification {
+      width: 48%;
+    }
+  }
+
   .general-id {
     margin-top: 30px;
 

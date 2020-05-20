@@ -2,10 +2,24 @@ import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
 import { GENDER_TYPES } from '../../../../constants';
-import { FieldLabel, Select, Input } from '../../../../../view/ui';
+import {
+  FieldLabel,
+  Select,
+  Input,
+  ErrorMessage,
+} from '../../../../../view/ui';
 import styles from './style.module.scss';
 
-function Personal({ values, errors, touched, handleChange, t, setFieldValue }) {
+function Personal({
+  values,
+  errors,
+  serverErrors = {},
+  touched,
+  handleChange,
+  t,
+  setFieldValue,
+  onResetErrors,
+}) {
   return (
     <div className={styles['validation-personal']}>
       <p className={styles['validation-description']}>
@@ -17,9 +31,21 @@ function Personal({ values, errors, touched, handleChange, t, setFieldValue }) {
             <Input
               type="date"
               value={values.dateOfBirth}
-              onHandleChange={handleChange}
+              onHandleChange={(e) => {
+                if (serverErrors && serverErrors.dateOfBirth) {
+                  onResetErrors({
+                    dateOfBirth: [],
+                  });
+                }
+                handleChange(e);
+              }}
               name="date"
             />
+            {serverErrors.dateOfBirth
+              ? serverErrors.dateOfBirth.map((el) => {
+                  return <ErrorMessage key={el} text={el} />;
+                })
+              : null}
           </FieldLabel>
         </div>
         <div className={styles['personal-gender']}>
