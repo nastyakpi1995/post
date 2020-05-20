@@ -2,12 +2,7 @@ import React from 'react';
 import types from 'prop-types';
 import { withTranslation } from 'i18n';
 import { GENDER_TYPES } from '../../../../constants';
-import {
-  FieldLabel,
-  Select,
-  Input,
-  ErrorMessage,
-} from '../../../../../../view/ui';
+import { FieldLabel, Select, Input } from '../../../../../view/ui';
 import styles from './style.module.scss';
 
 function Personal({ values, errors, touched, handleChange, t, setFieldValue }) {

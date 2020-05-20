@@ -4,3 +4,8 @@ export const redirect = {
   AUTH: '/',
   NOT_AUTH: '/auth/login',
 };
+
+export const USER_TYPES = {
+  CUS: 'CUS',
+  DOC: 'DOC',
+};

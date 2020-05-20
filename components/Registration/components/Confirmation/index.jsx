@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { withTranslation } from 'i18n';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
-import Header from '../../../../view/objects/AuthHeader';
-import { Button, Input, FieldLabel } from '../../../../view/ui';
-import ErrorMessage from '../../../../view/ui/ErrorMessage';
+import Header from '../../../view/objects/AuthHeader';
+import { Button, Input, FieldLabel } from '../../../view/ui';
+import ErrorMessage from '../../../view/ui/ErrorMessage';
 import styles from './style.module.scss';
 import RegisterConfirmSchema from '../../Forms/registerForm/ConfigmationForm';
-import * as registrationActions from '../../../../../redux/actions/registrationActions';
+import * as registrationActions from '../../../../redux/actions/registrationActions';
 
 function Confirmation({
   onHandleChangePage = () => {},
   handleRequestCode = () => {},
-  handleLogIn = () => {},
+  onLoginHandler = () => {},
   t,
   onSentConfirmation,
   serverErrors,
@@ -64,7 +64,7 @@ function Confirmation({
                 >{`${generalInfo.phoneNumber}. `}</span>
                 {t('confirmation.pleaseFillTheField')}
               </p>
-              <FieldLabel text={t('shut up')}>
+              <FieldLabel text={t('confirmation.label')}>
                 <Input
                   type="number"
                   className={styles['input-confirmCode']}
@@ -89,12 +89,10 @@ function Confirmation({
                 {touched.confirmCode && errors.confirmCode ? (
                   <ErrorMessage text={errors.confirmCode} />
                 ) : null}
-                {serverErrors
-                  ? serverErrors.nonFieldErrors
-                    ? serverErrors.nonFieldErrors.map((el) => {
-                        return <ErrorMessage key={el} text={el} />;
-                      })
-                    : null
+                {serverErrors.nonFieldErrors
+                  ? serverErrors.nonFieldErrors.map((el) => {
+                      return <ErrorMessage key={el} text={el} />;
+                    })
                   : null}
               </FieldLabel>
               <Button
@@ -113,7 +111,7 @@ function Confirmation({
                 id="logInCode"
                 className={styles['validation-button__login']}
                 text={t('confirmation.buttonLogIn')}
-                handleClick={handleLogIn}
+                handleClick={onLoginHandler}
               />
             </form>
           )}
