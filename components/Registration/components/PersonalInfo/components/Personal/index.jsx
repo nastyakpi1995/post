@@ -31,13 +31,13 @@ function Personal({
             <Input
               type="date"
               value={values.dateOfBirth}
-              onHandleChange={(e) => {
+              onChange={(e) => {
                 if (serverErrors && serverErrors.dateOfBirth) {
                   onResetErrors({
                     dateOfBirth: [],
                   });
                 }
-                handleChange(e);
+                setFieldValue('dateOfBirth', e.target.value);
               }}
               name="date"
             />
