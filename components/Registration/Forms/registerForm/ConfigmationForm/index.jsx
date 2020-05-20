@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 export default function RegisterConfirmSchema(t) {
   return Yup.object({
-    confirmCode: Yup.string().required(t('validation.required')),
+    confirmCode: Yup.string()
+      .test('confirmCode', t('validation.exactly6'), (val) => val.length === 6)
+      .required(t('validation.required')),
   });
 }
 

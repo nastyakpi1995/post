@@ -17,7 +17,7 @@ function PersonalInfo({
   t,
   personalInfoSuccess,
   onRequestPersonalInfo,
-  personalInfoErrors,
+  serverErrors,
   onResetErrors,
   type,
 }) {
@@ -40,7 +40,7 @@ function PersonalInfo({
               firstName: '',
               lastName: '',
               nationalId: '',
-              dateOfBirth: '2002-08-16',
+              dateOfBirth: '2020-10-08',
               gender: GENDER_TYPES[0],
               country: getCountries()[21], // Belgium
               city: getCities(getCountries()[21])[0],
@@ -78,8 +78,9 @@ function PersonalInfo({
                   touched={touched}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
-                  personalInfoErrors={personalInfoErrors}
+                  serverErrors={serverErrors}
                   onResetErrors={onResetErrors}
+                  type={type}
                 />
                 <Personal
                   values={values}
@@ -88,7 +89,7 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
-                  personalInfoErrors={personalInfoErrors}
+                  serverErrors={serverErrors}
                   onResetErrors={onResetErrors}
                 />
                 <Contact
@@ -98,8 +99,9 @@ function PersonalInfo({
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                   setFieldValue={setFieldValue}
-                  personalInfoErrors={personalInfoErrors}
+                  serverErrors={serverErrors}
                   onResetErrors={onResetErrors}
+                  type={type}
                 />
                 <div className={styles['validation-button']}>
                   <Button
@@ -136,7 +138,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   personalInfo: state.registration.personalInfo,
-  personalInfoErrors: state.registration.personalInfoErrors,
+  serverErrors: state.registration.personalInfoErrors,
   personalInfoSuccess: state.registration.personalInfoSuccess,
 });
 

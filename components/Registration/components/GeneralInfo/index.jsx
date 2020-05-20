@@ -69,6 +69,11 @@ function GeneralInfo({
           }) => {
             return (
               <Form onSubmit={handleSubmit} className={styles.validation}>
+                {serverErrors.message ? (
+                  <div className={styles.error}>
+                    <ErrorMessage text={serverErrors.message} />
+                  </div>
+                ) : null}
                 <h1 className={styles['validation-title']}>
                   {t('generalInfo.createAccount')}
                 </h1>
@@ -219,9 +224,6 @@ function GeneralInfo({
                     />
                     <p>{t('generalInfo.keepLogged')}</p>
                   </div>
-                  {touched.saveUser && errors.saveUser ? (
-                    <ErrorMessage text={errors.saveUser} />
-                  ) : null}
                 </div>
                 <Button
                   type="submit"

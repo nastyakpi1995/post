@@ -11,8 +11,9 @@ function General({
   handleChange,
   handleBlur,
   t,
-  personalInfoErrors,
+  serverErrors = {},
   onResetErrors,
+  type,
 }) {
   return (
     <div className={styles['validation-general']}>
@@ -35,6 +36,11 @@ function General({
           {errors.firstName && touched.firstName ? (
             <ErrorMessage text={errors.firstName} />
           ) : null}
+          {serverErrors.firstName
+            ? serverErrors.firstName.map((el) => {
+                return <ErrorMessage key={el} text={el} />;
+              })
+            : null}
         </FieldLabel>
       </div>
       <div className={styles['general-surname']}>
@@ -51,8 +57,27 @@ function General({
           {errors.lastName && touched.lastName ? (
             <ErrorMessage text={errors.lastName} />
           ) : null}
+          {serverErrors.lastName
+            ? serverErrors.lastName.map((el) => {
+                return <ErrorMessage key={el} text={el} />;
+              })
+            : null}
         </FieldLabel>
       </div>
+      {type === 'DOC' ? (
+        <div className={styles['doc-wrapper']}>
+          <div className={styles['doc-inami']}>
+            <FieldLabel text={t('personalInfo.general.enumNum')}>
+              <Input type="text" onHandleChange={handleChange} />
+            </FieldLabel>
+          </div>
+          <div className={styles['doc-qualification']}>
+            <FieldLabel text={t('personalInfo.general.qualification')}>
+              <Input type="text" onHandleChange={handleChange} />
+            </FieldLabel>
+          </div>
+        </div>
+      ) : null}
       <div className={styles['general-id']}>
         <FieldLabel text={t('personalInfo.general.nationalId')}>
           <Input
@@ -62,12 +87,10 @@ function General({
             value={values.nationalId}
             onBlur={handleBlur}
             onChange={(e) => {
-              if (personalInfoErrors !== undefined) {
-                if (personalInfoErrors.nationalId !== undefined) {
-                  onResetErrors({
-                    nationalId: [],
-                  });
-                }
+              if (serverErrors && serverErrors.nationalId) {
+                onResetErrors({
+                  nationalId: [],
+                });
               }
               handleChange(e);
             }}
@@ -78,12 +101,10 @@ function General({
           {errors.nationalId && touched.nationalId ? (
             <ErrorMessage text={errors.nationalId} />
           ) : null}
-          {personalInfoErrors
-            ? personalInfoErrors.nationalId
-              ? personalInfoErrors.nationalId.map((el) => {
-                  return <ErrorMessage key={el} text={el} />;
-                })
-              : null
+          {serverErrors.nationalId
+            ? serverErrors.nationalId.map((el) => {
+                return <ErrorMessage key={el} text={el} />;
+              })
             : null}
         </FieldLabel>
       </div>

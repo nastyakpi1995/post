@@ -84,7 +84,10 @@ export default (state = initialState, action) => {
     case REGISTRATION_TYPES.GENERAL_INFO_FAIL: {
       return {
         ...state,
-        generalErrors: action.payload,
+        generalErrors: {
+          ...state.generalErrors,
+          ...action.payload,
+        },
         generalLoading: false,
       };
     }
@@ -107,7 +110,10 @@ export default (state = initialState, action) => {
     case REGISTRATION_TYPES.CONFIRMATION_FAIL: {
       return {
         ...state,
-        confirmationErrors: action.data,
+        confirmationErrors: {
+          ...state.confirmationErrors,
+          ...action.data,
+        },
         confirmationLoading: false,
       };
     }
@@ -129,7 +135,10 @@ export default (state = initialState, action) => {
     case REGISTRATION_TYPES.PERSONAL_INFO_FAIL: {
       return {
         ...state,
-        personalInfoErrors: action.payload,
+        personalInfoErrors: {
+          ...state.personalErrors,
+          ...action.payload,
+        },
         personalInfoLoading: false,
       };
     }
