@@ -109,6 +109,7 @@ function Confirmation({
               />
               <Button
                 id="logInCode"
+                type="submit"
                 className={styles['validation-button__login']}
                 text={t('confirmation.buttonLogIn')}
                 handleClick={onLoginHandler}
