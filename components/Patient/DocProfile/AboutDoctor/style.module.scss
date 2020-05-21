@@ -1,0 +1,44 @@
+@import './styles/constants/colors.scss';
+
+.doctor {
+  margin-top: 30px;
+  display: flex;
+
+  h1 {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: $onPrimary;
+  }
+  p {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: $onPrimary;
+  }
+  &-information {
+    width: 50%;
+    margin-right: 30px;
+  }
+  &-button-show {
+    display: flex;
+    flex-direction: row-reverse;
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: $third;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}

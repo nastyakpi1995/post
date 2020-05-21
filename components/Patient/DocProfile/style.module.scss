@@ -1,0 +1,31 @@
+@import './styles/constants/colors.scss';
+
+.doc-profile {
+  display: block;
+  background: $onPrimary;
+
+  &-information {
+    padding: 22px 50px;
+  }
+  &-body {
+    background: $primary;
+    border-radius: 30px 30px 0 0;
+  }
+  &-back {
+    width: 174px;
+    height: 36px;
+
+    border: 1px solid $borderColor;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 22px;
+
+    color: #0FC7C7;
+    font-family: Avenir Next;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}

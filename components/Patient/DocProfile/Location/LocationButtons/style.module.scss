@@ -1,0 +1,20 @@
+@import './styles/constants/colors.scss';
+
+.buttons {
+  max-width: 739px;
+  margin: 0 0 20px 50px;
+
+  button {
+    border: 1px solid $borderColor;
+    box-sizing: border-box;
+    border-radius: 24px;
+    padding: 2px;
+
+    &:nth-child(2) {
+      margin: 0 10px;
+    }
+    span {
+      padding-right: 10px;
+    }
+  }
+}

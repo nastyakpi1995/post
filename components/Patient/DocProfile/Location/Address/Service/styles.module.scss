@@ -1,0 +1,30 @@
+@import './styles/constants/colors.scss';
+
+.service {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $borderColor;
+
+  h2 {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: $onPrimary;
+  }
+  &-additional_information {
+    display: flex;
+  }
+  p {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666D82;
+    &:nth-child(2) {
+      margin-left: 40px;
+    }
+  }
+}

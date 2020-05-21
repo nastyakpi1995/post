@@ -1,0 +1,74 @@
+@import './styles/constants/colors.scss';
+
+.card {
+  &-doc_main {
+    svg {
+      vertical-align: baseline;
+    }
+  }
+
+  &-body {
+    display: inline-block;
+    margin-left: 30px;
+
+    h1 {
+      margin: 0;
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 40px;
+      color: #252F4D;
+    }
+
+    p {
+      margin: 10px 0 6px 0;
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+
+      color: $onPrimary;
+    }
+  }
+  &-number {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: $onPrimaryLight-2;
+
+    p {
+      display: inline-block;
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 16px;
+
+      color: $onPrimaryLight-2;
+    }
+  }
+
+  &-button {
+    background: $primaryLight;
+    border: 1px solid $borderColor;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    padding: 1px 5px;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: $onPrimaryLight-2;
+  }
+}
+

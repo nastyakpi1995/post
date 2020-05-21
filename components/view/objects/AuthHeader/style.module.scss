@@ -1,3 +1,5 @@
+@import './styles/constants/colors.scss';
+
 .header {
   height: 60px;
   margin: 0 auto;
@@ -29,9 +31,9 @@
     display: flex;
 
     .header-button__language {
-      color: #f5fafe;
-      background: #252f4d;
-      border: 1px solid #252f4d;
+      color: $primaryLight;
+      background: $onPrimary;
+      border: 1px solid $onPrimary;
       outline: none;
       cursor: pointer;
       width: 45px;

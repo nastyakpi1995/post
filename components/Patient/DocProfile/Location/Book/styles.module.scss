@@ -1,0 +1,40 @@
+@import './styles/constants/colors.scss';
+
+.book {
+  margin-left: 40px;
+  width: 50%;
+  border-radius: 22px 0 30px 30px;
+  box-shadow: 0px -2px 20px rgba(59, 58, 62, 0.1);
+  background: $primary;
+
+  &-inform {
+    background: $third;
+    border-radius: 20px 0 0 0;
+    padding: 15px 0 15px 40px;
+
+    h1 {
+      margin: 0;
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 33px;
+      color: $primary;
+    }
+    p {
+      margin: 0;
+      font-family: Avenir Next;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: $primary;
+    }
+    @media (max-width: 768px) {
+      & {
+        padding: 14px;
+        border-radius: 0;
+      }
+    }
+  }
+}
