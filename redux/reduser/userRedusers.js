@@ -1,4 +1,4 @@
-import FETCH_TYPES from '../types/registrationTypes';
+import FETCH_TYPES from '../types';
 
 const defaultState = {
   totalLength: 0,

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import registration from './registration';
+import getUser from '../reduser/userRedusers';
 
 export default combineReducers({
-  registration,
+  getUser,
 });
