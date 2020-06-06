@@ -1,149 +1,196 @@
-import * as REGISTRATION_TYPES from '../types/registrationTypes';
-import { GENDER_TYPES } from '../../components/Registration/constants';
+import FETCH_TYPES from '../types/registrationTypes';
 
-const initialState = {
-  // general
-  generalInfo: {
-    password: '',
-    phoneNumber: '',
-    repeatPassword: '',
-    userType: '',
+const defaultState = {
+  totalLength: 0,
+  perPage: 5,
+  endPage: 5,
+  pagesQuantity: 1,
+  currentPage: 1,
+  startRange: 0,
+  postsData: null,
+  userPutSuccess: false,
+  userLoading: false,
+  currentUser: '',
+  userErrors: {
+    name: [],
+    surname: [],
+    desc: [],
   },
-  generalErrors: {
-    phoneNumber: [],
-    nonFiledErrors: [],
-  },
-  generalSuccess: false,
-  generalLoading: false,
-
-  // confirmation
-  confirmationInfo: {
-    confirmPassword: '',
-  },
-  confirmationErrors: {
-    password: [],
-    phoneNumber: [],
-    repeatPassword: [],
-    confirmPhone: [],
-    nonFiledErrors: [],
-  },
-  confirmationLoading: false,
-  confirmationSuccess: false,
-
-  // personal
-  personalInfo: {
-    firstName: '',
-    lastName: '',
-    nationalId: '',
-    dateOfBirth: '',
-    gender: GENDER_TYPES[0],
-    country: '',
-    city: '',
-    direction: '',
-    houseNumber: '',
-    apartmentNumber: '',
-    floorNumber: '',
-    zipCode: '',
-    email: '',
-  },
-  personalErrors: {
-    firstName: [],
-    lastName: [],
-    nationalId: [],
-    dateOfBirth: [],
-    gender: [],
-    country: [],
-    city: [],
-    direction: [],
-    houseNumber: [],
-    apartmentNumber: [],
-    floor: [],
-    zipCode: [],
-    email: [],
-  },
-  personalLoading: false,
-  personalSuccess: false,
 };
 
-export default (state = initialState, action) => {
+// -------- Reducer --------
+
+export default (state = defaultState, action) => {
+  debugger
   switch (action.type) {
-    case REGISTRATION_TYPES.GENERAL_INFO_REQUEST: {
+    case FETCH_TYPES.GET_REQUEST: {
       return {
         ...state,
-        generalLoading: true,
+        userLoading: true,
+        postsData: action.data,
       };
     }
-    case REGISTRATION_TYPES.GENERAL_INFO_SUCCESS: {
+
+    case FETCH_TYPES.GET_SUCCESS: {
       return {
         ...state,
-        generalSuccess: true,
-        generalLoading: false,
-        generalInfo: action.payload,
-      };
-    }
-    case REGISTRATION_TYPES.GENERAL_INFO_FAIL: {
-      return {
-        ...state,
-        generalErrors: {
-          ...state.generalErrors,
-          ...action.payload,
+        userLoading: false,
+        postsData: action.data,
+        totalLength: action.data.length,
+        pagesQuantity: Math.ceil(action.data.length / state.perPage),
+        userErrors: {
+          name: [],
+          surname: [],
+          desc: [],
         },
-        generalLoading: false,
-      };
-    }
-    case REGISTRATION_TYPES.CONFIRMATION_REQUEST: {
-      return {
-        ...state,
-        confirmationLoading: true,
       };
     }
 
-    case REGISTRATION_TYPES.CONFIRMATION_SUCCESS: {
+    case FETCH_TYPES.GET_FAIL: {
       return {
         ...state,
-        confirmationSuccess: true,
-        confirmationLoading: false,
-        confirmationInfo: action.payload,
+        userErrors: action.data,
+        userPutSuccess: false,
+        userLoading: false,
       };
     }
 
-    case REGISTRATION_TYPES.CONFIRMATION_FAIL: {
+    case FETCH_TYPES.POST_REQUEST: {
       return {
         ...state,
-        confirmationErrors: {
-          ...state.confirmationErrors,
-          ...action.data,
+        userLoading: true,
+      };
+    }
+
+    case FETCH_TYPES.POST_SUCCESS: {
+      return {
+        ...state,
+        userPutSuccess: true,
+        userLoading: false,
+        postsData: action.data,
+        pagesQuantity: Math.ceil(action.data.length / state.perPage),
+        userErrors: {
+          name: [],
+          surname: [],
+          desc: [],
         },
-        confirmationLoading: false,
       };
     }
 
-    case REGISTRATION_TYPES.PERSONAL_INFO_REQUEST: {
+    case FETCH_TYPES.POST_FAIL: {
       return {
         ...state,
-        personalInfoLoading: true,
+        userErrors: action.data,
+        userPutSuccess: false,
+        userLoading: false,
       };
     }
-    case REGISTRATION_TYPES.PERSONAL_INFO_SUCCESS: {
+
+    case FETCH_TYPES.DELETE_REQUEST: {
       return {
         ...state,
-        personalInfoSuccess: true,
-        personalInfoLoading: false,
-        personalInfo: action.payload,
+        userLoading: true,
       };
     }
-    case REGISTRATION_TYPES.PERSONAL_INFO_FAIL: {
+
+    case FETCH_TYPES.DELETE_SUCCESS: {
       return {
         ...state,
-        personalInfoErrors: {
-          ...state.personalErrors,
-          ...action.payload,
+        userLoading: false,
+        postsData: action.data,
+        pagesQuantity: Math.ceil(action.data.length / state.perPage),
+        startRange: 0,
+        endPage: state.perPage,
+        userErrors: {
+          name: [],
+          surname: [],
+          desc: [],
         },
-        personalInfoLoading: false,
       };
     }
 
-    default:
+    case FETCH_TYPES.DELETE_FAIL: {
+      return {
+        ...state,
+        userPutSuccess: false,
+        userLoading: false,
+      };
+    }
+
+
+    case FETCH_TYPES.PUT_REQUEST: {
+      return {
+        ...state,
+        userLoading: true,
+      };
+    }
+
+    case FETCH_TYPES.PUT_SUCCESS: {
+      return {
+        ...state,
+        userPutSuccess: true,
+        userLoading: false,
+        postsData: action.data,
+        pagesQuantity: Math.ceil(action.data.length / state.perPage),
+      };
+    }
+
+    case FETCH_TYPES.PUT_FAIL: {
+      return {
+        ...state,
+        userPutSuccess: false,
+        userLoading: false,
+        userErrors: action.data,
+      };
+    }
+
+    case FETCH_TYPES.SET_CURRENT_PAGE: {
+      const endPage = action.currentPage * state.perPage;
+
+      return {
+        ...state,
+        endPage,
+        currentPage: action.currentPage,
+        pagesQuantity: Math.ceil(state.postsData.length / state.perPage),
+        startRange: endPage - state.perPage,
+      };
+    }
+
+    case FETCH_TYPES.SET_CURRENT_USER: {
+      return {
+        ...state,
+        currentUser: action.id,
+      };
+    }
+
+
+    case FETCH_TYPES.CAST_ALL_ERRORS: {
+      return {
+        ...state,
+        userPutSuccess: false,
+        userErrors: {
+          name: [],
+          surname: [],
+          desc: [],
+        },
+      };
+    }
+
+    case FETCH_TYPES.SET_COUNT_PAGES: {
+      const perPage = action.perPage ? 3 : 5;
+
+      return {
+        ...state,
+        perPage,
+        pagesQuantity: Math.ceil(state.postsData.length / perPage),
+        startRange: 0,
+        endPage: perPage,
+        currentPage: 1,
+      }
+    }
+
+    default: {
       return state;
+    }
   }
 };

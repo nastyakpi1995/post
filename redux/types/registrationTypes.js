@@ -1,11 +1,20 @@
-export const GENERAL_INFO_SUCCESS = '@@registration/GENERAL_INFO_SUCCESS';
-export const GENERAL_INFO_REQUEST = '@@registration/GENERAL_INFO_REQUEST';
-export const GENERAL_INFO_FAIL = '@@registration/GENERAL_INFO_FAIL';
+const FETCH_TYPES = {
+    GET_SUCCESS: '@@user/GET_SUCCESS',
+    GET_REQUEST: '@@user/GET_REQUEST',
+    GET_FAIL: '@@user/GET_FAIL',
+    POST_SUCCESS: '@@user/POST_SUCCESS',
+    POST_REQUEST: '@@user/POST_REQUEST',
+    POST_FAIL: '@@user/POST_FAIL',
+    DELETE_SUCCESS: '@@user/DELETE_SUCCESS',
+    DELETE_REQUEST: '@@user/DELETE_REQUEST',
+    DELETE_FAIL: '@@user/DELETE_FAIL',
+    PUT_SUCCESS: '@@user/PUT_SUCCESS',
+    PUT_REQUEST: '@@user/PUT_REQUEST',
+    PUT_FAIL: '@@user/PUT_FAIL',
+    SET_CURRENT_USER: '@@user/SET_CURRENT_USER',
+    SET_CURRENT_PAGE: '@@user/SET_CURRENT_PAGE',
+    CAST_ALL_ERRORS: '@@user/CAST_ALL_ERRORS',
+    SET_COUNT_PAGES: '@@user/SET_COUNT_PAGES',
+};
 
-export const CONFIRMATION_SUCCESS = '@@registration/CONFIRMATION_SUCCESS';
-export const CONFIRMATION_REQUEST = '@@registration/CONFIRMATION_REQUEST';
-export const CONFIRMATION_FAIL = '@@registration/CONFIRMATION_FAIL';
-
-export const PERSONAL_INFO_SUCCESS = '@@registration/PERSONAL_INFO_SUCCESS';
-export const PERSONAL_INFO_REQUEST = '@@registration/PERSONAL_INFO_REQUEST';
-export const PERSONAL_INFO_FAIL = '@@registration/PERSONAL_INFO_FAIL';
+export default FETCH_TYPES;

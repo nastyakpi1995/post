@@ -1,36 +1,26 @@
 import axios from 'axios';
-import getToken from './getToken';
 
 // Utils
 
 // ----------------
 
-export default async function apiCaller(config, after = false, token = true) {
-  let userToken = null;
-
-  if (token) {
-    userToken = getToken();
-  }
-
+export default async function apiCaller(config, after = false) {
   // Set default headers
 
-  const defaultHeaders = {
-    ...(token && userToken ? { Authorization: `JWT ${userToken}` } : {}),
-  };
 
   // Data preparation
 
   const fullConfig = {
-    baseURL: process.env.API_URL,
+    baseURL: 'https://simple-blog-api.crew.red',
     method: 'get',
     ...config,
-    headers: { ...config.headers, ...defaultHeaders },
   };
 
   // Request
 
   try {
     const res = await axios(fullConfig);
+
     if (after) {
       return after(res.data);
     }
@@ -40,6 +30,7 @@ export default async function apiCaller(config, after = false, token = true) {
     if (err.response) {
       throw err.response.data || err.response.statusText;
     }
+
     return Promise.reject(err);
   }
 }
